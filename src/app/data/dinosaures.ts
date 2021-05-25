@@ -1,5 +1,4 @@
 
-import { Type } from "./types";
 
 export interface Dinosaure {
   id: string;

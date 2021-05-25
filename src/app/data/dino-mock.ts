@@ -1,5 +1,5 @@
 import { Dinosaure } from './dinosaures';
-import { Type } from './types';
+import { TypeDino } from './types';
 
 export const DINO: Dinosaure[] = [
   {
@@ -29,16 +29,27 @@ export const DINO: Dinosaure[] = [
     type: 'aquatique',
     img: '../../src/assets/img/Sarchosuchus.png',
   },
+  {
+    id: "4",
+    name: 'T-Rex',
+    size: '6',
+    diet: 'carnivore',
+    price: 15000,
+    type: 'terrestre',
+    img: '../../src/assets/img/Trex.png',
+  },
 ];
 
-export const TYPE: Type[] = [
+export const TYPE: TypeDino[] = [
   {
+    id: "id1",
     name: 'Terrestre',
   },
-  {
+  {id: "id2",
     name: 'Aquatique',
   },
   {
+    id: "id2",
     name: 'Volant',
   },
 ];

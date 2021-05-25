@@ -10,7 +10,14 @@ import { TypeDinoComponent } from './type-dino/type-dino.component';
 import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
-  declarations: [AppComponent, AccueilComponent, DinosauresComponent, DinosauresDetailComponent, TypeDinoComponent, PanierComponent],
+  declarations: [
+    AppComponent,
+    AccueilComponent,
+    DinosauresComponent,
+    DinosauresDetailComponent,
+    TypeDinoComponent,
+    PanierComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

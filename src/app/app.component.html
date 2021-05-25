@@ -4,8 +4,8 @@
 
 <body>
   <nav>
-    <a routerLink>
-      <div *ngFor="let Onetype of type" style="color: #f0b83e">
+    <a routerLink= "/type/{{dinotype}}">
+      <div *ngFor="let Onetype of dinotype" style="color: #f0b83e">
         {{ Onetype.name }}
       </div>
     </a>
