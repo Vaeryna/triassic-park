@@ -1,9 +1,9 @@
-import { Dinosaures } from './dinosaures';
+import { Dinosaure } from './dinosaures';
 import { Type } from './types';
 
-export const DINO: Dinosaures[] = [
+export const DINO: Dinosaure[] = [
   {
-    id: 1,
+    id: "1",
     name: 'Velociraptor',
     size: '1,25',
     diet: 'carnivore',
@@ -12,7 +12,7 @@ export const DINO: Dinosaures[] = [
     img: '../../src/assets/img/velociraptor.png',
   },
   {
-    id: 2,
+    id: "2",
     name: 'Pteranodon',
     size: '5,6',
     diet: 'carnivore',
@@ -21,7 +21,7 @@ export const DINO: Dinosaures[] = [
     img: '../../src/assets/img/velociraptor.png',
   },
   {
-    id: 3,
+    id: "3",
     name: 'Sarcosuchus',
     size: '11',
     diet: 'carnivore',

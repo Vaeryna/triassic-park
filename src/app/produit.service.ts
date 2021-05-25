@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Dinosaures } from './data/dinosaures';
+import { Dinosaure } from './data/dinosaures';
 import { DINO, TYPE } from './data/dino-mock';
 import { Type } from './data/types';
 
@@ -7,12 +7,13 @@ import { Type } from './data/types';
   providedIn: 'root',
 })
 export class ProduitService {
-  private dino: Dinosaures[] = DINO;
+  private dino: Dinosaure[] = DINO;
   private type: Type[] = TYPE;
+  id:string = ""
 
   constructor() {}
 
-  getDino(): Dinosaures[] {
+  getDino(): Dinosaure[] {
     console.log('getDino');
     return this.dino;
   }
@@ -22,10 +23,9 @@ export class ProduitService {
     return this.type;
   }
 
-  getOneDino(): void {
-  console.log("getOneDino")
-
+  getOneDino(id: string): Dinosaure {
+    console.log('id DIno : ', id);
+    const dino = this.dino.find((a) => a.id = id)!;
+    return dino;
   }
-
-  
 }

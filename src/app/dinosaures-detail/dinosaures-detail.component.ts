@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { DINO } from '../data/dino-mock';
-import { Dinosaures } from '../data/dinosaures';
+import { Dinosaure } from '../data/dinosaures';
 import { ProduitService } from '../produit.service';
 
 @Component({
@@ -8,12 +10,23 @@ import { ProduitService } from '../produit.service';
   templateUrl: './dinosaures-detail.component.html',
   styleUrls: ['./dinosaures-detail.component.scss'],
 })
+
+
 export class DinosauresDetailComponent implements OnInit {
-  dino: Dinosaures[] = DINO;
+  dino: Dinosaure[] = DINO;
+  id!: string;
+  dinosaure!: Dinosaure ;
 
-  constructor(private pS: ProduitService) {}
 
-  ngOnInit(): Dinosaures[] {
-    return (this.dino = this.pS.getDino());
+  constructor(
+    private pS: ProduitService,
+     private route: ActivatedRoute,)
+     {
+
+     }
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) this.dinosaure = this.pS.getOneDino(id);
   }
 }

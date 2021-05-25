@@ -1,6 +1,6 @@
 <div *ngFor="let OneDino of dino" style="display: inline-block; margin: 5em">
   <p>
-    <a routerLink="">
+    <a routerLink="/detail/{{ OneDino.id }}">
       <strong> {{ OneDino.name }}</strong>
     </a>
   </p>

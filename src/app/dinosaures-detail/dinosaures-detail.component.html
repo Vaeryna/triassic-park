@@ -1,3 +1,9 @@
-<div *ngFor="let OneDino of dino">Dinosaures : {{ OneDino.name }}</div>
+<div *ngIf="dinosaure.id">
+  <div>
+    <h3>
+      {{ dinosaure.name }}
+    </h3>
+  </div>
+</div>
 
-<p> très cher dino</p>
+<a routerLink=""> Retour à l'accueil</a>
