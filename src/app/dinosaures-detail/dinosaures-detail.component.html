@@ -1,9 +1,21 @@
 <div *ngIf="dinosaure.id">
   <div>
     <h3>
-      {{ dinosaure.name }}
+      {{ dinosaure.name }} {{dinosaure.id}}
     </h3>
   </div>
+
+  <div class="caract">
+    <div>
+      <p>Taille : {{ dinosaure.size }}m</p>
+      <p>Type : {{ dinosaure.type }}</p>
+      <p> Régime alimentaire : {{ dinosaure.diet }}</p>
+      <p>Prix : {{ dinosaure.price }}€</p>
+    </div>
+    <img src="../../assets/img//{{dinosaure.name}}.png" alt="{{dinosaure.img}} ">
+  </div>
 </div>
+
+<p> <button> Ajouter au panier </button> </p>
 
 <a routerLink=""> Retour à l'accueil</a>

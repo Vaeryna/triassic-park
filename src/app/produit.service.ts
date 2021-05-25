@@ -9,23 +9,21 @@ import { Type } from './data/types';
 export class ProduitService {
   private dino: Dinosaure[] = DINO;
   private type: Type[] = TYPE;
-  id:string = ""
 
   constructor() {}
 
   getDino(): Dinosaure[] {
-    console.log('getDino');
     return this.dino;
   }
 
   getType(): Type[] {
-    console.log('type :', this.type);
     return this.type;
   }
 
   getOneDino(id: string): Dinosaure {
     console.log('id DIno : ', id);
-    const dino = this.dino.find((a) => a.id = id)!;
+    const dino = this.dino.find((a) => a.id == id)!;
+    console.log("dino:", dino)
     return dino;
   }
 }

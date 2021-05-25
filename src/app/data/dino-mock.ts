@@ -9,7 +9,7 @@ export const DINO: Dinosaure[] = [
     diet: 'carnivore',
     price: 10000,
     type: 'terrestre',
-    img: '../../src/assets/img/velociraptor.png',
+    img: '../../src/assets/img/Velociraptor.png',
   },
   {
     id: "2",
@@ -18,7 +18,7 @@ export const DINO: Dinosaure[] = [
     diet: 'carnivore',
     price: 5000,
     type: 'volant',
-    img: '../../src/assets/img/velociraptor.png',
+    img: '../../src/assets/img/Pteranodon.png',
   },
   {
     id: "3",
@@ -27,7 +27,7 @@ export const DINO: Dinosaure[] = [
     diet: 'carnivore',
     price: 7000,
     type: 'aquatique',
-    img: '../../src/assets/img/velociraptor.png',
+    img: '../../src/assets/img/Sarchosuchus.png',
   },
 ];
 

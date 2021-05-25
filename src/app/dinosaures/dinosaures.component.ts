@@ -14,9 +14,6 @@ export class DinosauresComponent implements OnInit {
   constructor(private pS: ProduitService) {}
 
   ngOnInit(): Dinosaure[] {
-    console.log((this.dino = this.pS.getDino()));
-    console.log('chargé ');
-
-    return (this.dino = this.pS.getDino());
+       return (this.dino = this.pS.getDino());
   }
 }

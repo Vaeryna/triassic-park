@@ -7,9 +7,10 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { DinosauresComponent } from './dinosaures/dinosaures.component';
 import { DinosauresDetailComponent } from './dinosaures-detail/dinosaures-detail.component';
 import { TypeDinoComponent } from './type-dino/type-dino.component';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
-  declarations: [AppComponent, AccueilComponent, DinosauresComponent, DinosauresDetailComponent, TypeDinoComponent],
+  declarations: [AppComponent, AccueilComponent, DinosauresComponent, DinosauresDetailComponent, TypeDinoComponent, PanierComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
