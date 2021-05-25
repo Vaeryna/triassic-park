@@ -1,0 +1,37 @@
+{
+  "Dinosaure1": {
+    "id": "0001",
+    "name": "Triceratops",
+    "size": "M",
+    "diet": "Herbivore",
+    "price": "5"
+  },
+  "Dinosaure2": {
+    "id": "0002",
+    "name": "Velociraptor",
+    "size": "S",
+    "diet": "Carnivore",
+    "price": "5"
+  },
+  "Dinosaure3": {
+    "id": "0003",
+    "name": "Archeopteryx",
+    "size": "S",
+    "diet": "Carnivore",
+    "price": "5"
+  },
+  "Dinosaure4": {
+    "id": "0004",
+    "name": "Dimorphodon",
+    "size": "S",
+    "diet": "Carnivore",
+    "price": "5"
+  },
+  "Dinosaure5": {
+    "id": "0005",
+    "name": "Stegosaure",
+    "size": "L",
+    "diet": "Herbivore",
+    "price": "5"
+  }
+}

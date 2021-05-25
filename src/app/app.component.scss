@@ -1,0 +1,37 @@
+h1 {
+  color: #e23123;
+  font: 10em jurassicFont;
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  display: flex-block;
+  justify-content: flex-start;
+  align-items: center;
+  color: #f0b83e;
+  border: thick double #675538;
+  padding: 1em;
+  text-decoration: none;
+  margin: 0 2em 0 2em;
+}
+
+a:link {
+  color: #f0b83e;
+}
+
+nav div {
+  margin: 2em;
+}
+
+body {
+  display: flex;
+}
+
+
+
+
+@font-face {
+  font-family: "jurassicFont";
+  src: url("JurassicPark.ttf");
+}

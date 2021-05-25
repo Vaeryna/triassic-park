@@ -1,0 +1,11 @@
+<div *ngFor="let OneDino of dino" style="display: inline-block; margin: 5em">
+  <p>
+    <a routerLink="">
+      <strong> {{ OneDino.name }}</strong>
+    </a>
+  </p>
+  <p>{{ OneDino.size }}m</p>
+  <p>{{ OneDino.type }}</p>
+  <p>{{ OneDino.diet }}</p>
+  <p>{{ OneDino.price }}€</p>
+</div>

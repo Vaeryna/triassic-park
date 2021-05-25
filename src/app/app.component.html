@@ -1,0 +1,18 @@
+<header>
+  <h1>Triassic Shop</h1>
+</header>
+
+<body>
+  <nav>
+    <a routerLink>
+      <div *ngFor="let Onetype of type" style="color: #f0b83e">
+        {{ Onetype.name }}
+      </div>
+    </a>
+  </nav>
+
+  <router-outlet></router-outlet>
+</body>
+
+
+
