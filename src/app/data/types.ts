@@ -1,3 +1,4 @@
-export interface Type {
+export interface TypeDino {
+  id: string
   name: string;
 }

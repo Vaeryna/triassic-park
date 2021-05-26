@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { Dinosaure } from '../data/dinosaures';
 
 import { ProduitService } from '../produit.service';
 import { DINO } from '../data/dino-mock';
+import { TypeDino } from '../data/types';
 
 @Component({
   selector: 'app-accueil',
@@ -11,6 +12,7 @@ import { DINO } from '../data/dino-mock';
 })
 export class AccueilComponent implements OnInit {
   dino: Dinosaure[] = [];
+  dinotype: TypeDino[] = [];
 
   constructor(private pS: ProduitService) {}
 

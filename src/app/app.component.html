@@ -4,15 +4,12 @@
 
 <body>
   <nav>
-    <a routerLink>
-      <div *ngFor="let Onetype of type" style="color: #f0b83e">
+    <div *ngFor="let Onetype of dinotype" style="color: #f0b83e">
+      <a routerLink="/type/{{ Onetype.name }}">
         {{ Onetype.name }}
-      </div>
-    </a>
+      </a>
+    </div>
   </nav>
 
   <router-outlet></router-outlet>
 </body>
-
-
-

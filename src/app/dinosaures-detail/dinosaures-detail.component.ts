@@ -19,7 +19,6 @@ export class DinosauresDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log('id: ', id);
     if (id) this.dinosaure = this.pS.getOneDino(id);
   }
 }

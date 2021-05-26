@@ -1,18 +1,18 @@
 <div *ngIf="dinosaure.id">
   <div>
     <h3>
-      {{ dinosaure.name }} {{dinosaure.id}}
+      {{ dinosaure.name }}
     </h3>
   </div>
 
   <div class="caract">
     <div>
-      <p>Taille : {{ dinosaure.size }}m</p>
+      <p>Taille : {{ dinosaure.size }} m</p>
       <p>Type : {{ dinosaure.type }}</p>
       <p> Régime alimentaire : {{ dinosaure.diet }}</p>
       <p>Prix : {{ dinosaure.price }}€</p>
     </div>
-    <img src="../../assets/img//{{dinosaure.name}}.png" alt="{{dinosaure.img}} ">
+    <img src="../../assets/img/{{dinosaure.name}}.png" alt="{{dinosaure.name}} ">
   </div>
 </div>
 
