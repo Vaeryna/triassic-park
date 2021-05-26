@@ -19,8 +19,7 @@ export class AccueilComponent implements OnInit {
   ngOnInit(): Dinosaure[] {
     console.log((this.dino = this.pS.getDino()));
     console.log('chargé ');
-    const typO = 'terrestre';
-    console.log('dinotype: ', (this.dinotype = this.pS.getDinoType(typO)));
+
 
     return (this.dino = this.pS.getDino());
   }

@@ -27,7 +27,7 @@ export class ProduitService {
 
   getDinoType(type: string): Dinosaure[] {
     const dinoType = this.dino.filter((a) => a.type == type)!;
-    console.log("dinoType ", dinoType)
+    console.log('dinoType ', dinoType);
     return dinoType;
   }
 }

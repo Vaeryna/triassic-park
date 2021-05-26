@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   { path: 'catalogue', component: DinosauresComponent },
 
-  { path: 'type/:id', component: TypeDinoComponent },
+  { path: 'type/:name', component: TypeDinoComponent },
 ];
 
 @NgModule({

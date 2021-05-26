@@ -43,13 +43,13 @@ export const DINO: Dinosaure[] = [
 export const TYPE: TypeDino[] = [
   {
     id: "id1",
-    name: 'Terrestre',
+    name: 'terrestre',
   },
   {id: "id2",
-    name: 'Aquatique',
+    name: 'aquatique',
   },
   {
     id: "id2",
-    name: 'Volant',
+    name: 'volant',
   },
 ];

@@ -17,6 +17,7 @@ export class TypeDinoComponent implements OnInit {
 
   ngOnInit(): Dinosaure[] {
     const typedino = this.route.snapshot.paramMap.get('name')!;
+
     console.log('const typeidno: ', typedino);
     if (typedino) this.dino = this.pS.getDinoType(typedino);
 

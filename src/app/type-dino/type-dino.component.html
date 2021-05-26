@@ -1,19 +1,17 @@
-
-<div *ngFor="let OneDino of dino" style="display: inline-block; margin: 5em">
-  <p>
+<div *ngIf="typedino">
+  <div *ngFor="let OneDino of dino" style="display: inline-block; margin: 5em">
     <a routerLink="/detail/{{ OneDino.id }}">
       <strong> {{ OneDino.name }}</strong>
     </a>
-  </p>
-  <p>{{ OneDino.size }}m</p>
-  <p>{{ OneDino.type }}</p>
-  <p>{{ OneDino.diet }}</p>
-  <p>{{ OneDino.price }}€</p>
+
+    <p>{{ OneDino.size }}m</p>
+    <p>{{ OneDino.type }}</p>
+    <p>{{ OneDino.diet }}</p>
+    <p>{{ OneDino.price }}€</p>
+  </div>
+  <div *ngFor="let dino of typedino">{{ dino.name }}</div>
 </div>
 
-<div> {{typedino}}</div>
-
-
 <div>
-  <a routerLink=""> Retour à l'accueil </a>
+  <a routerLink> Retour à l'accueil </a>
 </div>
