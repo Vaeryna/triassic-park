@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { DinosauresDetailComponent } from './dinosaures-detail/dinosaures-detail.component';
 import { DinosauresComponent } from './dinosaures/dinosaures.component';
+import { PanierComponent } from './panier/panier.component';
 import { TypeDinoComponent } from './type-dino/type-dino.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AccueilComponent
+    component: AccueilComponent,
   },
   {
     path: 'detail/:id',
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'catalogue', component: DinosauresComponent },
 
   { path: 'type/:name', component: TypeDinoComponent },
+
+  { path: 'panier', component: PanierComponent },
 ];
 
 @NgModule({
