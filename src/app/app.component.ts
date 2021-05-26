@@ -18,4 +18,6 @@ export class AppComponent implements OnInit {
     console.log('chargé ');
     return (this.dinotype = this.pS.getType());
   }
+
+
 }
