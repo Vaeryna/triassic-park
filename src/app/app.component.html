@@ -4,7 +4,11 @@
 
 <body>
   <nav>
-    <div *ngFor="let Onetype of dinotype" style="color: #f0b83e" onclick="window.location.reload();">
+    <div
+      *ngFor="let Onetype of dinotype"
+      style="color: #f0b83e"
+      onclick="window.location.reload();"
+    >
       <a routerLink="/type/{{ Onetype.name }}">
         {{ Onetype.name }}
       </a>
@@ -15,5 +19,8 @@
 
   <aside>
     <a routerLink="/panier"> <h2>Panier</h2> </a>
+    <div *ngFor="let panier of panier">
+      {{ panier.totalPrice }} {{ panier.contenu }}
+    </div>
   </aside>
 </body>

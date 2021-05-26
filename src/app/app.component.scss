@@ -1,3 +1,7 @@
+body {
+  display: flex;
+}
+
 h1 {
   color: #e23123;
   font: 10em jurassicFont;
@@ -5,7 +9,7 @@ h1 {
   justify-content: center;
 }
 
-nav, aside   {
+nav {
   display: flex-block;
   justify-content: flex-start;
   align-items: center;
@@ -14,6 +18,17 @@ nav, aside   {
   padding: 1em;
   text-decoration: none;
   margin: 0 2em 0 2em;
+}
+
+aside {
+  justify-content: end;
+  align-items: flex-end;
+  color: #f0b83e;
+  border: thick double #675538;
+  padding: 1em;
+  text-decoration: none;
+  padding: 0 2em 0 2em;
+  margin-left: 10em;
 }
 
 a:link {
@@ -30,9 +45,7 @@ nav div {
   margin: 2em;
 }
 
-body {
-  display: flex;
-}
+
 
 @font-face {
   font-family: "jurassicFont";

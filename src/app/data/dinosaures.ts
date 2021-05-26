@@ -1,5 +1,3 @@
-
-
 export interface Dinosaure {
   id: string;
   name: string;

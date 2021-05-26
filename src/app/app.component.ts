@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Panier } from './data/panier';
 import { TypeDino } from './data/types';
 import { ProduitService } from './produit.service';
 
@@ -12,12 +13,11 @@ export class AppComponent implements OnInit {
 
   constructor(private pS: ProduitService) {}
   dinotype: TypeDino[] = [];
-
+  panier: Panier[] = [];
 
   ngOnInit(): TypeDino[] {
     console.log('chargé ');
     return (this.dinotype = this.pS.getType());
   }
-
 
 }

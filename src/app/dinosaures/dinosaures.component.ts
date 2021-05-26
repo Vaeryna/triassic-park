@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Dinosaure } from '../data/dinosaures';
 import { ProduitService } from '../produit.service';
-import { DINO } from '../data/dino-mock';
 
 @Component({
   selector: 'app-dinosaures',
@@ -11,9 +11,11 @@ import { DINO } from '../data/dino-mock';
 export class DinosauresComponent implements OnInit {
   dino: Dinosaure[] = [];
 
-  constructor(private pS: ProduitService) {}
+  constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
-  ngOnInit(): Dinosaure[] {
-       return (this.dino = this.pS.getDino());
+  ngOnInit(): void {
+    this.pS.getDino().subscribe((dinos) => {
+      this.dino = dinos;
+    });
   }
 }

@@ -3,7 +3,7 @@ import { TypeDino } from './types';
 
 export const DINO: Dinosaure[] = [
   {
-    id: "1",
+    id: '1',
     name: 'Velociraptor',
     size: '1,25',
     diet: 'carnivore',
@@ -12,7 +12,7 @@ export const DINO: Dinosaure[] = [
     img: '../../src/assets/img/Velociraptor.png',
   },
   {
-    id: "2",
+    id: '2',
     name: 'Pteranodon',
     size: '5,6',
     diet: 'carnivore',
@@ -21,7 +21,7 @@ export const DINO: Dinosaure[] = [
     img: '../../src/assets/img/Pteranodon.png',
   },
   {
-    id: "3",
+    id: '3',
     name: 'Sarcosuchus',
     size: '11',
     diet: 'carnivore',
@@ -30,7 +30,7 @@ export const DINO: Dinosaure[] = [
     img: '../../src/assets/img/Sarchosuchus.png',
   },
   {
-    id: "4",
+    id: '4',
     name: 'T-Rex',
     size: '6',
     diet: 'carnivore',
@@ -42,14 +42,12 @@ export const DINO: Dinosaure[] = [
 
 export const TYPE: TypeDino[] = [
   {
-    id: "id1",
+    id: 'id1',
     name: 'terrestre',
   },
-  {id: "id2",
-    name: 'aquatique',
-  },
+  { id: 'id2', name: 'aquatique' },
   {
-    id: "id2",
+    id: 'id2',
     name: 'volant',
   },
 ];
