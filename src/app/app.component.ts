@@ -13,11 +13,14 @@ export class AppComponent implements OnInit {
 
   constructor(private pS: ProduitService) {}
   dinotype: TypeDino[] = [];
-  panier: Panier[] = [];
+  panier!: Panier[];
 
-  ngOnInit(): TypeDino[] {
+  ngOnInit(): void {
     console.log('chargé ');
-    return (this.dinotype = this.pS.getType());
+    this.dinotype = this.pS.getType();
+    this.pS.getPanier().subscribe((a) => {
+      this.panier = a;
+      console.log(this.panier);
+    });
   }
-
 }

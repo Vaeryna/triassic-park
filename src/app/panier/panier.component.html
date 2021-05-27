@@ -1,9 +1,7 @@
-<p>panier works!</p>
-
-<div *ngFor="let achat of panier">
-  <p>{{ achat.contenu }}</p>
+<h1>Votre panier</h1>
+<div *ngFor="let OnePanier of panier">
+  <p>{{ OnePanier.contenu }}</p>
 </div>
-
 <div>
   <a routerLink> Retour à l'accueil </a>
 </div>

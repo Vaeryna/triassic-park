@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Panier } from '../data/panier';
 import { ProduitService } from '../produit.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-panier',
@@ -8,11 +9,14 @@ import { ProduitService } from '../produit.service';
   styleUrls: ['./panier.component.scss'],
 })
 export class PanierComponent implements OnInit {
-  panier: Panier[] = [];
+  panier!: Panier[];
 
-  constructor(private ps: ProduitService) {}
+  constructor(private pS: ProduitService) {}
 
-  ngOnInit(): Panier[] {
-    return this.ps.getPanier();
+  ngOnInit(): void {
+    this.pS.getPanier().subscribe((a) => {
+      this.panier = a;
+      console.log(this.panier);
+    });
   }
 }

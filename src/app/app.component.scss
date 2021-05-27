@@ -21,8 +21,8 @@ nav {
 }
 
 aside {
-  justify-content: end;
-  align-items: flex-end;
+  justify-content: flex-end;
+  align-items: center;
   color: #f0b83e;
   border: thick double #675538;
   padding: 1em;
@@ -44,8 +44,6 @@ a:visited {
 nav div {
   margin: 2em;
 }
-
-
 
 @font-face {
   font-family: "jurassicFont";

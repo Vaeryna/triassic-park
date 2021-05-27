@@ -26,7 +26,10 @@ export class ProduitService {
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
-  private dinoUrl = 'https://triassic-park-default-rtdb.firebaseio.com/';
+  private dinoUrl =
+    'https://triassic-park-default-rtdb.firebaseio.com/Dinosaures';
+  private panierUrl =
+    'https://triassic-park-default-rtdb.firebaseio.com/Panier';
 
   getType(): TypeDino[] {
     return this.type;
@@ -56,10 +59,12 @@ export class ProduitService {
     );
   }
 
-  getPanier(): Panier[] {
-    const panierValues = Object.values(this.panier);
-
-    console.log('panier2', panierValues);
-    return panierValues;
+  getPanier(): Observable<Panier[]> {
+    return this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
+      map((panier) => Object.values(panier)),
+      map((a) => {
+        return a;
+      })
+    );
   }
 }

@@ -19,8 +19,9 @@
 
   <aside>
     <a routerLink="/panier"> <h2>Panier</h2> </a>
-    <div *ngFor="let panier of panier">
-      {{ panier.totalPrice }} {{ panier.contenu }}
+    <div *ngFor="let OnePanier of panier">
+      <p>{{ OnePanier.contenu }}</p>
+      <p>{{ OnePanier.totalPrice }}€</p>
     </div>
   </aside>
 </body>

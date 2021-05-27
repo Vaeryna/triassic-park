@@ -1,38 +1,47 @@
 {
-  "Dino1": {
-    "id": "1",
-    "name": "Velociraptor",
-    "size": "1,25",
-    "diet": "carnivore",
-    "price": 10000,
-    "type": "terrestre",
-    "img": "../../src/assets/img/Velociraptor.png"
+  "Dinosaures": {
+    "Dino1": {
+      "id": "1",
+      "name": "Velociraptor",
+      "size": "1,25",
+      "diet": "carnivore",
+      "price": 10000,
+      "type": "terrestre",
+      "img": "../../src/assets/img/Velociraptor.png"
+    },
+    "Dino2": {
+      "id": "2",
+      "name": "Pteranodon",
+      "size": "5,6",
+      "diet": "carnivore",
+      "price": 5000,
+      "type": "volant",
+      "img": "../../src/assets/img/Pteranodon.png"
+    },
+    "Dino3": {
+      "id": "3",
+      "name": "Sarcosuchus",
+      "size": "11",
+      "diet": "carnivore",
+      "price": 7000,
+      "type": "aquatique",
+      "img": "../../src/assets/img/Sarchosuchus.png"
+    },
+    "Dino4": {
+      "id": "4",
+      "name": "T-Rex",
+      "size": "6",
+      "diet": "carnivore",
+      "price": 15000,
+      "type": "terrestre",
+      "img": "../../src/assets/img/Trex.png"
+    }
   },
-  "Dino2": {
-    "id": "2",
-    "name": "Pteranodon",
-    "size": "5,6",
-    "diet": "carnivore",
-    "price": 5000,
-    "type": "volant",
-    "img": "../../src/assets/img/Pteranodon.png"
-  },
-  "Dino3": {
-    "id": "3",
-    "name": "Sarcosuchus",
-    "size": "11",
-    "diet": "carnivore",
-    "price": 7000,
-    "type": "aquatique",
-    "img": "../../src/assets/img/Sarchosuchus.png"
-  },
-  "Dino4": {
-    "id": "4",
-    "name": "T-Rex",
-    "size": "6",
-    "diet": "carnivore",
-    "price": 15000,
-    "type": "terrestre",
-    "img": "../../src/assets/img/Trex.png"
+  "Panier": {
+    "panier1": {
+      "id": "pan1",
+      "contenu": "velociraptor",
+      "totalPrice": "10000"
+    }
   }
 }
