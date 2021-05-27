@@ -6,7 +6,7 @@ import { TypeDino } from './data/types';
 import { Panier } from './data/panier';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, switchMap } from 'rxjs/operators';
+import { filter, find, map, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
@@ -47,9 +47,13 @@ export class ProduitService {
     );
   }
 
-  getOneDino(id: string): Dinosaure {
-    const dino = this.dino.find((a) => a.id == id)!;
-    return dino;
+  getOneDino(id: string): Observable<Dinosaure> {
+    console.log('getOneDino', id);
+    return this.http.get<Dinosaure>(`${this.dinoUrl}/Dino${id}/.json`).pipe(
+      map((a) => {
+        return a;
+      })
+    );
   }
 
   getPanier(): Panier[] {

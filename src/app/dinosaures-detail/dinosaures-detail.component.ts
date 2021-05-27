@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { DINO } from '../data/dino-mock';
 import { Dinosaure } from '../data/dinosaures';
@@ -19,6 +21,10 @@ export class DinosauresDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) this.dinosaure = this.pS.getOneDino(id);
+
+    if (id)
+      this.pS.getOneDino(id).subscribe((dino) => {
+        this.dinosaure = dino;
+      });
   }
 }
