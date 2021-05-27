@@ -27,4 +27,8 @@ export class DinosauresDetailComponent implements OnInit {
         this.dinosaure = dino;
       });
   }
+
+  add(dino: string) {
+    this.pS.addDino(dino).subscribe((dino) => this.dino.push(dino));
+  }
 }

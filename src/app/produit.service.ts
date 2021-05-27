@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ErrorHandler, Injectable } from '@angular/core';
 import { Dinosaure } from './data/dinosaures';
 import { TYPE } from './data/dino-mock';
 
@@ -6,12 +6,13 @@ import { TypeDino } from './data/types';
 import { Panier } from './data/panier';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { filter, find, map, switchMap } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
+import { Observable, Subject, throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
+    Accept: 'application/json',
     'Content-Type': 'application/json',
   }),
 };
@@ -20,9 +21,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class ProduitService {
-  private dino!: Dinosaure[];
   private type: TypeDino[] = TYPE;
-  private panier!: Panier[];
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -36,10 +35,6 @@ export class ProduitService {
   }
 
   getDinoType(type: string): Observable<Dinosaure[]> {
-    /*  const dinoType = this.dino.filter((a) => a.type == type)!;
-    console.log('dinoType ', dinoType);
-    return dinoType; */
-
     return this.http
       .get<Dinosaure[]>(`${this.dinoUrl}/.json`)
       .pipe(
@@ -72,5 +67,18 @@ export class ProduitService {
         return a;
       })
     );
+  }
+
+  addDino(dino: string): Observable<any> {
+    console.log('dino addDino: ', dino);
+    console.log('dinoo ', `'${dino}'`);
+
+    return this.http.post<Dinosaure>(`${this.panierUrl}/.json`, dino).pipe(
+      switchMap((ref) => {
+        dino = ref.name;
+        return this.http.put<void>(`${this.panierUrl}/${ref.name}/.json`, dino);
+      })
+    );
+    // return this.http.post<Dinosaure>(this.panierUrl, dino);
   }
 }

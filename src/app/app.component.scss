@@ -16,7 +16,6 @@ nav {
   border: thick double #675538;
   padding: 1em;
   text-decoration: none;
-
 }
 
 aside {
@@ -41,6 +40,12 @@ a:visited {
 
 nav div {
   margin: 2em;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
 }
 
 @font-face {
