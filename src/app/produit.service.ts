@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Dinosaure } from './data/dinosaures';
-import { DINO, TYPE } from './data/dino-mock';
-import { PANIER } from './data/panier-mock';
+import { TYPE } from './data/dino-mock';
+
 import { TypeDino } from './data/types';
 import { Panier } from './data/panier';
 
@@ -20,9 +20,9 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class ProduitService {
-  private dino: Dinosaure[] = DINO;
+  private dino!: Dinosaure[];
   private type: TypeDino[] = TYPE;
-  private panier: Panier[] = PANIER;
+  private panier!: Panier[];
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -35,14 +35,20 @@ export class ProduitService {
     return this.type;
   }
 
-  getDinoType(type: string): Dinosaure[] {
-    const dinoType = this.dino.filter((a) => a.type == type)!;
+  getDinoType(type: string): Observable<Dinosaure[]> {
+    /*  const dinoType = this.dino.filter((a) => a.type == type)!;
     console.log('dinoType ', dinoType);
-    return dinoType;
+    return dinoType; */
+
+    return this.http
+      .get<Dinosaure[]>(`${this.dinoUrl}/.json`)
+      .pipe(
+        map((dino) => Object.values(dino).filter((dino) => dino.type == type))
+      );
   }
 
   getDino(): Observable<Dinosaure[]> {
-    return this.http.get<Dinosaure[]>(this.dinoUrl + '/.json').pipe(
+    return this.http.get<Dinosaure[]>(`${this.dinoUrl}/.json`).pipe(
       map((dinosaures) => Object.values(dinosaures)),
       map((a) => {
         return a;

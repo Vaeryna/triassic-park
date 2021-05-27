@@ -1,6 +1,7 @@
 <h1>Votre panier</h1>
 <div *ngFor="let OnePanier of panier">
   <p>{{ OnePanier.contenu }}</p>
+  <p>Total du panier :{{ OnePanier.totalPrice }}€</p>
 </div>
 <div>
   <a routerLink> Retour à l'accueil </a>

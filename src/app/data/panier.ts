@@ -1,5 +1,5 @@
 export interface Panier {
   id: string;
-  contenu: string;
+  contenu: Array<string>[];
   totalPrice: number;
 }

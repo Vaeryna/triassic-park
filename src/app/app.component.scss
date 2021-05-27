@@ -1,5 +1,6 @@
 body {
   display: flex;
+  justify-content: space-around;
 }
 
 h1 {
@@ -10,25 +11,22 @@ h1 {
 }
 
 nav {
-  display: flex-block;
-  justify-content: flex-start;
   align-items: center;
   color: #f0b83e;
   border: thick double #675538;
   padding: 1em;
   text-decoration: none;
-  margin: 0 2em 0 2em;
+
 }
 
 aside {
-  justify-content: flex-end;
   align-items: center;
   color: #f0b83e;
   border: thick double #675538;
-  padding: 1em;
   text-decoration: none;
   padding: 0 2em 0 2em;
-  margin-left: 2em;
+
+  text-transform: capitalize;
 }
 
 a:link {
