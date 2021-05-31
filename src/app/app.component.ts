@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Panier, Total } from './data/panier';
 import { TypeDino } from './data/types';
 import { ProduitService } from './produit.service';
 
@@ -12,12 +13,19 @@ export class AppComponent implements OnInit {
 
   constructor(private pS: ProduitService) {}
   dinotype: TypeDino[] = [];
+  panier!: Panier[];
+  total!: Total;
 
-
-  ngOnInit(): TypeDino[] {
+  ngOnInit(): void {
     console.log('chargé ');
-    return (this.dinotype = this.pS.getType());
+    this.dinotype = this.pS.getType();
+    this.pS.getPanier().subscribe((a) => {
+      this.panier = a;
+      console.log(this.panier);
+    });
+    this.pS.getTotalPricePanier().subscribe((a) => {
+      this.total = a;
+      console.log('total: ', a);
+    });
   }
-
-
 }

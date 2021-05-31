@@ -9,6 +9,14 @@ import { DinosauresDetailComponent } from './dinosaures-detail/dinosaures-detail
 import { TypeDinoComponent } from './type-dino/type-dino.component';
 import { PanierComponent } from './panier/panier.component';
 
+import firebase from 'firebase';
+import { environment as env } from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { AddInBasketComponent } from './add-in-basket/add-in-basket.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+firebase.initializeApp(env.firebaseConfig);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,8 +25,14 @@ import { PanierComponent } from './panier/panier.component';
     DinosauresDetailComponent,
     TypeDinoComponent,
     PanierComponent,
+    AddInBasketComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

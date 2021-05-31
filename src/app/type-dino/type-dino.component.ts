@@ -15,12 +15,14 @@ export class TypeDinoComponent implements OnInit {
 
   constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
-  ngOnInit(): Dinosaure[] {
+  ngOnInit(): void {
     const typedino = this.route.snapshot.paramMap.get('name')!;
 
     console.log('const typeidno: ', typedino);
-    if (typedino) this.dino = this.pS.getDinoType(typedino);
 
-    return (this.dino = this.pS.getDinoType(typedino));
+    if (typedino)
+      this.pS.getDinoType(typedino).subscribe((dino) => {
+        this.dino = dino;
+      });
   }
 }

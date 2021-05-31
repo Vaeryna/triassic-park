@@ -1,0 +1,36 @@
+<form [formGroup]="dinoForm" (ngSubmit)="onSubmit()">
+  <div class="form-check">
+    <p>
+      <label for="dino"> Dinosaure :</label>
+    </p>
+
+    <div *ngFor="let dino of dinosaure" class="radio-button">
+      <input
+        id="radio"
+        class="checkmark"
+        formControlName="dino"
+        type="radio"
+        value="{{ dino.name }}"
+      />
+
+      <label class="form-radio-label"> {{ dino.name }} </label> {{dino.price}} €
+    </div>
+
+    <p>
+      <label for="quantite"> Quantité </label>
+      <input
+        name="quantité"
+        formControlName="quantite"
+        type="number"
+        class="form-control"
+        id="quantite"
+      />
+    </p>
+  </div>
+
+  <div class="form-group col-md-12 m-2">
+    <button type="submit" class="btn btn-primary m-2">Add</button>
+
+    <button routerLink="/catalogue" class="btn btn-light">Return</button>
+  </div>
+</form>

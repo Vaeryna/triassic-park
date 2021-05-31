@@ -4,16 +4,27 @@
 
 <body>
   <nav>
-    <div *ngFor="let Onetype of dinotype" style="color: #f0b83e" onclick="window.location.reload();">
+    <div
+      *ngFor="let Onetype of dinotype"
+      style="color: #f0b83e"
+      onclick="window.location.reload();"
+    >
       <a routerLink="/type/{{ Onetype.name }}">
         {{ Onetype.name }}
       </a>
     </div>
   </nav>
+  <p class="article">
+    <router-outlet></router-outlet>
 
-  <router-outlet></router-outlet>
+  </p>
 
   <aside>
     <a routerLink="/panier"> <h2>Panier</h2> </a>
+    <div *ngFor="let OnePanier of panier">
+      <p>{{ OnePanier.quantite }} {{ OnePanier.dino }}</p>
+
+    </div>
+    <p *ngIf="total">{{ total }}€</p>
   </aside>
 </body>

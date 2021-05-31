@@ -1,34 +1,101 @@
-import { Injectable } from '@angular/core';
+import { ErrorHandler, Injectable } from '@angular/core';
 import { Dinosaure } from './data/dinosaures';
-import { DINO, TYPE } from './data/dino-mock';
+import { TYPE } from './data/dino-mock';
+
 import { TypeDino } from './data/types';
+import { Panier, Total } from './data/panier';
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
+import { Observable, Subject, throwError } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProduitService {
-  private dino: Dinosaure[] = DINO;
   private type: TypeDino[] = TYPE;
 
-  constructor() {}
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+
+  private dinoUrl =
+    'https://triassic-park-default-rtdb.firebaseio.com/Dinosaures';
+  private panierUrl =
+    'https://triassic-park-default-rtdb.firebaseio.com/Panier';
 
   getType(): TypeDino[] {
-
     return this.type;
   }
 
-  getDino(): Dinosaure[] {
-    return this.dino;
+  getDinoType(type: string): Observable<Dinosaure[]> {
+    return this.http
+      .get<Dinosaure[]>(`${this.dinoUrl}/.json`)
+      .pipe(
+        map((dino) => Object.values(dino).filter((dino) => dino.type == type))
+      );
   }
 
-  getOneDino(id: string): Dinosaure {
-    const dino = this.dino.find((a) => a.id == id)!;
-    return dino;
+  getDino(): Observable<Dinosaure[]> {
+    return this.http.get<Dinosaure[]>(`${this.dinoUrl}/.json`).pipe(
+      map((dinosaures) => Object.values(dinosaures)),
+      map((a) => {
+        return a;
+      })
+    );
   }
 
-  getDinoType(type: string): Dinosaure[] {
-    const dinoType = this.dino.filter((a) => a.type == type)!;
-    console.log('dinoType ', dinoType);
-    return dinoType;
+  getOneDino(id: string): Observable<Dinosaure> {
+    console.log('getOneDino', id);
+    return this.http.get<Dinosaure>(`${this.dinoUrl}/Dino${id}/.json`).pipe(
+      map((a) => {
+        return a;
+      })
+    );
+  }
+
+  getKeyID(): any {
+    return this.http.get<Dinosaure[]>(`${this.dinoUrl}/.json`).pipe(
+      map((a) => {
+        for (const key in a) {
+          console.log('getKeyId name', a[key].name, 'id', a[key].id);
+        }
+      })
+    );
+  }
+
+  getPanier(): Observable<Panier[]> {
+    return this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
+      map((panier) => Object.values(panier)),
+      map((a) => {
+        return a;
+      })
+    );
+  }
+
+  getTotalPricePanier(): Observable<Total> {
+    return this.http.get<Total>(`${this.panierUrl}/TotalPrice/.json`).pipe(
+      map((a) => {
+        console.log('getTotalPricePanier: ', a);
+        return a;
+      })
+    );
+  }
+
+  addDino(dino: string): Observable<any> {
+    console.log('dino addDino: ', dino);
+    const ifExist = this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
+      map((a) => {
+        console.log('addDino: ', a);
+      })
+    );
+
+    return this.http.post<Panier>(`${this.panierUrl}/.json`, dino);
   }
 }

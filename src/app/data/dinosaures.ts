@@ -1,5 +1,3 @@
-
-
 export interface Dinosaure {
   id: string;
   name: string;
@@ -9,3 +7,4 @@ export interface Dinosaure {
   type: string;
   img: string
 }
+

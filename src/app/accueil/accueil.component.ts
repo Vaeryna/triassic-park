@@ -16,11 +16,9 @@ export class AccueilComponent implements OnInit {
 
   constructor(private pS: ProduitService) {}
 
-  ngOnInit(): Dinosaure[] {
-    console.log((this.dino = this.pS.getDino()));
+  ngOnInit(): void {
     console.log('chargé ');
 
-
-    return (this.dino = this.pS.getDino());
+    this.pS.getDino().subscribe((a) => (a = this.dino));
   }
 }

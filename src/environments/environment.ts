@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  firebaseConfig: {
+    apiKey: 'AIzaSyCL-m0HLsi1SY39boh9fQuVrXK0wHKdtGo',
+    authDomain: 'triassic-park.firebaseapp.com',
+    databaseURL: 'https:/triassic-park-default-rtdb.firebaseio.com',
+    projectId: 'triassic-park',
+    storageBucket: 'triassic-park.appspot.com',
+    messagingSenderId: '419304805866',
+    appId: '1:419304805866:web:574587bda30bcc37e7ce93',
+  },
 };
 
 /*

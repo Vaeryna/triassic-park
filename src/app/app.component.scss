@@ -1,3 +1,8 @@
+body {
+  display: flex;
+  justify-content: space-around;
+}
+
 h1 {
   color: #e23123;
   font: 10em jurassicFont;
@@ -5,15 +10,22 @@ h1 {
   justify-content: center;
 }
 
-nav, aside   {
-  display: flex-block;
-  justify-content: flex-start;
+nav {
   align-items: center;
   color: #f0b83e;
   border: thick double #675538;
   padding: 1em;
   text-decoration: none;
-  margin: 0 2em 0 2em;
+}
+
+aside {
+  align-items: center;
+  color: #f0b83e;
+  border: thick double #675538;
+  text-decoration: none;
+  padding: 0 2em 0 2em;
+
+  text-transform: capitalize;
 }
 
 a:link {
@@ -30,8 +42,10 @@ nav div {
   margin: 2em;
 }
 
-body {
+.article {
   display: flex;
+  flex-direction: column;
+  padding: 2em;
 }
 
 @font-face {
