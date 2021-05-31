@@ -60,8 +60,15 @@ export class ProduitService {
     );
   }
 
-
-
+  getKeyID(): any {
+    return this.http.get<Dinosaure[]>(`${this.dinoUrl}/.json`).pipe(
+      map((a) => {
+        for (const key in a) {
+          console.log('getKeyId name', a[key].name, 'id', a[key].id);
+        }
+      })
+    );
+  }
 
   getPanier(): Observable<Panier[]> {
     return this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
