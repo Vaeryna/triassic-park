@@ -7,3 +7,4 @@ export interface Dinosaure {
   type: string;
   img: string
 }
+

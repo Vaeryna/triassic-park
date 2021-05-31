@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Panier } from '../data/panier';
+import { Panier, Total } from '../data/panier';
 import { ProduitService } from '../produit.service';
-import { Observable } from 'rxjs';
+import { Dinosaure } from '../data/dinosaures';
 
 @Component({
   selector: 'app-panier',
@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class PanierComponent implements OnInit {
   panier!: Panier[];
+  totalPrice!: Total;
+  dino!: Dinosaure[];
 
   constructor(private pS: ProduitService) {}
 
@@ -18,5 +20,12 @@ export class PanierComponent implements OnInit {
       this.panier = a;
       console.log(this.panier);
     });
+
+    this.pS.getTotalPricePanier().subscribe((a) => {
+      this.totalPrice = a;
+      console.log('total: ', a);
+    });
+
+
   }
 }

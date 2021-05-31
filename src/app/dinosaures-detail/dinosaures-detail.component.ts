@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { DINO } from '../data/dino-mock';
-import { Dinosaure } from '../data/dinosaures';
+import { DINO } from '../data/dino-mock';import { Dinosaure } from '../data/dinosaures';
 import { ProduitService } from '../produit.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { ProduitService } from '../produit.service';
   styleUrls: ['./dinosaures-detail.component.scss'],
 })
 export class DinosauresDetailComponent implements OnInit {
-  dino: Dinosaure[] = DINO;
+  dino!: Dinosaure[];
   id!: string;
   dinosaure!: Dinosaure;
 
@@ -28,7 +27,5 @@ export class DinosauresDetailComponent implements OnInit {
       });
   }
 
-  add(dino: string) {
-    this.pS.addDino(dino).subscribe((dino) => this.dino.push(dino));
-  }
+ 
 }

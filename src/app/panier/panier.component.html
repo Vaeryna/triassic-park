@@ -1,8 +1,17 @@
 <h1>Votre panier</h1>
-<div *ngFor="let OnePanier of panier">
-  <p>{{ OnePanier.contenu }}</p>
-  <p>Total du panier :{{ OnePanier.totalPrice }}€</p>
-</div>
+<table *ngFor="let OnePanier of panier" class="table table-striped table-dark">
+  <tr>
+    <td>
+      {{ OnePanier.quantite }}
+    </td>
+    <td>
+      {{ OnePanier.dino }}
+    </td>
+ <!--   <td *ngIf="dino"> {{dino.price}} prix unité</td>    ngIf prix, afficher prix-->
+  </tr>
+</table>
 <div>
+  <p style="margin-top: 2em">Total du panier :{{ totalPrice }} €</p>
+
   <a routerLink> Retour à l'accueil </a>
 </div>

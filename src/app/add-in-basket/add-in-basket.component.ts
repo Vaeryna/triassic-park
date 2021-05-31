@@ -11,6 +11,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 
+import { Dinosaure } from '../data/dinosaures';
 
 @Component({
   selector: 'app-add-in-basket',
@@ -19,7 +20,7 @@ import {
 })
 export class AddInBasketComponent implements OnInit {
   dinoForm!: FormGroup;
-
+  dinosaure!: Dinosaure[];
 
   constructor(
     private pS: ProduitService,
@@ -29,29 +30,31 @@ export class AddInBasketComponent implements OnInit {
 
   ngOnInit(): void {
     this.dinoForm = this.fB.group({
-      name: new FormControl('', [Validators.required]),
+      quantite: new FormControl('', [Validators.required]),
+      dino: new FormControl('', [Validators.required]),
     });
+
+    console.log('dinoID: ', this.dinoId);
+    console.log('dinos', this.dino);
+    this.pS.getDino().subscribe(dinos => {this.dinosaure = dinos})
   }
 
-  get name() {
-    return this.dinoForm.get('name');
+  get quantite() {
+    return this.dinoForm.get('quantite');
+  }
+
+  get dino() {
+    return this.dinoForm.get('dino');
+  }
+
+  get dinoId() {
+    return this.dinoForm.get('dinoId');
   }
 
   onSubmit() {
+    console.log('dinoFormValue', this.dinoForm.value);
     const dino = this.dinoForm.value;
 
-    this.pS.addDino(dino).subscribe(
-      (res) => {
-        console.log(res);
-        this.router.navigate([
-          '/dino',
-          { queryParams: 'Dino ajouté avec succès' },
-        ]);
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => console.log('Completé"')
-    );
+    this.pS.addDino(dino).subscribe();
   }
 }

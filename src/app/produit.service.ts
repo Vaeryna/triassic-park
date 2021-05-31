@@ -3,7 +3,7 @@ import { Dinosaure } from './data/dinosaures';
 import { TYPE } from './data/dino-mock';
 
 import { TypeDino } from './data/types';
-import { Panier } from './data/panier';
+import { Panier, Total } from './data/panier';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
@@ -69,16 +69,23 @@ export class ProduitService {
     );
   }
 
-  addDino(dino: string): Observable<any> {
-    console.log('dino addDino: ', dino);
-    console.log('dinoo ', `'${dino}'`);
-
-    return this.http.post<Dinosaure>(`${this.panierUrl}/.json`, dino).pipe(
-      switchMap((ref) => {
-        dino = ref.name;
-        return this.http.put<void>(`${this.panierUrl}/${ref.name}/.json`, dino);
+  getTotalPricePanier(): Observable<Total> {
+    return this.http.get<Total>(`${this.panierUrl}/TotalPrice/.json`).pipe(
+      map((a) => {
+        console.log('getTotalPricePanier: ', a);
+        return a;
       })
     );
-    // return this.http.post<Dinosaure>(this.panierUrl, dino);
+  }
+
+  addDino(dino: string): Observable<any> {
+    console.log('dino addDino: ', dino);
+    const ifExist = this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
+      map((a) => {
+        console.log('addDino: ', a);
+      })
+    );
+
+    return this.http.post<Panier>(`${this.panierUrl}/.json`, dino);
   }
 }

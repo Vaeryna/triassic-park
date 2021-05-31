@@ -16,13 +16,15 @@
   </nav>
   <p class="article">
     <router-outlet></router-outlet>
+
   </p>
 
   <aside>
     <a routerLink="/panier"> <h2>Panier</h2> </a>
     <div *ngFor="let OnePanier of panier">
-      <p>{{ OnePanier.contenu }}</p>
-      <p>{{ OnePanier.totalPrice }}€</p>
+      <p>{{ OnePanier.quantite }} {{ OnePanier.dino }}</p>
+
     </div>
+    <p *ngIf="total">{{ total }}€</p>
   </aside>
 </body>

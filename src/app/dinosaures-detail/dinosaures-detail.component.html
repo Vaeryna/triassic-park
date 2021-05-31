@@ -1,4 +1,6 @@
-<div *ngIf="dinosaure.id" >
+<button routerLink="/add-in-basket">Ajouter un dinosaure au panier</button>
+
+<div *ngIf="dinosaure.id">
   <div>
     <h3>
       {{ dinosaure.name }}
@@ -18,7 +20,5 @@
     />
   </div>
 </div>
-
-<p><button routerLink="/add-in-basket">Ajouter au panier</button></p>
 
 <a routerLink=""> Retour à l'accueil</a>
