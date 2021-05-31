@@ -50,7 +50,7 @@ export class AddInBasketComponent implements OnInit {
     this.dinoForm = this.fB.group({
       quantite: new FormControl('', [Validators.required]),
       dino: new FormControl('', [Validators.required]),
-      dinoID: new FormControl(this.dinoId),
+
     });
 
     console.log('dinoID: ', this.dinoId);
