@@ -4,26 +4,16 @@
       <label for="dino"> Dinosaure :</label>
     </p>
 
-    <div *ngFor="let dino of dinosaure">
+    <div *ngFor="let dino of dinosaure" class="radio-button">
       <input
-        name="dino"
-        class="form-radio-input"
+        id="radio"
+        class="checkmark"
         formControlName="dino"
         type="radio"
         value="{{ dino.name }}"
       />
 
-      <label class="form-radio-label"> {{ dino.name }} </label>
-
-      <input
-        readonly
-        class="form-control-plaintext"
-        name="dinoId"
-
-        type="text"
-        value="{{ dino.id }}"
-        id="dinoId"
-      />
+      <label class="form-radio-label"> {{ dino.name }} </label> {{dino.price}} €
     </div>
 
     <p>

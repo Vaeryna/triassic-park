@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProduitService } from '../produit.service';
 import { Router } from '@angular/router';
 
@@ -29,32 +29,17 @@ export class AddInBasketComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  const dinoooo =   this.pS.getDino().subscribe((dinos) => {
+    this.pS.getDino().subscribe((dinos) => {
       this.dinosaure = dinos;
-      //  const dinooo = (Object.values(dinos));
-      console.log('dino ini ', dinos);
-
-      for (const key in this.dinosaure) {
-        console.log(
-          'name',
-          this.dinosaure[key].name,
-          'id',
-          this.dinosaure[key].id
-        );
-        const dinos = this.dinosaure[key].id;
-      }
-
-      console.log("dinooo ", dinoooo)
+      return dinos;
     });
+
+    console.log('ruc: ');
 
     this.dinoForm = this.fB.group({
       quantite: new FormControl('', [Validators.required]),
       dino: new FormControl('', [Validators.required]),
-
     });
-
-    console.log('dinoID: ', this.dinoId);
-    console.log('dinos', this.dino);
   }
 
   get quantite() {
@@ -63,10 +48,6 @@ export class AddInBasketComponent implements OnInit {
 
   get dino() {
     return this.dinoForm.get('dino');
-  }
-
-  get dinoId() {
-    return this.dinoForm.get('dinoId');
   }
 
   onSubmit() {
