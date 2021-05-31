@@ -29,14 +29,32 @@ export class AddInBasketComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  const dinoooo =   this.pS.getDino().subscribe((dinos) => {
+      this.dinosaure = dinos;
+      //  const dinooo = (Object.values(dinos));
+      console.log('dino ini ', dinos);
+
+      for (const key in this.dinosaure) {
+        console.log(
+          'name',
+          this.dinosaure[key].name,
+          'id',
+          this.dinosaure[key].id
+        );
+        const dinos = this.dinosaure[key].id;
+      }
+
+      console.log("dinooo ", dinoooo)
+    });
+
     this.dinoForm = this.fB.group({
       quantite: new FormControl('', [Validators.required]),
       dino: new FormControl('', [Validators.required]),
+      dinoID: new FormControl(this.dinoId),
     });
 
     console.log('dinoID: ', this.dinoId);
     console.log('dinos', this.dino);
-    this.pS.getDino().subscribe(dinos => {this.dinosaure = dinos})
   }
 
   get quantite() {

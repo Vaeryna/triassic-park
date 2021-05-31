@@ -60,6 +60,9 @@ export class ProduitService {
     );
   }
 
+
+
+
   getPanier(): Observable<Panier[]> {
     return this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
       map((panier) => Object.values(panier)),
