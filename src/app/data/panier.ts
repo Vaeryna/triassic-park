@@ -1,10 +1,15 @@
 export interface Panier {
   id: string;
-  dinoId: string;
-  dino: string;
-  quantite: number;
+  total: number;
 }
 
 export interface Total {
   totalPrice: number;
+}
+
+export interface PanierProduit {
+  id: string;
+  produitId: string;
+  quantite: number;
+
 }

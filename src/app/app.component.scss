@@ -24,8 +24,11 @@ aside {
   border: thick double #675538;
   text-decoration: none;
   padding: 0 2em 0 2em;
-
   text-transform: capitalize;
+}
+aside .totalPanier{
+  display: flex;
+  color: #e23123;
 }
 
 a:link {

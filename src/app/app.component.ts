@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Panier, Total } from './data/panier';
-import { TypeDino } from './data/types';
+import { Rayon, Produit } from './data/produit';
 import { ProduitService } from './produit.service';
 
 @Component({
@@ -12,13 +12,14 @@ export class AppComponent implements OnInit {
   title = 'commerce';
 
   constructor(private pS: ProduitService) {}
-  dinotype: TypeDino[] = [];
+  productRayon!: Rayon;
   panier!: Panier[];
   total!: Total;
 
   ngOnInit(): void {
     console.log('chargé ');
-    this.dinotype = this.pS.getType();
+    //  this.productRayon = this.pS.getRayon();
+
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
       console.log(this.panier);

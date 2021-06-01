@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { DINO } from '../data/dino-mock';import { Dinosaure } from '../data/dinosaures';
 import { ProduitService } from '../produit.service';
+import { Produit } from '../data/produit';
 
 @Component({
   selector: 'app-dinosaures-detail',
@@ -12,9 +12,9 @@ import { ProduitService } from '../produit.service';
   styleUrls: ['./dinosaures-detail.component.scss'],
 })
 export class DinosauresDetailComponent implements OnInit {
-  dino!: Dinosaure[];
+  prod!: Produit[];
   id!: string;
-  dinosaure!: Dinosaure;
+  produit!: Produit;
 
   constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
@@ -22,10 +22,8 @@ export class DinosauresDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id)
-      this.pS.getOneDino(id).subscribe((dino) => {
-        this.dinosaure = dino;
+      this.pS.getOneProduit(id).subscribe((prod) => {
+        this.produit = prod;
       });
   }
-
- 
 }

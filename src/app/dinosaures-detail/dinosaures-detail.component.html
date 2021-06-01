@@ -1,22 +1,20 @@
 <button routerLink="/add-in-basket">Ajouter un dinosaure au panier</button>
 
-<div *ngIf="dinosaure.id">
+<div *ngIf="produit.id">
   <div>
     <h3>
-      {{ dinosaure.name }}
+      {{ produit.name }}
     </h3>
   </div>
 
   <div class="caract">
     <div>
-      <p>Taille : {{ dinosaure.size }} m</p>
-      <p>Type : {{ dinosaure.type }}</p>
-      <p>Régime alimentaire : {{ dinosaure.diet }}</p>
-      <p>Prix : {{ dinosaure.price }}€</p>
+      <p>{{ produit.prix_HT }} €</p>
+    <p>{{ produit.rayon }}</p>
     </div>
     <img
-      src="../../assets/img/{{ dinosaure.name }}.png"
-      alt="{{ dinosaure.name }} "
+      src="../../assets/img/{{ produit.name }}.png"
+      alt="{{ produit.name }} "
     />
   </div>
 </div>

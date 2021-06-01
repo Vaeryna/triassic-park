@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Dinosaure } from '../data/dinosaures';
+import { Produit } from '../data/produit';
 import { ProduitService } from '../produit.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { ProduitService } from '../produit.service';
   styleUrls: ['./dinosaures.component.scss'],
 })
 export class DinosauresComponent implements OnInit {
-  dino: Dinosaure[] = [];
+  produit: Produit[] = [];
 
   constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.pS.getDino().subscribe((dinos) => {
-      this.dino = dinos;
+    this.pS.getProduit().subscribe((produits) => {
+      this.produit = produits;
     });
   }
 }

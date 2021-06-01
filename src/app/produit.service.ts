@@ -1,9 +1,6 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { Dinosaure } from './data/dinosaures';
-import { TYPE } from './data/dino-mock';
-
-import { TypeDino } from './data/types';
 import { Panier, Total } from './data/panier';
+import { Rayon, Produit } from './data/produit';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
@@ -21,29 +18,31 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class ProduitService {
-  private type: TypeDino[] = TYPE;
-
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
-  private dinoUrl =
-    'https://triassic-park-default-rtdb.firebaseio.com/Dinosaures';
+  private produitUrl =
+    'https://triassic-park-default-rtdb.firebaseio.com/Produit';
   private panierUrl =
     'https://triassic-park-default-rtdb.firebaseio.com/Panier';
 
-  getType(): TypeDino[] {
-    return this.type;
+  private rayonUrl = 'https://triassic-park-default-rtdb.firebaseio.com/Rayon';
+
+  getRayon(): Observable<Rayon[]> {
+    return this.http.get<Rayon[]>(`${this.rayonUrl}/.json`);
   }
 
-  getDinoType(type: string): Observable<Dinosaure[]> {
+  getProductRayon(rayon: string): Observable<Produit[]> {
     return this.http
-      .get<Dinosaure[]>(`${this.dinoUrl}/.json`)
+      .get<Produit[]>(`${this.produitUrl}/.json`)
       .pipe(
-        map((dino) => Object.values(dino).filter((dino) => dino.type == type))
+        map((produit) =>
+          Object.values(produit).filter((produit) => produit.rayon == rayon)
+        )
       );
   }
 
-  getDino(): Observable<Dinosaure[]> {
-    return this.http.get<Dinosaure[]>(`${this.dinoUrl}/.json`).pipe(
+  getProduit(): Observable<Produit[]> {
+    return this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
       map((dinosaures) => Object.values(dinosaures)),
       map((a) => {
         return a;
@@ -51,24 +50,24 @@ export class ProduitService {
     );
   }
 
-  getOneDino(id: string): Observable<Dinosaure> {
+  getOneProduit(id: string): Observable<Produit> {
     console.log('getOneDino', id);
-    return this.http.get<Dinosaure>(`${this.dinoUrl}/Dino${id}/.json`).pipe(
+    return this.http.get<Produit>(`${this.produitUrl}/Dino${id}/.json`).pipe(
       map((a) => {
         return a;
       })
     );
   }
 
-  getKeyID(): any {
-    return this.http.get<Dinosaure[]>(`${this.dinoUrl}/.json`).pipe(
+  /*   getKeyID(): any {
+    return this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
       map((a) => {
         for (const key in a) {
           console.log('getKeyId name', a[key].name, 'id', a[key].id);
         }
       })
     );
-  }
+  } */
 
   getPanier(): Observable<Panier[]> {
     return this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
@@ -88,14 +87,43 @@ export class ProduitService {
     );
   }
 
-  addDino(dino: string): Observable<any> {
-    console.log('dino addDino: ', dino);
-    const ifExist = this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
+  addProduit(produit: string): Observable<any> {
+    console.log('produit addDino: ', produit);
+    const ifExist = this.http
+      .get<Panier>(`${this.panierUrl}/.json`)
+      .pipe(
+        map((a) => {
+          console.log('addDino: ', a);
+        })
+      );
+
+    return this.http.post<Panier>(`${this.panierUrl}/.json`, produit);
+  }
+
+  priceProduitBasket(): Observable<Total> {
+    return this.http.get<Total>(`${this.panierUrl}/TotalPrice/.json`).pipe(
       map((a) => {
-        console.log('addDino: ', a);
+        console.log('getTotalPricePanier: ', a);
+        return a;
       })
     );
+  }
 
-    return this.http.post<Panier>(`${this.panierUrl}/.json`, dino);
+  getProduitPrice(name: string): any {
+    console.log('name:', name);
+    const dinoConst = this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
+      map((produit) => {
+        Object.values(produit).filter((produit) => produit.name == name);
+      }, name)
+    );
+
+    console.log('produit const', dinoConst);
+
+    /*  return this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
+      map((produit) => {
+        Object.values(produit).filter((produit) => produit.name == panier.name),
+          map((a) => );
+        console.log('getDinoPrice name :', Object.values(produit));)
+      }) */
   }
 }

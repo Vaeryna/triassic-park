@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Dinosaure } from '../data/dinosaures';
-import { TypeDino } from '../data/types';
+import { PanierProduit, Total } from '../data/panier';
+import { Rayon, Produit } from '../data/produit';
 import { ProduitService } from '../produit.service';
 
 @Component({
@@ -10,19 +10,19 @@ import { ProduitService } from '../produit.service';
   styleUrls: ['./type-dino.component.scss'],
 })
 export class TypeDinoComponent implements OnInit {
-  dino: Dinosaure[] = [];
-  typedino: TypeDino[] = [];
+  produit: Produit[] = [];
+ productRayon!: Rayon
 
   constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const typedino = this.route.snapshot.paramMap.get('name')!;
+    const productRayon = this.route.snapshot.paramMap.get('rayon')!;
 
-    console.log('const typeidno: ', typedino);
+    console.log('const typeidno: ', productRayon);
 
-    if (typedino)
-      this.pS.getDinoType(typedino).subscribe((dino) => {
-        this.dino = dino;
+    if (productRayon)
+      this.pS.getProductRayon(productRayon).subscribe((produit) => {
+        this.produit = produit;
       });
   }
 }

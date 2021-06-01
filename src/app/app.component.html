@@ -5,26 +5,27 @@
 <body>
   <nav>
     <div
-      *ngFor="let Onetype of dinotype"
+      *ngFor="let OneRayon of productRayon"
       style="color: #f0b83e"
       onclick="window.location.reload();"
     >
-      <a routerLink="/type/{{ Onetype.name }}">
-        {{ Onetype.name }}
+      <a routerLink="/type/{{ OneRayon.name }}">
+        {{ OneRayon.name }}
       </a>
     </div>
   </nav>
   <p class="article">
     <router-outlet></router-outlet>
-
   </p>
 
   <aside>
     <a routerLink="/panier"> <h2>Panier</h2> </a>
     <div *ngFor="let OnePanier of panier">
-      <p>{{ OnePanier.quantite }} {{ OnePanier.dino }}</p>
-
+      <p>{{ OnePanier.total }}</p>
     </div>
-    <p *ngIf="total">{{ total }}€</p>
+    <div *ngIf="total" class="totalPanier">
+      <p>Total :</p>
+      <p>{{ total }}€</p>
+    </div>
   </aside>
 </body>

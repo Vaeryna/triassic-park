@@ -1,9 +1,8 @@
 import { Component, OnInit, Type } from '@angular/core';
-import { Dinosaure } from '../data/dinosaures';
-
 import { ProduitService } from '../produit.service';
-import { DINO } from '../data/dino-mock';
-import { TypeDino } from '../data/types';
+
+import { PanierProduit, Total } from '../data/panier';
+import { Rayon, Produit } from '../data/produit';
 
 @Component({
   selector: 'app-accueil',
@@ -11,14 +10,13 @@ import { TypeDino } from '../data/types';
   styleUrls: ['./accueil.component.scss'],
 })
 export class AccueilComponent implements OnInit {
-  dino: Dinosaure[] = [];
-  dinotype: TypeDino[] = [];
+  produit: Produit[] = [];
 
   constructor(private pS: ProduitService) {}
 
   ngOnInit(): void {
     console.log('chargé ');
 
-    this.pS.getDino().subscribe((a) => (a = this.dino));
+    this.pS.getProduit().subscribe((a) => (a = this.produit));
   }
 }
