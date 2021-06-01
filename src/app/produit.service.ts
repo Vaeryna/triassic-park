@@ -28,7 +28,12 @@ export class ProduitService {
   private rayonUrl = 'https://triassic-park-default-rtdb.firebaseio.com/Rayon';
 
   getRayon(): Observable<Rayon[]> {
-    return this.http.get<Rayon[]>(`${this.rayonUrl}/.json`);
+    return this.http.get<Rayon[]>(`${this.rayonUrl}/.json`).pipe(
+      map((rayon) => Object.values(rayon)),
+      map((a) => {
+        return a;
+      })
+    );
   }
 
   getProductRayon(rayon: string): Observable<Produit[]> {
@@ -43,7 +48,7 @@ export class ProduitService {
 
   getProduit(): Observable<Produit[]> {
     return this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
-      map((dinosaures) => Object.values(dinosaures)),
+      map((produits) => Object.values(produits)),
       map((a) => {
         return a;
       })
@@ -89,13 +94,11 @@ export class ProduitService {
 
   addProduit(produit: string): Observable<any> {
     console.log('produit addDino: ', produit);
-    const ifExist = this.http
-      .get<Panier>(`${this.panierUrl}/.json`)
-      .pipe(
-        map((a) => {
-          console.log('addDino: ', a);
-        })
-      );
+    const ifExist = this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
+      map((a) => {
+        console.log('addDino: ', a);
+      })
+    );
 
     return this.http.post<Panier>(`${this.panierUrl}/.json`, produit);
   }

@@ -1,19 +1,19 @@
-<form [formGroup]="dinoForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
   <div class="form-check">
     <p>
-      <label for="dino"> Dinosaure :</label>
+      <label for="produit"> Produit :</label>
     </p>
 
-    <div *ngFor="let dino of dinosaure" class="radio-button">
+    <div *ngFor="let produit of prod" class="radio-button">
       <input
         id="radio"
         class="checkmark"
         formControlName="dino"
         type="radio"
-        value="{{ dino.name }}"
+        value="{{ produit.name }}"
       />
 
-      <label class="form-radio-label"> {{ dino.name }} </label> {{dino.price}} €
+      <label class="form-radio-label"> {{ produit.name }} </label> {{produit.prix_HT}} €
     </div>
 
     <p>

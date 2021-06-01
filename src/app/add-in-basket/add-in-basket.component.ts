@@ -11,7 +11,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 
-import { Dinosaure } from '../data/dinosaures';
+import { Produit } from '../data/produit';
 
 @Component({
   selector: 'app-add-in-basket',
@@ -19,8 +19,8 @@ import { Dinosaure } from '../data/dinosaures';
   styleUrls: ['./add-in-basket.component.scss'],
 })
 export class AddInBasketComponent implements OnInit {
-  dinoForm!: FormGroup;
-  dinosaure!: Dinosaure[];
+  produitForm!: FormGroup;
+  prod!: Produit[];
 
   constructor(
     private pS: ProduitService,
@@ -29,31 +29,28 @@ export class AddInBasketComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.pS.getDino().subscribe((dinos) => {
-      this.dinosaure = dinos;
-      return dinos;
+    this.pS.getProduit().subscribe((produits) => {
+      this.prod = produits;
     });
 
-    console.log('ruc: ');
-
-    this.dinoForm = this.fB.group({
+    this.produitForm = this.fB.group({
       quantite: new FormControl('', [Validators.required]),
-      dino: new FormControl('', [Validators.required]),
+      produit: new FormControl('', [Validators.required]),
     });
   }
 
   get quantite() {
-    return this.dinoForm.get('quantite');
+    return this.produitForm.get('quantite');
   }
 
-  get dino() {
-    return this.dinoForm.get('dino');
+  get produit() {
+    return this.produitForm.get('produit');
   }
 
   onSubmit() {
-    console.log('dinoFormValue', this.dinoForm.value);
-    const dino = this.dinoForm.value;
+    console.log('dinoFormValue', this.produitForm.value);
+    const produit = this.produitForm.value;
 
-    this.pS.addDino(dino).subscribe();
+    this.pS.addProduit(produit).subscribe();
   }
 }

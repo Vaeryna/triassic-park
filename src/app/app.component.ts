@@ -12,18 +12,22 @@ export class AppComponent implements OnInit {
   title = 'commerce';
 
   constructor(private pS: ProduitService) {}
-  productRayon!: Rayon;
+  rayon!: Rayon[];
   panier!: Panier[];
   total!: Total;
 
   ngOnInit(): void {
     console.log('chargé ');
-    //  this.productRayon = this.pS.getRayon();
+     this.pS.getRayon().subscribe((a) => {
+      this.rayon = a;
+      console.log("product rayon ", this.rayon);} )
+
 
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
       console.log(this.panier);
     });
+
     this.pS.getTotalPricePanier().subscribe((a) => {
       this.total = a;
       console.log('total: ', a);
