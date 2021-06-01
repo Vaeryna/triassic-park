@@ -37,6 +37,7 @@ export class ProduitService {
   }
 
   getProductRayon(rayon: string): Observable<Produit[]> {
+    console.log('rayon: ', rayon);
     return this.http
       .get<Produit[]>(`${this.produitUrl}/.json`)
       .pipe(

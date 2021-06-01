@@ -11,12 +11,14 @@ import { ProduitService } from '../produit.service';
 })
 export class TypeDinoComponent implements OnInit {
   produit: Produit[] = [];
- productRayon!: Rayon
+  productRayon!: Rayon;
 
   constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    
     const productRayon = this.route.snapshot.paramMap.get('rayon')!;
+    console.log("snapshot ", this.route.snapshot.paramMap.get('rayon'))
 
     console.log('const typeidno: ', productRayon);
 

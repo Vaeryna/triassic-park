@@ -1,6 +1,7 @@
 body {
   display: flex;
   justify-content: space-around;
+
 }
 
 h1 {
@@ -16,6 +17,7 @@ nav {
   border: thick double #675538;
   padding: 1em;
   text-decoration: none;
+  background-color: #29140e;
 }
 
 aside {
@@ -25,6 +27,7 @@ aside {
   text-decoration: none;
   padding: 0 2em 0 2em;
   text-transform: capitalize;
+  background-color: #29140e;
 }
 aside .totalPanier {
   display: flex;

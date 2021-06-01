@@ -17,6 +17,6 @@ export class AccueilComponent implements OnInit {
   ngOnInit(): void {
     console.log('chargé ');
 
-    this.pS.getProduit().subscribe((a) => (a = this.produit));
+    this.pS.getProduit().subscribe((a) => (this.produit = a));
   }
 }
