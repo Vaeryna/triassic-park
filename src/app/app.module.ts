@@ -32,6 +32,7 @@ firebase.initializeApp(env.firebaseConfig);
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

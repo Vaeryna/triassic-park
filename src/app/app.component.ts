@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
       console.log(this.panier);
+      
     });
 
     this.pS.getTotalPricePanier().subscribe((a) => {

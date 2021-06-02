@@ -13,9 +13,6 @@
 </div>
 
 
-<!-- <p [@openClosed]="isOpen ? 'open' : 'closed'" class="alert alert-success">
-  {{ message }}
-</p> -->
 
 <div *ngIf="produit.id">
   <div>
@@ -72,7 +69,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">Voulez-vous vraiment supprimer ce dragon ?</div>
+      <div class="modal-body">Voulez-vous vraiment ajouter {{produit.name}} ?</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           No

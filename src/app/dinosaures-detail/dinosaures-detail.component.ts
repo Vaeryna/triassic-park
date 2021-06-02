@@ -75,6 +75,8 @@ export class DinosauresDetailComponent implements OnInit {
     this.idAdd = name;
     this.quantiteAdd = quantite;
     console.log('onDelete', '"', name, '"');
+
+
   }
 
   confirmAdd() {
@@ -84,9 +86,7 @@ export class DinosauresDetailComponent implements OnInit {
         this.message = 'success delete';
         this.isOpen = true;
         $('#modalDelete').modal('hide');
-        window.location.reload();
-        setTimeout(() => (this.isOpen = false), 1000);
-        this.idAdd = null;
+
       });
     }
   }
