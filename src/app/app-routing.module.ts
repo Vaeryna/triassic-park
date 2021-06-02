@@ -22,7 +22,7 @@ const routes: Routes = [
 
   { path: 'panier', component: PanierComponent },
   {
-    path: 'add-in-basket',
+    path: 'add-in-basket/produit/:name',
     component: AddInBasketComponent,
   },
 ];

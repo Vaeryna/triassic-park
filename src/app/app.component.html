@@ -21,7 +21,7 @@
   <aside>
     <a routerLink="/panier"> <h2>Panier</h2> </a>
     <div *ngFor="let OnePanier of panier">
-      <p>  {{OnePanier.quantite}} {{ OnePanier.produit }}</p>
+      <p>  {{OnePanier.quantite}} {{ OnePanier.name }}</p>
     </div>
     <div *ngIf="total" class="totalPanier">
       <p>Total :</p>

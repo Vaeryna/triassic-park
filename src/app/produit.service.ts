@@ -103,7 +103,6 @@ export class ProduitService {
         console.log('addDino: ', a);
       })
     );
-
     return this.http.post<Panier>(`${this.panierUrl}/.json`, produit);
   }
 

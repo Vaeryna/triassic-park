@@ -1,4 +1,21 @@
-<button routerLink="/add-in-basket">Ajouter un article au panier</button>
+<div style="align-self: center; margin: 2em">
+<!--   <button routerLink="/add-in-basket/produit/{{produit.id}}">Ajouter l'article au panier</button>
+ -->
+  <button
+  data-bs-toggle="modal"
+  data-bs-target="#modalDelete"
+  class="btn btn-danger"
+  (click)="onAdd(produit.name, quantite)"
+  routerLink="/add-in-basket/produit/{{produit.id}}"
+>
+  Ajouter {{produit.name}} au panier
+</button>
+</div>
+
+
+<!-- <p [@openClosed]="isOpen ? 'open' : 'closed'" class="alert alert-success">
+  {{ message }}
+</p> -->
 
 <div *ngIf="produit.id">
   <div>
@@ -10,13 +27,60 @@
   <div class="caract">
     <div>
       <p>{{ produit.prix_HT }} €</p>
-    <p>{{ produit.rayon }} {{ produit.sous_rayon }}</p>
+      <p>{{ produit.rayon }} {{ produit.sous_rayon }}</p>
     </div>
-   <!--  <img
+    <!--  <img
       src="../../assets/img/{{ produit.name }}.png"
       alt="{{ produit.name }} "
     /> -->
   </div>
 </div>
 
-<a routerLink=""> Retour à l'accueil</a>
+<div
+  style="
+    padding: 1em;
+
+    white-space: 3em;
+  "
+>
+  <footer>
+    <a routerLink> Retour à l'accueil </a>
+    <a routerLink="/catalogue"> Retour au catalogue </a>
+  </footer>
+</div>
+
+
+<ng-template #elseBlock> Add Produit </ng-template>
+<div
+  class="modal fade"
+  id="modalAdd"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalAddLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAddLabel"> Ajouter </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">Voulez-vous vraiment supprimer ce dragon ?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          No
+        </button>
+        <button type="button" class="btn btn-danger" (click)="confirmAdd()">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

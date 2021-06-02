@@ -1,6 +1,6 @@
 export interface Panier {
   id: string;
-  produit: string;
+  name: string;
   quantite: number;
 }
 

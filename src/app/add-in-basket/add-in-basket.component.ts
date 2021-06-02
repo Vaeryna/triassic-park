@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProduitService } from '../produit.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import {
   FormBuilder,
@@ -20,24 +20,43 @@ import { Produit } from '../data/produit';
 })
 export class AddInBasketComponent implements OnInit {
   produitForm!: FormGroup;
-  prod!: Produit[];
+  prod!: Produit;
+
 
   constructor(
     private pS: ProduitService,
     private fB: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.pS.getProduit().subscribe((produits) => {
-      this.prod = produits;
-    });
+    this.initForm();
+    const id = this.route.snapshot.paramMap.get('name');
+    if (id)
+      this.pS.getOneProduit(id)
+        .subscribe((produit) => { this.prod = produit; this.produitForm.patchValue(produit) });
 
-    this.produitForm = this.fB.group({
+   /*  this.pS.getProduit().subscribe((produits) => {
+      this.prod = produits;
+    }); */
+  }
+
+    initForm() {
+      this.produitForm = this.fB.group(
+        {
+          name: new FormControl("",
+            Validators.required, // pour définir dans le controle un champ requis
+          ), quantite: ''
+        })
+
+    }
+
+ /*    this.produitForm = this.fB.group({
       quantite: new FormControl('', [Validators.required]),
       produit: new FormControl('', [Validators.required]),
     });
-  }
+  } */
 
   get quantite() {
     return this.produitForm.get('quantite');
