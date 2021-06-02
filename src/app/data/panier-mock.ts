@@ -1,10 +1,11 @@
 import { Panier } from './panier';
 
-export const PANIER: Panier[] = [
+/* export const PANIER: Panier[] = [
   {
     id: 'pan1',
-    contenu: 'Velociraptor',
+  //  dino: 'Velociraptor',
 
     totalPrice: 12,
   },
 ];
+ */

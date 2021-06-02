@@ -4,6 +4,7 @@ export interface Produit {
   prix_HT: string;
   taxe: string;
   rayon: string;
+  sous_rayon: string;
 }
 
 export interface Rayon {

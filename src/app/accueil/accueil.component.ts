@@ -1,7 +1,7 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { ProduitService } from '../produit.service';
 
-import { PanierProduit, Total } from '../data/panier';
+import { Panier, Total } from '../data/panier';
 import { Rayon, Produit } from '../data/produit';
 
 @Component({

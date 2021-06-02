@@ -18,10 +18,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('chargé ');
-     this.pS.getRayon().subscribe((a) => {
+    this.pS.getRayon().subscribe((a) => {
       this.rayon = a;
-      console.log("product rayon ", this.rayon);} )
-
+    });
 
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;

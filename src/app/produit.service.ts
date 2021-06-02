@@ -1,6 +1,7 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import { Panier, Total } from './data/panier';
 import { Rayon, Produit } from './data/produit';
+import { RAYON } from './data/types';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
@@ -41,8 +42,10 @@ export class ProduitService {
     return this.http
       .get<Produit[]>(`${this.produitUrl}/.json`)
       .pipe(
-        map((produit) =>
-          Object.values(produit).filter((produit) => produit.rayon == rayon)
+        map(
+          (produit) =>
+            Object.values(produit).filter((produit) => produit.rayon == rayon),
+          console.log('trrre')
         )
       );
   }
@@ -58,7 +61,7 @@ export class ProduitService {
 
   getOneProduit(id: string): Observable<Produit> {
     console.log('getOneDino', id);
-    return this.http.get<Produit>(`${this.produitUrl}/Dino${id}/.json`).pipe(
+    return this.http.get<Produit>(`${this.produitUrl}/${id}/.json`).pipe(
       map((a) => {
         return a;
       })
@@ -114,7 +117,8 @@ export class ProduitService {
   }
 
   getProduitPrice(name: string): any {
-    console.log('name:', name);
+    console.log('Product Price name:', name);
+    /*
     const dinoConst = this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
       map((produit) => {
         Object.values(produit).filter((produit) => produit.name == name);
@@ -128,6 +132,6 @@ export class ProduitService {
         Object.values(produit).filter((produit) => produit.name == panier.name),
           map((a) => );
         console.log('getDinoPrice name :', Object.values(produit));)
-      }) */
+      })*/
   }
 }
