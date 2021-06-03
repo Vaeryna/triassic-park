@@ -14,11 +14,11 @@
       </a>
     </div>
   </nav>
-  <p class="article">
+  <p class="article" >
     <router-outlet></router-outlet>
   </p>
 
-  <aside>
+  <aside  onmouseover="window.location.reload();">
     <a routerLink="/panier"> <h2>Panier</h2> </a>
     <div *ngFor="let OnePanier of panier">
       <p>  {{OnePanier.quantite}} {{ OnePanier.name }}</p>

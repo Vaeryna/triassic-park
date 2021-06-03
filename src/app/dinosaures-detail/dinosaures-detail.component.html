@@ -1,18 +1,16 @@
 <div style="align-self: center; margin: 2em">
-<!--   <button routerLink="/add-in-basket/produit/{{produit.id}}">Ajouter l'article au panier</button>
+  <!--   <button routerLink="/add-in-basket/produit/{{produit.id}}">Ajouter l'article au panier</button>
  -->
   <button
-  data-bs-toggle="modal"
-  data-bs-target="#modalDelete"
-  class="btn btn-danger"
-  (click)="onAdd(produit.name, quantite)"
-  routerLink="/add-in-basket/produit/{{produit.id}}"
->
-  Ajouter {{produit.name}} au panier
-</button>
+    data-bs-toggle="modal"
+    data-bs-target="#modalDelete"
+    class="btn btn-danger"
+    (click)="onAdd(produit.name, quantite)"
+    routerLink="/add-in-basket/produit/{{ produit.id }}"
+  >
+    Ajouter {{ produit.name }} au panier
+  </button>
 </div>
-
-
 
 <div *ngIf="produit.id">
   <div>
@@ -46,7 +44,6 @@
   </footer>
 </div>
 
-
 <ng-template #elseBlock> Add Produit </ng-template>
 <div
   class="modal fade"
@@ -59,7 +56,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalAddLabel"> Ajouter </h5>
+        <h5 class="modal-title" id="modalAddLabel">Ajouter</h5>
         <button
           type="button"
           class="close"
@@ -69,7 +66,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">Voulez-vous vraiment ajouter {{produit.name}} ?</div>
+      <div class="modal-body">
+        Voulez-vous vraiment ajouter {{ produit.name }} ?
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           No
