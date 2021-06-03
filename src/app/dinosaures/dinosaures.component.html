@@ -1,21 +1,22 @@
-
-<div id=container style="width:97%">
-<div
-  *ngFor="let OneProduit of produit"
-  style="display: inline-block; margin: 2em; width:20%"
-  id=product
->
-  <div id=divImage>
-    <img src="../../assets/img/generic-image-placeholder.png">
-      <p id=rayon>{{ OneProduit.rayon }} > {{ OneProduit.sous_rayon }}</p>
-    <p>
+<div id="container" style="width: 97%">
+  <div
+    *ngFor="let OneProduit of produit"
+    style="display: inline-block; margin: 2em; width: 20%"
+    id="product"
+  >
+    <div id="divImage">
       <a routerLink="/detail/{{ OneProduit.id }}">
-        <strong> {{ OneProduit.name }} </strong> 
-      </a> 
-      <a id=price>{{ OneProduit.prix_HT }} € </a>
-    </p>
-  </div>  
-</div>
+        <img src="../../assets/img/generic-image-placeholder.png" />
+      </a>
+      <p id="rayon">{{ OneProduit.rayon }} > {{ OneProduit.sous_rayon }}</p>
+      <p>
+        <a routerLink="/detail/{{ OneProduit.id }}">
+          <strong> {{ OneProduit.name }} </strong>
+        </a>
+        <a id="price">{{ OneProduit.prix_HT }} € </a>
+      </p>
+    </div>
+  </div>
 </div>
 <div>
   <a routerLink> Retour à l'accueil </a>
