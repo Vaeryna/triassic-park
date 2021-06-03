@@ -14,14 +14,14 @@
       </a>
     </div>
   </nav>
-  <p class="article" >
+  <p class="article">
     <router-outlet></router-outlet>
   </p>
 
-  <aside  onmouseover="window.location.reload();">
+  <aside onmouseover="window.location.reload()">
     <a routerLink="/panier"> <h2>Panier</h2> </a>
     <div *ngFor="let OnePanier of panier">
-      <p>  {{OnePanier.quantite}} {{ OnePanier.name }}</p>
+      <p>{{ OnePanier.quantite }} {{ OnePanier.name }}</p>
     </div>
     <div *ngIf="total" class="totalPanier">
       <p>Total :</p>

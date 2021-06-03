@@ -1,13 +1,32 @@
 {
   "Panier" : {
-    "id" : "1",
-    "total" : 10
+    "-MbC-wHuyuDWhL_lWZxb" : {
+      "name" : "Chonnel n°5",
+      "quantite" : 22
+    },
+    "-MbGANzg0xwEjyhF9Mjv" : {
+      "name" : "Chemise en lin",
+      "quantite" : 3
+    },
+    "-MbGhDVH_IfnX9dB210B" : {
+      "name" : "Jeans bleu clair",
+      "quantite" : 11
+    },
+    "-MbGqo6Q3QLCSMrf8b1I" : {
+      "name" : "Bague en diamant",
+      "quantite" : ""
+    },
+    "-MbGqpFYq7lNx48teIpE" : {
+      "name" : "Bague en diamant",
+      "quantite" : ""
+    },
+    "TotalPrice" : 10
   },
   "Produit" : {
     "11001" : {
       "id" : "11001",
       "name" : "Bague en diamant",
-      "prix_HT" : "200",
+      "prix_HT" : 200,
       "rayon" : "bijoux",
       "sous_rayon" : "bague",
       "taxe" : "20"
@@ -15,7 +34,7 @@
     "11002" : {
       "id" : "11002",
       "name" : "Alliance budget",
-      "prix_HT" : "60",
+      "prix_HT" : 60,
       "rayon" : "bijoux",
       "sous_rayon" : "bague",
       "taxe" : "20"
@@ -23,7 +42,7 @@
     "12001" : {
       "id" : "12001",
       "name" : "Pendentif argent",
-      "prix_HT" : "150",
+      "prix_HT": 150,
       "rayon" : "bijoux",
       "sous_rayon" : "pendentif",
       "taxe" : "20"
@@ -31,7 +50,7 @@
     "12002" : {
       "id" : "12002",
       "name" : "Coccinelles cuivre",
-      "prix_HT" : "50",
+      "prix_HT": 50,
       "rayon" : "bijoux",
       "sous_rayon" : "pendentif",
       "taxe" : "20"
@@ -39,7 +58,7 @@
     "21001" : {
       "id" : "21001",
       "name" : "Jeans bleu clair",
-      "prix_HT" : "80",
+      "prix_HT": 80,
       "rayon" : "vêtement",
       "sous_rayon" : "pantalon",
       "taxe" : "20"
@@ -47,7 +66,7 @@
     "21002" : {
       "id" : "21002",
       "name" : "Pantalon toile bleu",
-      "prix_HT" : "60",
+      "prix_HT": 60,
       "rayon" : "vêtement",
       "sous_rayon" : "pantalon",
       "taxe" : "20"
@@ -55,7 +74,7 @@
     "22001" : {
       "id" : "22001",
       "name" : "Chemise en lin",
-      "prix_HT" : "120",
+      "prix_HT": 120,
       "rayon" : "vêtement",
       "sous_rayon" : "haut",
       "taxe" : "20"
@@ -63,7 +82,7 @@
     "22002" : {
       "id" : "22001",
       "name" : "Pull blanc",
-      "prix_HT" : "100",
+      "prix_HT": 100,
       "rayon" : "vêtement",
       "sous_rayon" : "haut",
       "taxe" : "20"
@@ -71,7 +90,7 @@
     "31001" : {
       "id" : "31001",
       "name" : "Dior Liberté",
-      "prix_HT" : "60",
+      "prix_HT": 60,
       "rayon" : "parfum",
       "sous_rayon" : "homme",
       "taxe" : "20"
@@ -79,7 +98,7 @@
     "31002" : {
       "id" : "31002",
       "name" : "Jack Daniels",
-      "prix_HT" : "60",
+      "prix_HT": 60,
       "rayon" : "parfum",
       "sous_rayon" : "homme",
       "taxe" : "20"
@@ -87,7 +106,7 @@
     "32001" : {
       "id" : "32001",
       "name" : "Chonnel n°5",
-      "prix_HT" : "55",
+      "prix_HT": 55,
       "rayon" : "parfum",
       "sous_rayon" : "femme",
       "taxe" : "20"
@@ -95,7 +114,7 @@
     "32002" : {
       "id" : "32002",
       "name" : "La longue robe rouge",
-      "prix_HT" : "50",
+      "prix_HT": 50,
       "rayon" : "parfum",
       "sous_rayon" : "femme",
       "taxe" : "20"
@@ -113,6 +132,10 @@
     "03" : {
       "id" : "03",
       "name" : "parfum"
+    },
+    "04" : {
+      "id" : "04",
+      "name" : "rayon bonus"
     }
   }
 }

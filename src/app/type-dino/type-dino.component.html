@@ -1,14 +1,17 @@
 <div *ngIf="productRayon">
   <div
     *ngFor="let OneProduit of produit"
-    style="display: inline-block; margin: 5em"
-  >
-    <a routerLink="/detail/{{ OneProduit.id }}">
-      <strong> {{ OneProduit.name }}</strong>
-    </a>
-
-    <p>{{ OneProduit.prix_HT }} €</p>
-    <p>{{OneProduit.rayon}} {{ OneProduit.sous_rayon }}</p>
+    style="display: inline-block; margin: 2em">
+    <div id=divImage>
+      <img src="../../assets/img/generic-image-placeholder.png">
+        <p id=rayon>{{ OneProduit.rayon }} > {{ OneProduit.sous_rayon }}</p>
+      <p>
+        <a routerLink="/detail/{{ OneProduit.id }}">
+          <strong> {{ OneProduit.name }} </strong> 
+        </a> 
+        <a id=price>{{ OneProduit.prix_HT }} € </a>
+      </p>
+    </div>  
   </div>
  <!--  <div *ngFor="let produit of productRayon">
     {{ produit.rayon }}
@@ -17,4 +20,5 @@
 
 <div>
   <a routerLink> Retour à l'accueil </a>
+  <a routerLink="/catalogue"> Retour au catalogue </a>
 </div>

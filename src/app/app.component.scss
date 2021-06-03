@@ -8,30 +8,49 @@ h1 {
   color: #e23123;
   font: 10em Brush Script MT, Brush Script Std, cursive;
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  padding-left:5%;
+  background: rgb(226,49,35);
+background: linear-gradient(182deg, rgba(226,49,35,1) 4%, rgba(120,29,24,1) 29%, rgba(24,8,6,1) 60%);
+}
+
+h2 {
+  color: #d9bcb4;
+  font: 4em Brush Script MT, Brush Script Std, cursive;
+  display: flex;
+  justify-content: left;
+  padding-left:5%;
 }
 
 nav {
-  align-items: center;
+  align-items: left;
   color: #f0b83e;
-  border: thick double #675538;
-  padding: 1em;
+  padding: 0em;
+  width:30%;
   text-decoration: none;
-  background-color: #29140e;
+  background: rgb(24,8,6);
+  background: linear-gradient(180deg, rgba(24,8,6,1) 0%, rgba(24,8,6,1) 12%, rgba(48,6,4,1) 100%);
+  border-right: thick solid #781d18;
+  border-bottom: thick solid #781d18;
+
 }
 
 aside {
   align-items: center;
   color: #f0b83e;
-  border: thick double #675538;
   text-decoration: none;
-  padding: 0 2em 0 2em;
+  padding: 0 2em 2em;
+  width:27%;
+  border-left: thick solid #781d18;
+  border-bottom: thick solid #781d18;
   text-transform: capitalize;
-  background-color: #29140e;
+  background: rgb(24,8,6);
+  background: linear-gradient(180deg, rgba(24,8,6,1) 0%, rgba(24,8,6,1) 12%, rgba(48,6,4,1) 100%);
 }
 aside .totalPanier {
   display: flex;
-  color: #e23123;
+  align-content: left;
+  color: #d9bcb4;
 }
 
 a:link {
@@ -51,7 +70,7 @@ nav div {
 .article {
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  padding: 1em;
 }
 
 @font-face {

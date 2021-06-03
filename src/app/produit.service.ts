@@ -8,8 +8,6 @@ import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
-
-
 const httpOptions = {
   headers: new HttpHeaders({
     Accept: 'application/json',
@@ -70,16 +68,6 @@ export class ProduitService {
     );
   }
 
-  /*   getKeyID(): any {
-    return this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
-      map((a) => {
-        for (const key in a) {
-          console.log('getKeyId name', a[key].name, 'id', a[key].id);
-        }
-      })
-    );
-  } */
-
   getPanier(): Observable<Panier[]> {
     return this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
       map((panier) => Object.values(panier)),
@@ -119,14 +107,16 @@ export class ProduitService {
 
   getProduitPrice(name: string): any {
     console.log('Product Price name:', name);
-    /*
-    const dinoConst = this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
-      map((produit) => {
-        Object.values(produit).filter((produit) => produit.name == name);
-      }, name)
-    );
 
-    console.log('produit const', dinoConst);
+    const produitConst = this.http
+      .get<Produit[]>(`${this.produitUrl}/.json`)
+      .pipe(
+        map((produit) => {
+          Object.values(produit).filter((produit) => produit.name == name);
+        }, name)
+      );
+
+    console.log('produit const', produitConst);
 
     /*  return this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
       map((produit) => {
