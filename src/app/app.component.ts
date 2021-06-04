@@ -16,6 +16,9 @@ export class AppComponent implements OnInit {
   panier!: Panier[];
   total!: Panier;
 
+  totalPrice: number = 0;
+  price!: number;
+
   ngOnInit(): void {
     console.log('chargé ');
     this.pS.getRayon().subscribe((a) => {
@@ -25,12 +28,19 @@ export class AppComponent implements OnInit {
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
       console.log(this.panier);
-
     });
 
-    this.pS.getTotalPricePanier().subscribe((a) => {
-      this.total = a;
-      console.log('total: ', a);
+    this.pS.getPanier().subscribe((a) => {
+      this.panier = a;
+      console.log('init panier', this.panier);
+      this.panier.forEach((element) => {
+        this.pS.getProduitPrice(element.name).subscribe(() => {
+          (this.price = element.prix_HT * element.quantite),
+            (this.totalPrice = this.totalPrice + this.price);
+        });
+
+    //    return this.pS.addPanierPrice(this.totalPrice);
+      });
     });
   }
 }

@@ -22,6 +22,7 @@ const httpOptions = {
 export class ProduitService {
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
+  private globalUrl = 'https://triassic-park-default-rtdb.firebaseio.com';
   private produitUrl =
     'https://triassic-park-default-rtdb.firebaseio.com/Produit';
   private panierUrl =
@@ -90,11 +91,6 @@ export class ProduitService {
 
   addProduit(produit: string): Observable<any> {
     console.log('produit addDino: ', produit);
-    const ifExist = this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
-      map((a) => {
-        console.log('addDino: ', a);
-      })
-    );
     return this.http.post<Panier>(`${this.panierUrl}/.json`, produit);
   }
 
@@ -108,7 +104,6 @@ export class ProduitService {
   }
 
   getProduitPrice(element: any): Observable<any> {
-   
     return this.http
       .get<Panier[]>(`${this.panierUrl}/.json?orderBy="name"&equalTo="${name}"`)
       .pipe(
@@ -118,8 +113,15 @@ export class ProduitService {
         )
       );
   }
-}
-// https://triassic-park-default-rtdb.firebaseio.com/Panier/.json?orderBy=%22name%22&equalTo=%22Jeans%20bleu%20clair%22
 
-//{"-MbL2P8VQK6OZ9YwMvPh":{"name":"Pendentif argent","prix_HT":150,"quantite":1}}
-//e: questions$.do(questions => {questions.forEach(q => question here)})
+  addPanierPrice(price: number): Observable<any> {
+    console.log('add panier price: ', price);
+    return this.http.post<number>(`${this.globalUrl}/.json`, price).pipe(
+      switchMap(() => {
+        return this.http.put<any>(`${this.globalUrl}/Total/.json`, price);
+      })
+    );
+  }
+}
+
+// https://triassic-park-default-rtdb.firebaseio.com/Panier/.json?orderBy=%22name%22&equalTo=%22Jeans%20bleu%20clair%22

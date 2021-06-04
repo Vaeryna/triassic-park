@@ -65,7 +65,7 @@ export class AddInBasketComponent implements OnInit {
     console.log('dinoFormValue', this.produitForm.value);
     const produit = this.produitForm.value;
     this.pS.addProduit(produit).subscribe(() => {
-      this.router.navigate(['/catalogue']);
+//      this.router.navigate(['/catalogue']);
     });
   }
 }
