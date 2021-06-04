@@ -24,7 +24,7 @@ export class PanierComponent implements OnInit {
       console.log('init panier', this.panier);
       this.panier.forEach((element) => {
         this.pS.getProduitPrice(element.name).subscribe(() => {
-          (this.price = element.prix_HT),
+          (this.price = element.prix_HT * element.quantite),
             console.log('this element name: ', element.name);
           console.log('this price: ', this.price);
           this.totalPrice = this.totalPrice + this.price;
