@@ -105,8 +105,8 @@ export class ProduitService {
     );
   }
 
-  getProduitPrice(name: string): any {
-    console.log('Product Price name:', name);
+  getProduitPrice(name: string): Observable<any> {
+    /*   console.log('Product Price name:', name);
 
     const produitConst = this.http
       .get<Produit[]>(`${this.produitUrl}/.json`)
@@ -115,14 +115,17 @@ export class ProduitService {
           Object.values(produit).filter((produit) => produit.name == name);
         }, name)
       );
-
-    console.log('produit const', produitConst);
-
-    /*  return this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
-      map((produit) => {
-        Object.values(produit).filter((produit) => produit.name == panier.name),
-          map((a) => );
-        console.log('getDinoPrice name :', Object.values(produit));)
-      })*/
+*/
+    return this.http
+      .get<Panier[]>(
+        `${this.panierUrl}/.json?orderBy="name"&equalTo="${name}"`
+      )
+      .pipe(
+        map((a) => {
+          console.log('produitPrice: ', a);
+          return a;
+        })
+      );
   }
 }
+// https://triassic-park-default-rtdb.firebaseio.com/Panier/.json?orderBy=%22name%22&equalTo=%22Jeans%20bleu%20clair%22

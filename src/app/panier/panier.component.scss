@@ -2,9 +2,9 @@ div {
   text-transform: capitalize;
   display: flex;
   flex-direction: column;
-  width:20%
-  
+  width: 20%;
+  align-content: space-between;
 }
-h1{
-  font: 10em Brush Script MT, Brush Script Std, cursive;
+h1 {
+  font: 3em Brush Script MT, Brush Script Std, cursive;
 }

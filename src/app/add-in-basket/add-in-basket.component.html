@@ -1,43 +1,6 @@
-<!-- <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
-  <div class="form-check">
-    <p>
-      <label for="produit"> Produit :</label>
-    </p>
-
-    <div *ngFor="let produit of prod" class="radio-button">
-      <input
-        id="radio"
-        class="checkmark"
-        formControlName="produit"
-        type="radio"
-        value="{{ produit.name }}"
-      />
-
-      <label class="form-radio-label"> {{ produit.name }} </label> {{produit.prix_HT}} €
-    </div>
-
-    <p>
-      <label for="quantite"> Quantité </label>
-      <input
-        name="quantité"
-        formControlName="quantite"
-        type="number"
-        class="form-control"
-        id="quantite"
-      />
-    </p>
-  </div>
-
-  <div class="form-group col-md-12 m-2">
-    <button type="submit" class="btn btn-primary m-2">Add</button>
-
-    <button routerLink="/catalogue" class="btn btn-light">Return</button>
-  </div>
-</form>
- -->
-
 <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
   <div class="form-group p-2">Produit : {{ prod.name }}</div>
+  
   <label for="quantite">Quantité</label>
   <input
     class="form-group p-2"
@@ -45,6 +8,8 @@
     formControlName="quantite"
     name="quantite"
   />
+
+  <div class="form-group p-2">Prix unitaire: {{ prod.prix_HT }} €</div>
 
   <div class="form-group col-md-12 m-2">
     <button type="submit" class="btn btn-primary m-2">Ajouter</button>

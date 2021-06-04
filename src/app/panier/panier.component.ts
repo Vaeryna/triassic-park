@@ -18,7 +18,7 @@ export class PanierComponent implements OnInit {
   ngOnInit(): void {
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
-      console.log(this.panier);
+      console.log('init panier', this.panier);
     });
 
     this.pS.getTotalPricePanier().subscribe((a) => {
@@ -27,8 +27,6 @@ export class PanierComponent implements OnInit {
     });
 
     //total = somme des prix produit du panier
-    this.pS.getProduitPrice('Jack DanieIs').subscribe((a: any) => {
-      console.log('getDinoPrice: ', a);
-    });
+    this.pS.getProduitPrice("Pendentif argent").subscribe();
   }
 }

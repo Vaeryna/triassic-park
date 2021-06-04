@@ -46,6 +46,7 @@ export class AddInBasketComponent implements OnInit {
         Validators.required // pour définir dans le controle un champ requis
       ),
       quantite: '',
+      prix_HT: new FormControl('', Validators.required),
     });
   }
 
@@ -55,6 +56,9 @@ export class AddInBasketComponent implements OnInit {
 
   get produit() {
     return this.produitForm.get('produit');
+  }
+  get prix_u() {
+    return this.produitForm.get('prix_HT');
   }
 
   onSubmit() {
