@@ -45,39 +45,3 @@
     <a routerLink="/catalogue"> Retour au catalogue </a>
   </footer>
 </div>
-
-
-<ng-template #elseBlock> Add Produit </ng-template>
-<div
-  class="modal fade"
-  id="modalAdd"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="modalAddLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalAddLabel"> Ajouter </h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">Voulez-vous vraiment ajouter {{produit.name}} ?</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          No
-        </button>
-        <button type="button" class="btn btn-danger" (click)="confirmAdd()">
-          Yes
-        </button>
-      </div>
-    </div>
-  </div>
-</div>

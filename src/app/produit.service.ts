@@ -1,13 +1,11 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import { Panier, Total } from './data/panier';
 import { Rayon, Produit } from './data/produit';
-import { RAYON } from './data/types';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { PrefixNot } from '@angular/compiler';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -44,10 +42,8 @@ export class ProduitService {
     return this.http
       .get<Produit[]>(`${this.produitUrl}/.json`)
       .pipe(
-        map(
-          (produit) =>
-            Object.values(produit).filter((produit) => produit.rayon == rayon),
-          console.log('trrre')
+        map((produit) =>
+          Object.values(produit).filter((produit) => produit.rayon == rayon)
         )
       );
   }
@@ -89,9 +85,9 @@ export class ProduitService {
     );
   }
 
-  addProduit(produit: string): Observable<any> {
-    console.log('produit addDino: ', produit);
-    return this.http.post<Panier>(`${this.panierUrl}/.json`, produit);
+  addProduit(produitName: Produit): Observable<any> {
+    console.log('produit addDino: ', produitName.name);
+    return this.http.post<Panier>(`${this.panierUrl}/.json`, produitName);
   }
 
   priceProduitBasket(): Observable<Total> {
@@ -105,12 +101,9 @@ export class ProduitService {
 
   getProduitPrice(element: any): Observable<any> {
     return this.http
-      .get<Panier[]>(`${this.panierUrl}/.json?orderBy="name"&equalTo="${name}"`)
+      .get<Panier[]>(`${this.panierUrl}/.json`)
       .pipe(
-        map(
-          (a) => Object.values(a).find((produit) => produit.name == element),
-          console.log('boucle ok')
-        )
+        map((a) => Object.values(a).find((produit) => produit.name == element))
       );
   }
 
