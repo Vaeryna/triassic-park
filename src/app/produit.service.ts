@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { PrefixNot } from '@angular/compiler';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -77,10 +78,11 @@ export class ProduitService {
     );
   }
 
-  getTotalPricePanier(): Observable<Total> {
-    return this.http.get<Total>(`${this.panierUrl}/TotalPrice/.json`).pipe(
+  getTotalPricePanier(): Observable<Panier> {
+    return this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
       map((a) => {
-        console.log('getTotalPricePanier: ', a);
+        Object.values(a);
+        console.log('getTotalPricePanier ', a.prix_HT);
         return a;
       })
     );
@@ -105,27 +107,19 @@ export class ProduitService {
     );
   }
 
-  getProduitPrice(name: string): Observable<any> {
-    /*   console.log('Product Price name:', name);
-
-    const produitConst = this.http
-      .get<Produit[]>(`${this.produitUrl}/.json`)
-      .pipe(
-        map((produit) => {
-          Object.values(produit).filter((produit) => produit.name == name);
-        }, name)
-      );
-*/
+  getProduitPrice(element: any): Observable<any> {
+   
     return this.http
-      .get<Panier[]>(
-        `${this.panierUrl}/.json?orderBy="name"&equalTo="${name}"`
-      )
+      .get<Panier[]>(`${this.panierUrl}/.json?orderBy="name"&equalTo="${name}"`)
       .pipe(
-        map((a) => {
-          console.log('produitPrice: ', a);
-          return a;
-        })
+        map(
+          (a) => Object.values(a).find((produit) => produit.name == element),
+          console.log('boucle ok')
+        )
       );
   }
 }
 // https://triassic-park-default-rtdb.firebaseio.com/Panier/.json?orderBy=%22name%22&equalTo=%22Jeans%20bleu%20clair%22
+
+//{"-MbL2P8VQK6OZ9YwMvPh":{"name":"Pendentif argent","prix_HT":150,"quantite":1}}
+//e: questions$.do(questions => {questions.forEach(q => question here)})
