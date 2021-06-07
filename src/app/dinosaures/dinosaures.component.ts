@@ -16,7 +16,6 @@ export class DinosauresComponent implements OnInit {
   ngOnInit(): void {
     this.pS.getProduit().subscribe((produits) => {
       this.produit = produits;
-
     });
   }
 }

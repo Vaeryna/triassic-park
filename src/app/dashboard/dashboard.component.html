@@ -1,1 +1,6 @@
-<p>dashboard works!</p>
+<h1>Dashboard</h1>
+
+<div *ngFor="let client of client">
+  <p>{{ client.nom }} {{ client.prenom }}</p>
+  <p>{{ client.adresse }} {{ client.ville }}</p>
+</div>

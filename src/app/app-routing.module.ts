@@ -30,7 +30,7 @@ const routes: Routes = [
     component: AddInBasketComponent,
   },
   {
-    path: 'logging',
+    path: 'newLog',
     component: CompteClientComponent,
   },
   { path: 'auth', component: AuthComponent },

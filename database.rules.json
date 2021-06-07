@@ -1,0 +1,29 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "Produit": {
+      ".indexOn": [
+        "name",
+        "prix_HT",
+        "id",
+        "rayon",
+        "sous_rayon",
+        "taxe"
+      ]
+    },
+    "Panier": {
+      ".indexOn": [
+        "name",
+        "quantite",
+        "prix_HT"
+      ]
+    },
+    "Rayon": {
+      ".indexOn": [
+        "id",
+        "name"
+      ]
+    }
+  }
+}

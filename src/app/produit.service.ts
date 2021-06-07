@@ -109,6 +109,10 @@ export class ProduitService {
     return this.http.post<Client>(`${this.clientUrl}/.json`, client);
   }
 
+
+
+
+
   priceProduitBasket(): Observable<Total> {
     return this.http.get<Total>(`${this.panierUrl}/TotalPrice/.json`).pipe(
       map((a) => {
