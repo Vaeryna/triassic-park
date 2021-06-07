@@ -40,14 +40,14 @@ export class CompteClientComponent implements OnInit {
       mail: new FormControl('', Validators.required),
       adresse: new FormControl('', Validators.required),
       ville: new FormControl('', Validators.required),
-      mdp: new FormControl('', Validators.required)
+      mdp: new FormControl('', Validators.required),
     });
   }
 
   onSubmitClient() {
     const client = this.userForm.value;
 
-    this.pS.addProduit(client).subscribe(() => {
+    this.pS.addClient(client).subscribe(() => {
       this.router.navigate(['']);
     });
   }

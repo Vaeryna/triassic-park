@@ -104,6 +104,11 @@ export class ProduitService {
     return this.http.post<Panier>(`${this.panierUrl}/.json`, produitName);
   }
 
+  addClient(client: Client): Observable<any> {
+    console.log('produit addclient: ', client);
+    return this.http.post<Client>(`${this.clientUrl}/.json`, client);
+  }
+
   priceProduitBasket(): Observable<Total> {
     return this.http.get<Total>(`${this.panierUrl}/TotalPrice/.json`).pipe(
       map((a) => {

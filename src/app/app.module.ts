@@ -13,8 +13,11 @@ import firebase from 'firebase';
 import { environment as env } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInBasketComponent } from './add-in-basket/add-in-basket.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompteClientComponent } from './compte-client/compte-client.component';
+import { AuthComponent } from './auth/auth.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 
 firebase.initializeApp(env.firebaseConfig);
 
@@ -28,15 +31,17 @@ firebase.initializeApp(env.firebaseConfig);
     PanierComponent,
     AddInBasketComponent,
     CompteClientComponent,
+    AuthComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    
+    FormsModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
