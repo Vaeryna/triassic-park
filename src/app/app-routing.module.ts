@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AddInBasketComponent } from './add-in-basket/add-in-basket.component';
+import { CompteClientComponent } from './compte-client/compte-client.component';
 import { DinosauresDetailComponent } from './dinosaures-detail/dinosaures-detail.component';
 import { DinosauresComponent } from './dinosaures/dinosaures.component';
 import { PanierComponent } from './panier/panier.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'add-in-basket/produit/:name',
     component: AddInBasketComponent,
+  },
+  {
+    path: 'logging',
+    component: CompteClientComponent,
   },
 ];
 

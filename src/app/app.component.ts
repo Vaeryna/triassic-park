@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Panier, Total } from './data/panier';
+import { Panier, Total, Client } from './data/panier';
 import { Rayon, Produit } from './data/produit';
 import { ProduitService } from './produit.service';
 
@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   rayon!: Rayon[];
   panier!: Panier[];
   total!: Panier;
+  client!: Client[];
 
   totalPrice: number = 0;
   price!: number;
@@ -23,6 +24,10 @@ export class AppComponent implements OnInit {
     console.log('chargé ');
     this.pS.getRayon().subscribe((a) => {
       this.rayon = a;
+    });
+
+    this.pS.getClient().subscribe((a) => {
+      this.client = a;
     });
 
     this.pS.getPanier().subscribe((a) => {
@@ -39,7 +44,7 @@ export class AppComponent implements OnInit {
             (this.totalPrice = this.totalPrice + this.price);
         });
 
-    //    return this.pS.addPanierPrice(this.totalPrice);
+        //    return this.pS.addPanierPrice(this.totalPrice);
       });
     });
   }

@@ -14,6 +14,7 @@ import { environment as env } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInBasketComponent } from './add-in-basket/add-in-basket.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CompteClientComponent } from './compte-client/compte-client.component';
 
 firebase.initializeApp(env.firebaseConfig);
 
@@ -26,6 +27,7 @@ firebase.initializeApp(env.firebaseConfig);
     TypeDinoComponent,
     PanierComponent,
     AddInBasketComponent,
+    CompteClientComponent,
   ],
   imports: [
     BrowserModule,

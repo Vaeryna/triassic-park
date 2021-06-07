@@ -1,5 +1,5 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { Panier, Total } from './data/panier';
+import { Client, Panier, Total } from './data/panier';
 import { Rayon, Produit } from './data/produit';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -28,12 +28,26 @@ export class ProduitService {
 
   private rayonUrl = 'https://triassic-park-default-rtdb.firebaseio.com/Rayon';
 
+  private clientUrl =
+    'https://triassic-park-default-rtdb.firebaseio.com/Client';
+
   getRayon(): Observable<Rayon[]> {
     return this.http.get<Rayon[]>(`${this.rayonUrl}/.json`).pipe(
       map((rayon) => Object.values(rayon)),
       map((a) => {
         return a;
       })
+    );
+  }
+
+  getClient(): Observable<Client[]> {
+    return this.http.get<Client[]>(`${this.clientUrl}/.json`).pipe(
+      map(
+        (client) => Object.values(client),
+        map((a) => {
+          return a;
+        })
+      )
     );
   }
 
