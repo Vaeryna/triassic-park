@@ -25,10 +25,10 @@ export class GuardService {
           { queryParams: 'Error authentification' },
         ]);
       } else {
-        this.route.navigate([
-          '/dashboard',
-          { queryParams: 'Dahsboard welcome !' },
-        ]);
+        const mail = Object.values(user);
+        console.log('mail dahs: ', mail);
+
+        this.route.navigate([`/dashboard/${mail}`]);
       }
     });
   }

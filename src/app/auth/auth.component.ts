@@ -19,11 +19,12 @@ export class AuthComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit(form: NgForm) {
-    console.log('form mail: ', form.value.mail, 'mpd: ', form.value.password);
+    console.log('form mail: ', form.value.mail, 'mdp: ', form.value.password);
+    const mail = form.value.mail;
+
     this.auS
       .auth(form.value.mail, form.value.password)
-      .then((res) => this.route.navigate(['/dashboard']))
+      .then((res) => this.route.navigate([`/dashboard/${mail}`]))
       .catch((err) => console.log('err', err));
-
   }
 }

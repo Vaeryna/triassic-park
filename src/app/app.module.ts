@@ -20,11 +20,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompteClientComponent } from './compte-client/compte-client.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { GuardService } from './guard.service';
+import { AuthService } from './auth.service';
 
 firebase.initializeApp(env.firebaseConfig);
-
-
 
 @NgModule({
   declarations: [
@@ -46,7 +45,7 @@ firebase.initializeApp(env.firebaseConfig);
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
