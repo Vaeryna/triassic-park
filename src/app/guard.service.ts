@@ -26,7 +26,7 @@ export class GuardService {
         ]);
       } else {
         const mail = Object.values(user);
-        console.log('mail dahs: ', mail);
+        console.log('mail dashboard: ', mail);
 
         this.route.navigate([`/dashboard/${mail}`]);
       }

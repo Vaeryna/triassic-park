@@ -38,7 +38,7 @@ const routes: Routes = [
 
   {
     path: 'dashboard/:mail',
-    canActivate: [GuardService],
+ 
     component: DashboardComponent,
   },
 ];

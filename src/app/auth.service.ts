@@ -23,12 +23,17 @@ export class AuthService {
     return this._authState;
   }
 
-  // méthode d'authentification
+  // méthode d'authentification firebase
   auth(mail: string, password: string): Promise<any> {
     return firebase.auth().signInWithEmailAndPassword(mail, password);
   }
 
-  //new login
+  //méthode verification client existe dans base
+  authClient(mail: string, password: string): Promise<any>{
+    return 
+  }
+
+  //new login firebase
   create(mail: string, password: string): Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(mail, password);
   }
