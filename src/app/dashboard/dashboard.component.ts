@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Client } from '../data/panier';
+import { Client, Panier } from '../data/panier';
 import { ProduitService } from '../produit.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { ProduitService } from '../produit.service';
 export class DashboardComponent implements OnInit {
   client!: Client[];
   mail!: string;
+  panier!: Panier[];
 
   constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 

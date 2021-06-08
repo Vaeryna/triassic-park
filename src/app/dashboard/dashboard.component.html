@@ -1,9 +1,15 @@
-<h1>Dashboard de {{ mail }}</h1>
+<h1 *ngFor="let client of client">Dashboard de {{ client.prenom }} !</h1>
 
 <div *ngFor="let client of client">
-  <p>{{ client.nom }} {{ client.prenom }}</p>
+  <p>{{ client.prenom }} {{ client.nom }}</p>
   <p>{{ client.adresse }} {{ client.ville }}</p>
-</div>
 
-<p> Coucou {{client}} {{mail}}
-</p>
+  <p>{{ client.mail }}</p>
+
+ <!--  <div>
+    Contenu du panier:
+    <div *ngFor="let article of client.panier">
+      <li>{{ article }}</li>
+    </div>
+  </div> -->
+</div>

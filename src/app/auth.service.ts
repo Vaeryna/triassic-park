@@ -6,6 +6,7 @@ import firebase from 'firebase/app';
 
 // These imports load individual services into the firebase namespace.
 import 'firebase/auth';
+import { map } from 'jquery';
 
 @Injectable({
   providedIn: 'root',
@@ -29,8 +30,8 @@ export class AuthService {
   }
 
   //méthode verification client existe dans base
-  authClient(mail: string, password: string): Promise<any>{
-    return 
+  authClient(mail: string, password: string): void {
+    console.log('mail', mail, 'password', password);
   }
 
   //new login firebase

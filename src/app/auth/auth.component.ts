@@ -28,6 +28,7 @@ export class AuthComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log('form mail: ', form.value.mail, 'mdp: ', form.value.password);
     const mail = form.value.mail;
+    const password = form.value.password;
 
     /*  this.auS
       .auth(form.value.mail, form.value.password)
@@ -35,7 +36,7 @@ export class AuthComponent implements OnInit {
       .catch((err) => console.log('err', err)); */
 
     this.pS.getClient(mail).subscribe(() => {
-      console.log('mail_getClient', mail);
+      console.log('mail_getClient', mail, 'psw_getClient ', password);
       this.route.navigate([`/dashboard/${mail}`]);
     });
   }

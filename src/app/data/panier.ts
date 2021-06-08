@@ -16,4 +16,5 @@ export interface Client {
   prenom: string;
   ville: string;
   mdp: string;
+  panier: Panier;
 }
