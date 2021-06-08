@@ -21,7 +21,7 @@ export class GuardService {
     return this.authS.currentUserObservable().onAuthStateChanged((user) => {
       if (user === null) {
         this.route.navigate([
-          '/login',
+          '/auth',
           { queryParams: 'Error authentification' },
         ]);
       } else {

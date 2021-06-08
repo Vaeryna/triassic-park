@@ -24,8 +24,8 @@ export class AuthService {
   }
 
   // méthode d'authentification
-  auth(email: string, password: string): Promise<any> {
-    return firebase.auth().signInWithEmailAndPassword(email, password);
+  auth(mail: string, password: string): Promise<any> {
+    return firebase.auth().signInWithEmailAndPassword(mail, password);
   }
 
   logOut(): void {
@@ -33,7 +33,7 @@ export class AuthService {
       .auth()
       .signOut()
       .then(() => {
-        this.route.navigate(['/albums']);
+        this.route.navigate(['']);
       });
   }
 

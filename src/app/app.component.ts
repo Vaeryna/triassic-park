@@ -3,10 +3,6 @@ import { Panier, Total, Client } from './data/panier';
 import { Rayon, Produit } from './data/produit';
 import { ProduitService } from './produit.service';
 
-import firebase from 'firebase';
-import * as firebaseui from 'firebaseui';
-import 'firebase/auth';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,7 +26,7 @@ export class AppComponent implements OnInit {
       this.rayon = a;
     });
 
- /*    this.pS.getClient().subscribe((a) => {
+    /*    this.pS.getClient().subscribe((a) => {
       this.client = a;
     }); */
 
@@ -47,11 +43,7 @@ export class AppComponent implements OnInit {
           (this.price = element.prix_HT * element.quantite),
             (this.totalPrice = this.totalPrice + this.price);
         });
-
-        //    return this.pS.addPanierPrice(this.totalPrice);
       });
     });
-
-
   }
 }
