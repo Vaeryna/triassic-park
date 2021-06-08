@@ -16,6 +16,7 @@ import {
   Router,
 } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
+import { ProduitService } from '../produit.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,8 +29,8 @@ import { AuthGuard } from '../guards/auth.guard';
 export class AuthComponent implements OnInit {
   erreur = true;
   password = '';
-  login = '';
-  constructor(private router: Router) {}
+  mail = '';
+  constructor(private router: Router, private pS: ProduitService) {}
   ngOnInit() {}
 
   isAuthenticated() {
@@ -47,9 +48,9 @@ export class AuthComponent implements OnInit {
 
 
 
-    if (this.login === 'wick' && this.password === 'john') {
+    if (this.mail === 'wick' && this.password === 'john') {
       localStorage.setItem('isConnected', 'true');
-      this.router.navigateByUrl('/dashboard');
+      this.router.navigateByUrl('/dashboard/:mail');
     } else {
       this.erreur = false;
       console.log('mauvais id');

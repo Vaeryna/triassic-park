@@ -40,7 +40,20 @@ export class ProduitService {
     );
   }
 
-  getClient(): Observable<Client[]> {
+  getClient(mail: string): Observable<Client[]> {
+    return this.http
+      .get<Client[]>(`${this.clientUrl}/.json?orderBy="mail"&equalTo="${mail}"`)
+      .pipe(
+        map(
+          (client) => Object.values(client),
+          map((a) => {
+            return a;
+          })
+        )
+      );
+  }
+
+  getAllClient(): Observable<Client[]> {
     return this.http.get<Client[]>(`${this.clientUrl}/.json`).pipe(
       map(
         (client) => Object.values(client),
@@ -108,10 +121,6 @@ export class ProduitService {
     console.log('produit addclient: ', client);
     return this.http.post<Client>(`${this.clientUrl}/.json`, client);
   }
-
-
-
-
 
   priceProduitBasket(): Observable<Total> {
     return this.http.get<Total>(`${this.panierUrl}/TotalPrice/.json`).pipe(

@@ -10,6 +10,9 @@ import { TypeDinoComponent } from './type-dino/type-dino.component';
 import { PanierComponent } from './panier/panier.component';
 
 import firebase from 'firebase';
+
+import 'firebase/auth';
+
 import { environment as env } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { AddInBasketComponent } from './add-in-basket/add-in-basket.component';
@@ -19,7 +22,10 @@ import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
 
+
 firebase.initializeApp(env.firebaseConfig);
+
+
 
 @NgModule({
   declarations: [

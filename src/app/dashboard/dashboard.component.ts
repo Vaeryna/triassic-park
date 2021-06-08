@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Client } from '../data/panier';
 import { ProduitService } from '../produit.service';
 
@@ -9,12 +10,16 @@ import { ProduitService } from '../produit.service';
 })
 export class DashboardComponent implements OnInit {
   client!: Client[];
+  mail!: string;
 
-  constructor(private pS: ProduitService) {}
+  constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.pS.getClient().subscribe((client) => {
-      this.client = client;
-    });
+    const mail = this.route.snapshot.paramMap.get('mail');
+
+    if (mail)
+      this.pS.getClient(mail).subscribe((client) => {
+        this.client = client;
+      });
   }
 }

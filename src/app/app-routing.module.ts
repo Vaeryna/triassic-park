@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
 
   {
-    path: 'dashboard',
+    path: 'dashboard/:mail',
     canActivate: [AuthGuard],
     component: DashboardComponent,
   },

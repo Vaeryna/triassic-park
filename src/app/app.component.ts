@@ -3,6 +3,10 @@ import { Panier, Total, Client } from './data/panier';
 import { Rayon, Produit } from './data/produit';
 import { ProduitService } from './produit.service';
 
+import firebase from 'firebase';
+import * as firebaseui from 'firebaseui';
+import 'firebase/auth';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,9 +30,9 @@ export class AppComponent implements OnInit {
       this.rayon = a;
     });
 
-    this.pS.getClient().subscribe((a) => {
+ /*    this.pS.getClient().subscribe((a) => {
       this.client = a;
-    });
+    }); */
 
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
@@ -46,6 +50,17 @@ export class AppComponent implements OnInit {
 
         //    return this.pS.addPanierPrice(this.totalPrice);
       });
+    });
+
+    const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+    ui.start('#firebaseui-auth-container', {
+      signInOptions: [
+        {
+          provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          requireDisplayName: false,
+        },
+      ],
     });
   }
 }
