@@ -1,21 +1,9 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import {
-  FormBuilder,
-  Validators,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-  AbstractControl,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router,
-} from '@angular/router';
-import { AuthGuard } from '../guards/auth.guard';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { GuardService } from '../guard.service';
 import { ProduitService } from '../produit.service';
 
 @Injectable({
@@ -27,33 +15,15 @@ import { ProduitService } from '../produit.service';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
-  erreur = true;
-  password = '';
-  mail = '';
-  constructor(private router: Router, private pS: ProduitService) {}
+  constructor(private route: Router, private auS: AuthService) {}
   ngOnInit() {}
 
-  isAuthenticated() {
-   /*  firebase.auth().signInWithCustomToken(token)
-    .then((userCredential) => {
-      // Signed in
-      var user = userCredential.user;
-      // ...
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-    }); */
-
-
-
-    if (this.mail === 'wick' && this.password === 'john') {
-      localStorage.setItem('isConnected', 'true');
-      this.router.navigateByUrl('/dashboard/:mail');
-    } else {
-      this.erreur = false;
-      console.log('mauvais id');
-    }
+  onSubmit(form: NgForm) {
+    console.log('form mail: ', form.value.mail);
+    this.auS
+      .auth(form.value.mail, form.value.password)
+      .then((res) => this.route.navigate(['/dashboard']))
+      .catch((err) => console.log('err', err));
+       console.log("auth: ", this.auS.auth(form.value.mail, form.value.password))
   }
 }

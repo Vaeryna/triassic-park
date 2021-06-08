@@ -20,7 +20,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompteClientComponent } from './compte-client/compte-client.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AuthGuard } from './guards/auth.guard';
 
 
 firebase.initializeApp(env.firebaseConfig);
@@ -47,7 +46,7 @@ firebase.initializeApp(env.firebaseConfig);
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [AuthGuard],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
