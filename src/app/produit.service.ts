@@ -1,13 +1,11 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { Panier, Total } from './data/panier';
+import { Client, Panier, Total } from './data/panier';
 import { Rayon, Produit } from './data/produit';
-import { RAYON } from './data/types';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { PrefixNot } from '@angular/compiler';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,12 +20,16 @@ const httpOptions = {
 export class ProduitService {
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
+  private globalUrl = 'https://triassic-park-default-rtdb.firebaseio.com';
   private produitUrl =
     'https://triassic-park-default-rtdb.firebaseio.com/Produit';
   private panierUrl =
     'https://triassic-park-default-rtdb.firebaseio.com/Panier';
 
   private rayonUrl = 'https://triassic-park-default-rtdb.firebaseio.com/Rayon';
+
+  private clientUrl =
+    'https://triassic-park-default-rtdb.firebaseio.com/Client';
 
   getRayon(): Observable<Rayon[]> {
     return this.http.get<Rayon[]>(`${this.rayonUrl}/.json`).pipe(
@@ -38,15 +40,24 @@ export class ProduitService {
     );
   }
 
+  getClient(): Observable<Client[]> {
+    return this.http.get<Client[]>(`${this.clientUrl}/.json`).pipe(
+      map(
+        (client) => Object.values(client),
+        map((a) => {
+          return a;
+        })
+      )
+    );
+  }
+
   getProductRayon(rayon: string): Observable<Produit[]> {
     console.log('rayon: ', rayon);
     return this.http
       .get<Produit[]>(`${this.produitUrl}/.json`)
       .pipe(
-        map(
-          (produit) =>
-            Object.values(produit).filter((produit) => produit.rayon == rayon),
-          console.log('trrre')
+        map((produit) =>
+          Object.values(produit).filter((produit) => produit.rayon == rayon)
         )
       );
   }
@@ -88,14 +99,9 @@ export class ProduitService {
     );
   }
 
-  addProduit(produit: string): Observable<any> {
-    console.log('produit addDino: ', produit);
-    const ifExist = this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
-      map((a) => {
-        console.log('addDino: ', a);
-      })
-    );
-    return this.http.post<Panier>(`${this.panierUrl}/.json`, produit);
+  addProduit(produitName: Produit): Observable<any> {
+    console.log('produit addDino: ', produitName.name);
+    return this.http.post<Panier>(`${this.panierUrl}/.json`, produitName);
   }
 
   priceProduitBasket(): Observable<Total> {
@@ -108,18 +114,21 @@ export class ProduitService {
   }
 
   getProduitPrice(element: any): Observable<any> {
-   
     return this.http
-      .get<Panier[]>(`${this.panierUrl}/.json?orderBy="name"&equalTo="${name}"`)
+      .get<Panier[]>(`${this.panierUrl}/.json`)
       .pipe(
-        map(
-          (a) => Object.values(a).find((produit) => produit.name == element),
-          console.log('boucle ok')
-        )
+        map((a) => Object.values(a).find((produit) => produit.name == element))
       );
   }
-}
-// https://triassic-park-default-rtdb.firebaseio.com/Panier/.json?orderBy=%22name%22&equalTo=%22Jeans%20bleu%20clair%22
 
-//{"-MbL2P8VQK6OZ9YwMvPh":{"name":"Pendentif argent","prix_HT":150,"quantite":1}}
-//e: questions$.do(questions => {questions.forEach(q => question here)})
+  addPanierPrice(price: number): Observable<any> {
+    console.log('add panier price: ', price);
+    return this.http.post<number>(`${this.globalUrl}/.json`, price).pipe(
+      switchMap(() => {
+        return this.http.put<any>(`${this.globalUrl}/Total/.json`, price);
+      })
+    );
+  }
+}
+
+// https://triassic-park-default-rtdb.firebaseio.com/Panier/.json?orderBy=%22name%22&equalTo=%22Jeans%20bleu%20clair%22

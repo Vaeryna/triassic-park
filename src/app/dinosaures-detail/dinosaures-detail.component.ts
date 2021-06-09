@@ -79,15 +79,7 @@ export class DinosauresDetailComponent implements OnInit {
 
   }
 
-  confirmAdd() {
-    if (this.idAdd) {
-      console.log('idDelete', this.idAdd);
-      this.pS.addProduit(this.idAdd).subscribe((a) => {
-        this.message = 'success delete';
-        this.isOpen = true;
-        $('#modalDelete').modal('hide');
 
-      });
-    }
-  }
+
+  
 }

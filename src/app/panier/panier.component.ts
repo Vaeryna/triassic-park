@@ -25,22 +25,13 @@ export class PanierComponent implements OnInit {
       this.panier.forEach((element) => {
         this.pS.getProduitPrice(element.name).subscribe(() => {
           (this.price = element.prix_HT * element.quantite),
-            console.log('this element name: ', element.name);
-          console.log('this price: ', this.price);
-          this.totalPrice = this.totalPrice + this.price;
+            (this.totalPrice = this.totalPrice + this.price);
         });
-        return this.totalPrice;
+        this.pS.addPanierPrice(this.totalPrice).subscribe();
       });
     });
 
     //  this.pS.getTotalPricePanier().subscribe((a) => (this.totalPrice = a));
-
-    //total = somme des prix produit du panier
-
-    /*   this.pS.getProduitPrice('Pendentif argent').subscribe((a) => {
-      this.price = a.prix_HT;
-      console.log('this price', this.price);
-    }); */
   }
 }
 

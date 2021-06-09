@@ -1,0 +1,68 @@
+<h1>Nouveau client</h1>
+<div>
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmitClient()"
+    class="input-group-prepend"
+  >
+    <div class="input-group">
+      <label for="mail" class="input-group-text"> Adresse Mail :</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="mail"
+        name="mail"
+      />
+      <label for="mdp" class="input-group-text"> Mot de passe :</label>
+      <input
+        class="form-control"
+        type="password"
+        formControlName="mdp"
+        name="mdp"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="nom" class="input-group-text"> Nom :</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="nom"
+        name="nom"
+      />
+
+      <label for="prenom" class="input-group-text"> Prénom :</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="prenom"
+        name="prenom"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="adresse" class="input-group-text">
+        Numero et rue de l'adresse :</label
+      >
+      <input
+        class="form-control"
+        type="text"
+        formControlName="adresse"
+        name="nom"
+      />
+      <label for="ville" class="input-group-text"> Ville :</label>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="ville"
+        name="ville"
+      />
+    </div>
+
+    <div class="form-group col-md-12 m-2">
+      <button type="submit" class="btn btn-danger m-2">Enregistrer</button>
+
+      <button routerLink="" class="btn btn-light">Return</button>
+    </div>
+  </form>
+</div>
