@@ -14,7 +14,7 @@ import firebase from 'firebase';
 import 'firebase/auth';
 
 import { environment as env } from '../environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddInBasketComponent } from './add-in-basket/add-in-basket.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompteClientComponent } from './compte-client/compte-client.component';
@@ -22,6 +22,7 @@ import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GuardService } from './guard.service';
 import { AuthService } from './auth.service';
+import { IntercepteurInterceptor } from './intercepteur.interceptor';
 
 firebase.initializeApp(env.firebaseConfig);
 
@@ -45,7 +46,15 @@ firebase.initializeApp(env.firebaseConfig);
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: IntercepteurInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
