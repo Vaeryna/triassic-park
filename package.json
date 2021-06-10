@@ -22,6 +22,7 @@
     "bootstrap": "^5.0.1",
     "firebase": "^8.6.2",
     "firebaseui": "^4.8.0",
+    "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "ng-modal": "^1.0.2",
     "rxjs": "^6.6.7",

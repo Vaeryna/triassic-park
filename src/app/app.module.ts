@@ -26,6 +26,7 @@ import { IntercepteurInterceptor } from './intercepteur.interceptor';
 
 firebase.initializeApp(env.firebaseConfig);
 
+
 @NgModule({
   declarations: [
     AppComponent,

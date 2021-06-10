@@ -57,6 +57,7 @@ export class CompteClientComponent implements OnInit {
     ); */
     /*     const mail = form.value.mail
 
+    //creation client firebase
     this.auS
       .create(form.value.mail, form.value.password)
       .then((res) => this.route.navigate(['/dashboard/${mail}']))

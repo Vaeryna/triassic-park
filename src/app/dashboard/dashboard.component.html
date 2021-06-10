@@ -6,10 +6,12 @@
 
   <p>{{ client.mail }}</p>
 
- <!--  <div>
+  <div>
     Contenu du panier:
-    <div *ngFor="let article of client.panier">
-      <li>{{ article }}</li>
+    <div *ngFor="let article of panier">
+      <li >
+        {{ article.name }} {{article.prix_HT}}€
+      </li>
     </div>
-  </div> -->
+  </div>
 </div>
