@@ -2,15 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AddInBasketComponent } from './add-in-basket/add-in-basket.component';
+import { AuthComponent } from './auth/auth.component';
 import { CompteClientComponent } from './compte-client/compte-client.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { DinosauresDetailComponent } from './dinosaures-detail/dinosaures-detail.component';
 import { DinosauresComponent } from './dinosaures/dinosaures.component';
+import { GuardService } from './guard.service';
 import { PanierComponent } from './panier/panier.component';
 import { TypeDinoComponent } from './type-dino/type-dino.component';
 
 const routes: Routes = [
   {
     path: '',
+
     component: AccueilComponent,
   },
   {
@@ -27,8 +31,15 @@ const routes: Routes = [
     component: AddInBasketComponent,
   },
   {
-    path: 'logging',
+    path: 'newLog',
     component: CompteClientComponent,
+  },
+  { path: 'auth', component: AuthComponent },
+
+  {
+    path: 'dashboard/:mail',
+ 
+    component: DashboardComponent,
   },
 ];
 

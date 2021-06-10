@@ -15,8 +15,7 @@ export class AccueilComponent implements OnInit {
   constructor(private pS: ProduitService) {}
 
   ngOnInit(): void {
-    console.log('chargé ');
-
+    
     this.pS.getProduit().subscribe((a) => (this.produit = a));
   }
 }

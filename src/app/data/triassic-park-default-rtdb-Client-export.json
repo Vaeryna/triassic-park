@@ -1,0 +1,18 @@
+{
+  "01" : {
+    "adresse" : "1 avenue Slouby",
+    "mail" : "p.gaulois@mail.uk",
+    "mpd" : "mpd",
+    "nom" : "Le Gaulois",
+    "prenom" : "Provencal",
+    "ville" : "Caerdyff"
+  },
+  "02" : {
+    "adresse" : "3 rue du pavé",
+    "mail" : "l.lecruel@mail.uk",
+    "mdp" : "mdp",
+    "nom" : "Le Cruel",
+    "prenom" : "Leodagan",
+    "ville" : "Carmelide"
+  }
+}

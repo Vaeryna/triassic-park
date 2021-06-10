@@ -1,61 +1,69 @@
 <h1>Nouveau client</h1>
 <div>
   <form
-    [formGroup]="userForm"
-    (ngSubmit)="onSubmitClient()"
-    class="input-group-prepend"
+
   >
-    <div class="input-group">
-      <label for="mail" class="input-group-text"> Adresse Mail :</label>
+    <div>
+      <div>Adresse Mail :</div>
       <input
-        class="form-control"
-        type="text"
         formControlName="mail"
         name="mail"
+        ngModel
+        mail
+        required
+        type="mail"
+        class="input-group-text"
       />
-      <label for="mdp" class="input-group-text"> Mot de passe :</label>
+      <div>Mot de passe :</div>
       <input
-        class="form-control"
         type="password"
-        formControlName="mdp"
-        name="mdp"
+        formControlName="password"
+        name="password"
+        ngModel
+        required
+        class="input-group-text"
       />
     </div>
 
-    <div class="input-group">
-      <label for="nom" class="input-group-text"> Nom :</label>
+    <div>
+      <label for="nom"> Nom :</label>
       <input
-        class="form-control"
         type="text"
         formControlName="nom"
         name="nom"
+        ngModel
+        required
+        class="input-group-text"
       />
 
-      <label for="prenom" class="input-group-text"> Prénom :</label>
+      <label for="prenom"> Prénom :</label>
       <input
-        class="form-control"
         type="text"
         formControlName="prenom"
         name="prenom"
+        ngModel
+        required
+        class="input-group-text"
       />
     </div>
 
-    <div class="input-group">
-      <label for="adresse" class="input-group-text">
-        Numero et rue de l'adresse :</label
-      >
+    <div>
+      <label for="adresse"> Numero et rue de l'adresse :</label>
       <input
-        class="form-control"
         type="text"
         formControlName="adresse"
         name="nom"
+        ngModel
+        required
+        class="input-group-text"
       />
-      <label for="ville" class="input-group-text"> Ville :</label>
+      <label for="ville"> Ville :</label>
       <input
-        class="form-control"
-        type="text"
         formControlName="ville"
         name="ville"
+        ngModel
+        required
+        class="input-group-text"
       />
     </div>
 

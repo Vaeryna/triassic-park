@@ -21,7 +21,6 @@ export class PanierComponent implements OnInit {
   ngOnInit(): void {
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
-      console.log('init panier', this.panier);
       this.panier.forEach((element) => {
         this.pS.getProduitPrice(element.name).subscribe(() => {
           (this.price = element.prix_HT * element.quantite),

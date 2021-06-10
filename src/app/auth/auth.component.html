@@ -1,0 +1,31 @@
+<h1>Page d'authentification</h1>
+<form (ngSubmit)="onSubmit(formLogin)" #formLogin="ngForm">
+  <div>
+    Mail d'utilisateur :
+    <input
+      name="mail"
+      ngModel
+      mail
+      required
+      type="mail"
+      class="input-group-text"
+      id="exampleInputmail1"
+      aria-describedby="mailHelp"
+      placeholder="Enter email"
+    />
+  </div>
+  <div>
+    Mot de passe :
+    <input
+      name="password"
+      ngModel
+      required
+      type="password"
+      class="input-group-text"
+      id="exampleInputPassword1"
+      placeholder="Password"
+    />
+    <button class="btn btn-secondary" type="submit">Se connecter</button>
+  </div>
+  <div [hidden]="'erreur'">Identifiants incorrects</div>
+</form>

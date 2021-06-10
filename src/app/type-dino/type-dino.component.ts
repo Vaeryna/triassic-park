@@ -19,7 +19,6 @@ export class TypeDinoComponent implements OnInit {
 
     const productRayon = this.route.snapshot.paramMap.get('name')!;
 
-    console.log('const typeidno: ', productRayon);
 
     if (productRayon)
       this.pS.getProductRayon(productRayon).subscribe((produit) => {

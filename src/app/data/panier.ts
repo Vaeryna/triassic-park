@@ -3,6 +3,7 @@ export interface Panier {
   name: string;
   quantite: number;
   prix_HT: number;
+  keyClient: string;
 }
 
 export interface Total {
