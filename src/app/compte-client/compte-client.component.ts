@@ -49,23 +49,26 @@ export class CompteClientComponent implements OnInit {
   }
 
   onSubmitClient() {
-    /* console.log(
-      'form mail: ',
-      form.value.mail,
-      'password: ',
-      form.value.password
-    ); */
-    /*     const mail = form.value.mail
+    const form = this.userForm.value;
+console.log("value", this.userForm.value)
 
-    creation client firebase
+    console.log(
+      'form mail: ',
+      form.mail,
+      'password: ',
+      form.password
+    );
+    const mail = form.mail;
+
+
+    // creation client firebase
     this.auS
-      .create(form.value.mail, form.value.password)
-      .then((res) => this.route.navigate(['/dashboard/${mail}']))
+      .create(form.mail, form.password)
+      .then((res) => this.route.navigate([`/dashboard/${mail}`]))
       .catch((err) => console.log('err', err));
   }
 
   /*   this.pS.addClient(client).subscribe(() => {
       this.route.navigate(['']);
     }); */
-  }
 }

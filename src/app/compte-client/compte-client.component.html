@@ -1,6 +1,6 @@
 <h1>Nouveau client</h1>
 <div>
-  <form (ngSubmit)="onSubmitClient()" #formLogin="ngForm">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitClient()">
     <div>
       <div>Adresse Mail :</div>
       <input
