@@ -11,6 +11,8 @@ import { GuardService } from './guard.service';
 import { PanierComponent } from './panier/panier.component';
 import { TypeDinoComponent } from './type-dino/type-dino.component';
 
+
+
 const routes: Routes = [
   {
     path: '',
@@ -38,7 +40,7 @@ const routes: Routes = [
 
   {
     path: 'dashboard/:mail',
- 
+
     component: DashboardComponent,
   },
 ];

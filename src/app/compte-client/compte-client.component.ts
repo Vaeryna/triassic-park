@@ -48,7 +48,7 @@ export class CompteClientComponent implements OnInit {
     });
   }
 
-  onSubmitClient(client: Client) {
+  onSubmitClient() {
     /* console.log(
       'form mail: ',
       form.value.mail,
@@ -57,15 +57,15 @@ export class CompteClientComponent implements OnInit {
     ); */
     /*     const mail = form.value.mail
 
-    //creation client firebase
+    creation client firebase
     this.auS
       .create(form.value.mail, form.value.password)
       .then((res) => this.route.navigate(['/dashboard/${mail}']))
       .catch((err) => console.log('err', err));
-  } */
+  }
 
-    this.pS.addClient(client).subscribe(() => {
+  /*   this.pS.addClient(client).subscribe(() => {
       this.route.navigate(['']);
-    });
+    }); */
   }
 }

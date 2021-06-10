@@ -6,6 +6,9 @@ import { AuthService } from '../auth.service';
 import { GuardService } from '../guard.service';
 import { ProduitService } from '../produit.service';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -29,11 +32,26 @@ export class AuthComponent implements OnInit {
     const mail = form.value.mail;
     const password = form.value.password;
 
-    this.auS
+    /*  this.auS
       .authClient(form.value.mail, form.value.password)
       .toPromise()
       .then((res) => this.route.navigate([`/dashboard/${mail}`]))
-      .catch((err) => console.log('err', err));
+      .catch((err) => console.log('err', err)); */
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(mail, password)
+      .then((userCredential) => {
+        // Signed in
+        let user = userCredential.user;
+        console.log('user', user);
+        this.route.navigate([`/dashboard/${mail}`]);
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        this.route.navigate([`/newLog`])
+      });
 
     /*  this.pS.getClient(mail).subscribe(() => {
       console.log('mail_getClient', mail, 'psw_getClient ', password);
