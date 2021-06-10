@@ -64,7 +64,7 @@ console.log("value", this.userForm.value)
     // creation client firebase
     this.auS
       .create(form.mail, form.password)
-      .then((res) => this.route.navigate([`/dashboard/${mail}`]))
+      .then((res) => this.route.navigate([`/lien-bdd-auth/${mail}`]))
       .catch((err) => console.log('err', err));
   }
 

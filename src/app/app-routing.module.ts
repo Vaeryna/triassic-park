@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DinosauresDetailComponent } from './dinosaures-detail/dinosaures-detail.component';
 import { DinosauresComponent } from './dinosaures/dinosaures.component';
 import { GuardService } from './guard.service';
+import { LienBddAuthComponent } from './lien-bdd-auth/lien-bdd-auth.component';
 import { PanierComponent } from './panier/panier.component';
 import { TypeDinoComponent } from './type-dino/type-dino.component';
 
@@ -43,6 +44,10 @@ const routes: Routes = [
 
     component: DashboardComponent,
   },
+  {
+    path: 'lien-bdd-auth/:mail',
+    component: LienBddAuthComponent
+  }
 ];
 
 @NgModule({

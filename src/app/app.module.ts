@@ -23,6 +23,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GuardService } from './guard.service';
 import { AuthService } from './auth.service';
 import { IntercepteurInterceptor } from './intercepteur.interceptor';
+import { LienBddAuthComponent } from './lien-bdd-auth/lien-bdd-auth.component';
 
 firebase.initializeApp(env.firebaseConfig);
 
@@ -39,6 +40,7 @@ firebase.initializeApp(env.firebaseConfig);
     CompteClientComponent,
     AuthComponent,
     DashboardComponent,
+    LienBddAuthComponent,
   ],
   imports: [
     BrowserModule,
