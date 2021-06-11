@@ -31,10 +31,6 @@ export class AppComponent implements OnInit {
       this.rayon = a;
     });
 
-    /*    this.pS.getClient().subscribe((a) => {
-      this.client = a;
-    }); */
-
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
     });
@@ -55,6 +51,11 @@ export class AppComponent implements OnInit {
         // https://firebase.google.com/docs/reference/js/firebase.User
         this.uid = user.uid;
         console.log('user co: ', this.uid);
+        this.pS.getClient('uid', this.uid).subscribe((a) => {
+  //        console.log('uid ok', a);
+          this.client = a;
+
+        });
 
         // ...
       } else {

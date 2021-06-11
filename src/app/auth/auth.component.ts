@@ -50,12 +50,7 @@ export class AuthComponent implements OnInit {
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        this.route.navigate([`/newLog`])
+        this.route.navigate([`/newLog`]);
       });
-
-    /*  this.pS.getClient(mail).subscribe(() => {
-      console.log('mail_getClient', mail, 'psw_getClient ', password);
-      this.route.navigate([`/dashboard/${mail}`]);
-    }); */
   }
 }

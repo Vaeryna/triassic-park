@@ -12,6 +12,10 @@ import {
 } from '@angular/forms';
 
 import { Produit } from '../data/produit';
+import { Client } from '../data/panier';
+import { AuthService } from '../auth.service';
+import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
+import firebase from 'firebase/app';
 
 @Component({
   selector: 'app-add-in-basket',
@@ -21,25 +25,67 @@ import { Produit } from '../data/produit';
 export class AddInBasketComponent implements OnInit {
   produitForm!: FormGroup;
   prod!: Produit;
+  uid!: string;
+  client!: Client[];
+  clientID!: string;
+  mail!: string;
 
   constructor(
     private pS: ProduitService,
     private fB: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private auS: AuthService
   ) {}
 
   ngOnInit(): void {
     this.initForm();
-    const id = this.route.snapshot.paramMap.get('name');
-    if (id)
-      this.pS.getOneProduit(id).subscribe((produit) => {
-        this.prod = produit;
-        this.produitForm.patchValue(produit);
-      });
   }
 
   initForm() {
+    const id = this.route.snapshot.paramMap.get('name');
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        this.uid = user.uid;
+        console.log('user co: ', this.uid);
+        this.pS.getClient('uid', this.uid).subscribe((a) => {
+          console.log('uid ok', a);
+          this.client = a;
+
+          console.log('thisclient firebaseAuth', this.client);
+
+          if (id)
+            this.pS.getOneProduit(id).subscribe((produit) => {
+              this.prod = produit;
+              this.produitForm.patchValue(produit);
+            });
+
+          this.pS.getClient('uid', this.uid).subscribe((client) => {
+            this.client = client;
+            console.log('client getClient: ', this.client);
+
+            this.pS.getClientId(this.mail).subscribe((id) => {
+              console.log('mail: ', this.mail, 'id', id);
+              this.clientID = id;
+              this.produitForm.patchValue(this.clientID);
+            });
+          });
+          console.log('firebaseAuth', this.clientID);
+        });
+
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        this.uid = '';
+        console.log('no user connected', "'", this.uid, "'");
+      }
+    });
+
+    console.log('initForm', this.clientID);
     this.produitForm = this.fB.group({
       name: new FormControl(
         '',
@@ -47,6 +93,7 @@ export class AddInBasketComponent implements OnInit {
       ),
       quantite: '',
       prix_HT: new FormControl('', Validators.required),
+      keyClient: new FormControl('', Validators.required),
     });
   }
 
@@ -59,6 +106,10 @@ export class AddInBasketComponent implements OnInit {
   }
   get prix_u() {
     return this.produitForm.get('prix_HT');
+  }
+
+  get keyClient() {
+    return this.produitForm.get('keyClient');
   }
 
   onSubmit() {

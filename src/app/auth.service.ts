@@ -81,10 +81,7 @@ export class AuthService {
 
   //################# SANS FIREBASE  ##################
 
-  getAuthToken(): string {
-    const TOKEN = 'token-123456';
-    return TOKEN;
-  }
+  
 
   //méthode verification client existe dans base
   authClient(mail: string, password: string): Observable<any> {

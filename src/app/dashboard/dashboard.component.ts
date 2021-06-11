@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   mail!: string;
   panier!: Panier[];
   clientID!: string;
-  article!: Panier[]
+  article!: Panier[];
 
   constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
@@ -22,15 +22,11 @@ export class DashboardComponent implements OnInit {
     const mail = this.route.snapshot.paramMap.get('mail');
 
     if (mail) {
-      this.pS.getClient(mail).subscribe((client) => {
+      this.pS.getClient('mail', mail).subscribe((client) => {
         this.client = client;
-
-       console.log('this client ', this.client);
 
         this.pS.getClientId(mail).subscribe((id) => {
           this.clientID = id;
-
-          console.log('clientID', this.clientID);
 
           this.pS.getPanierClient(this.clientID).subscribe((panier) => {
             console.log('paneir', panier),

@@ -27,7 +27,7 @@ export class IntercepteurInterceptor implements HttpInterceptor {
     //   console.log('INTERCEPTOR');
 
     // We retrieve the token, if any
-    const token = this.auS.getAuthToken();
+    const token = "ABC"
     let newHeaders = req.headers;
 
     if (token) {

@@ -41,10 +41,10 @@ export class ProduitService {
 
   //######################## Gestion CLIENT  ############################
 
-  getClient(mail: string): Observable<Client[]> {
+  getClient(recherche: string, mail: string): Observable<Client[]> {
     return this.http
       .get<Client[]>(
-        `${this.clientUrl}/.json?&orderBy="mail"&equalTo="${mail}"`
+        `${this.clientUrl}/.json?&orderBy="${recherche}"&equalTo="${mail}"`
       )
       .pipe(
         map(
