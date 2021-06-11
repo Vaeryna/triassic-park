@@ -39,27 +39,17 @@ export class CompteClientComponent implements OnInit {
 
   initForm() {
     this.userForm = this.fB.group({
-      nom: new FormControl('', Validators.required),
-      prenom: new FormControl('', Validators.required),
       mail: new FormControl('', Validators.required),
-      adresse: new FormControl('', Validators.required),
-      ville: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
   }
 
   onSubmitClient() {
     const form = this.userForm.value;
-console.log("value", this.userForm.value)
+    console.log('value', this.userForm.value);
 
-    console.log(
-      'form mail: ',
-      form.mail,
-      'password: ',
-      form.password
-    );
+    console.log('form mail: ', form.mail, 'password: ', form.password);
     const mail = form.mail;
-
 
     // creation client firebase
     this.auS

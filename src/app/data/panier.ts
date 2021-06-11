@@ -16,5 +16,4 @@ export interface Client {
   nom: string;
   prenom: string;
   ville: string;
-  mdp: string;
 }

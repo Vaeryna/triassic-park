@@ -97,7 +97,6 @@ export class ProduitService {
   }
 
   getProductRayon(rayon: string): Observable<Produit[]> {
-
     return this.http
       .get<Produit[]>(`${this.produitUrl}/.json`)
       .pipe(
