@@ -10,8 +10,8 @@ import { TypeDinoComponent } from './type-dino/type-dino.component';
 import { PanierComponent } from './panier/panier.component';
 
 import firebase from 'firebase';
-
-import 'firebase/auth';
+import * as firebaseui from 'firebaseui'
+import 'firebaseui/dist/firebaseui.css'
 
 import { environment as env } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -23,6 +23,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GuardService } from './guard.service';
 import { AuthService } from './auth.service';
 import { IntercepteurInterceptor } from './intercepteur.interceptor';
+import { LienBddAuthComponent } from './lien-bdd-auth/lien-bdd-auth.component';
 
 firebase.initializeApp(env.firebaseConfig);
 
@@ -39,6 +40,7 @@ firebase.initializeApp(env.firebaseConfig);
     CompteClientComponent,
     AuthComponent,
     DashboardComponent,
+    LienBddAuthComponent,
   ],
   imports: [
     BrowserModule,

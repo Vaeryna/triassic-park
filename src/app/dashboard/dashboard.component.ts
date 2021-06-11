@@ -25,12 +25,12 @@ export class DashboardComponent implements OnInit {
       this.pS.getClient(mail).subscribe((client) => {
         this.client = client;
 
-     //   console.log('this client ', this.client);
+       console.log('this client ', this.client);
 
         this.pS.getClientId(mail).subscribe((id) => {
           this.clientID = id;
 
-       //   console.log('clientID', this.clientID);
+          console.log('clientID', this.clientID);
 
           this.pS.getPanierClient(this.clientID).subscribe((panier) => {
             console.log('paneir', panier),

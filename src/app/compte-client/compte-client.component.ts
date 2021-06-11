@@ -39,33 +39,26 @@ export class CompteClientComponent implements OnInit {
 
   initForm() {
     this.userForm = this.fB.group({
-      nom: new FormControl('', Validators.required),
-      prenom: new FormControl('', Validators.required),
       mail: new FormControl('', Validators.required),
-      adresse: new FormControl('', Validators.required),
-      ville: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
   }
 
-  onSubmitClient(client: Client) {
-    /* console.log(
-      'form mail: ',
-      form.value.mail,
-      'password: ',
-      form.value.password
-    ); */
-    /*     const mail = form.value.mail
+  onSubmitClient() {
+    const form = this.userForm.value;
+    console.log('value', this.userForm.value);
 
-    //creation client firebase
+    console.log('form mail: ', form.mail, 'password: ', form.password);
+    const mail = form.mail;
+
+    // creation client firebase
     this.auS
-      .create(form.value.mail, form.value.password)
-      .then((res) => this.route.navigate(['/dashboard/${mail}']))
+      .create(form.mail, form.password)
+      .then((res) => this.route.navigate([`/lien-bdd-auth/${mail}`]))
       .catch((err) => console.log('err', err));
-  } */
-
-    this.pS.addClient(client).subscribe(() => {
-      this.route.navigate(['']);
-    });
   }
+
+  /*   this.pS.addClient(client).subscribe(() => {
+      this.route.navigate(['']);
+    }); */
 }

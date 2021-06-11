@@ -59,6 +59,8 @@ export class AuthService {
     return firebase.auth().signInWithEmailAndPassword(mail, password);
   }
 
+
+
   //new login firebase
   create(mail: string, password: string): Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(mail, password);
@@ -69,7 +71,7 @@ export class AuthService {
       .auth()
       .signOut()
       .then(() => {
-        this.route.navigate(['']);
+        this.route.navigate(['/catalogue']);
       });
   }
 
@@ -95,3 +97,4 @@ export class AuthService {
       );
   }
 }
+
