@@ -15,6 +15,8 @@ export class DashboardComponent implements OnInit {
   panier!: Panier[];
   clientID!: string;
   article!: Panier[];
+  price!: number;
+  totalPrice: number = 0;
 
   constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
@@ -23,11 +25,15 @@ export class DashboardComponent implements OnInit {
       this.pS.getClient('mail', this.mail).subscribe((client) => {
         this.client = client;
         if (this.mail)
-          /*  this.pS.getClientId(this.mail).subscribe((id) => {
-            this.clientID = id; */
           this.pS.getPanierClient(this.mail).subscribe((panier) => {
             console.log('paneir', panier),
               (this.panier = Object.values(panier));
+            this.panier.forEach((element) => {
+              this.pS.getProduitPrice(element.name).subscribe(() => {
+                (this.price = element.prix_HT * element.quantite),
+                  (this.totalPrice = this.totalPrice + this.price);
+              });
+            });
           });
       });
   }

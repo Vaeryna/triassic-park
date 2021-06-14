@@ -71,6 +71,7 @@ nav div {
   display: flex;
   flex-direction: column;
   padding: 1em;
+  width: 50%;
 }
 
 header div{
@@ -80,7 +81,3 @@ button{
   margin: 0.5em;
 }
 
-@font-face {
-  font-family: "jurassicFont";
-  src: url("../assets/JurassicPark.ttf");
-}
