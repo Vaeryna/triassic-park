@@ -56,7 +56,6 @@ export class DinosauresDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-
     if (id)
       this.pS.getOneProduit(id).subscribe((prod) => {
         this.produit = prod;
@@ -75,11 +74,38 @@ export class DinosauresDetailComponent implements OnInit {
     this.idAdd = name;
     this.quantiteAdd = quantite;
     console.log('onDelete', '"', name, '"');
-
-
   }
-
-
-
-  
 }
+
+/*
+const main = async () => {
+
+    try {
+
+        const city = await getCurrentCity();
+        const weatherInfo = await getWeatherInfo(city);
+
+        console.log(`${city}: ${weatherInfo.temperature}`);
+
+    }
+    catch (error) {
+        console.error(error);
+    }
+
+};
+
+main()
+    .then(() => console.log('Finished'))
+    .catch(() => console.error('Failed!'));
+
+
+
+<p *ngIf="(observable$ | async) > 5">{{ observable$ | async }}</p>
+
+ngOnInit() {
+	setInterval(() => {
+		this.observable++
+	}, 1000);
+}
+
+    */

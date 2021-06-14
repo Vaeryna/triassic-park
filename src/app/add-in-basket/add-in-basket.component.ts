@@ -9,6 +9,7 @@ import {
   FormGroup,
   ValidatorFn,
   AbstractControl,
+  NgForm,
 } from '@angular/forms';
 
 import { Produit } from '../data/produit';
@@ -16,6 +17,7 @@ import { Client } from '../data/panier';
 import { AuthService } from '../auth.service';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 import firebase from 'firebase/app';
+import { formatCurrency } from '@angular/common';
 
 @Component({
   selector: 'app-add-in-basket',
@@ -27,7 +29,8 @@ export class AddInBasketComponent implements OnInit {
   prod!: Produit;
   uid!: string;
   client!: Client[];
-  clientID!: string;
+  clientele!: Client;
+  keyClient!: string;
   mail!: string;
 
   constructor(
@@ -40,52 +43,15 @@ export class AddInBasketComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    const id = this.route.snapshot.paramMap.get('name');
+    if (id)
+      this.pS.getOneProduit(id).subscribe((produit) => {
+        this.prod = produit;
+        this.produitForm.patchValue(produit);
+      });
   }
 
   initForm() {
-    const id = this.route.snapshot.paramMap.get('name');
-
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        this.uid = user.uid;
-        console.log('user co: ', this.uid);
-        this.pS.getClient('uid', this.uid).subscribe((a) => {
-          console.log('uid ok', a);
-          this.client = a;
-
-          console.log('thisclient firebaseAuth', this.client);
-
-          if (id)
-            this.pS.getOneProduit(id).subscribe((produit) => {
-              this.prod = produit;
-              this.produitForm.patchValue(produit);
-            });
-
-          this.pS.getClient('uid', this.uid).subscribe((client) => {
-            this.client = client;
-            console.log('client getClient: ', this.client);
-
-            this.pS.getClientId(this.mail).subscribe((id) => {
-              console.log('mail: ', this.mail, 'id', id);
-              this.clientID = id;
-              this.produitForm.patchValue(this.clientID);
-            });
-          });
-          console.log('firebaseAuth', this.clientID);
-        });
-
-        // ...
-      } else {
-        // User is signed out
-        // ...
-        this.uid = '';
-        console.log('no user connected', "'", this.uid, "'");
-      }
-    });
-
-    console.log('initForm', this.clientID);
     this.produitForm = this.fB.group({
       name: new FormControl(
         '',
@@ -93,7 +59,6 @@ export class AddInBasketComponent implements OnInit {
       ),
       quantite: '',
       prix_HT: new FormControl('', Validators.required),
-      keyClient: new FormControl('', Validators.required),
     });
   }
 
@@ -108,15 +73,52 @@ export class AddInBasketComponent implements OnInit {
     return this.produitForm.get('prix_HT');
   }
 
-  get keyClient() {
-    return this.produitForm.get('keyClient');
-  }
-
   onSubmit() {
     console.log('dinoFormValue', this.produitForm.value);
     const produit = this.produitForm.value;
     this.pS.addProduit(produit).subscribe(() => {
       this.router.navigate(['/catalogue']);
     });
+  }
+
+  fonction() {
+    /*  firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+
+        this.uid = user.uid;
+        console.log('user co: ', this.uid);
+        this.pS.getClient('uid', this.uid).subscribe((a) => {
+          console.log('uid ok', a);
+          this.client = a;
+
+          console.log('thisclient firebaseAuth', this.client);
+
+
+
+          this.pS.getClient('uid', this.uid).subscribe((client) => {
+            this.client = client;
+
+            console.log('client getClient: ', this.client);
+            this.mail = 'p.gaulois@mail.uk';
+
+            this.pS.getClientId(this.mail).subscribe((id) => {
+              console.log('mail: ', this.mail, 'id', id);
+              this.keyClient = id;
+              //    this.produitForm.patchValue(this.keyClient);
+              console.log('keyClient', this.keyClient);
+            });
+          });
+        });
+        console.log('firebaseAuth', this.client);
+
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        this.uid = '';
+        console.log('no user connected', "'", this.uid, "'");
+      }
+    });
+  } */
   }
 }

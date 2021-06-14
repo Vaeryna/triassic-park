@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { GuardService } from '../guard.service';
+
 import { ProduitService } from '../produit.service';
 
 import firebase from 'firebase/app';
