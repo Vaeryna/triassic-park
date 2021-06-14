@@ -15,20 +15,22 @@ export class PanierComponent implements OnInit {
   totalPrice: number = 0;
   produit!: Produit[];
   price!: number;
+  mail = sessionStorage.getItem('mail');
 
   constructor(private pS: ProduitService) {}
 
   ngOnInit(): void {
-    this.pS.getPanier().subscribe((a) => {
-      this.panier = a;
-      this.panier.forEach((element) => {
-        this.pS.getProduitPrice(element.name).subscribe(() => {
-          (this.price = element.prix_HT * element.quantite),
-            (this.totalPrice = this.totalPrice + this.price);
+    if (this.mail)
+      this.pS.getPanierClient(this.mail).subscribe((a) => {
+        this.panier = a;
+        this.panier.forEach((element) => {
+          this.pS.getProduitPrice(element.name).subscribe(() => {
+            (this.price = element.prix_HT * element.quantite),
+              (this.totalPrice = this.totalPrice + this.price);
+          });
+          this.pS.addPanierPrice(this.totalPrice).subscribe();
         });
-        this.pS.addPanierPrice(this.totalPrice).subscribe();
       });
-    });
 
     //  this.pS.getTotalPricePanier().subscribe((a) => (this.totalPrice = a));
   }

@@ -9,9 +9,7 @@
   <div>
     Contenu du panier:
     <div *ngFor="let article of panier">
-      <li >
-        {{ article.name }} {{article.prix_HT}}€
-      </li>
+      <li>{{ article.quantite }} {{ article.name }} {{ article.prix_HT }}€</li>
     </div>
   </div>
 </div>
