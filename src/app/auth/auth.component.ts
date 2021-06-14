@@ -45,6 +45,7 @@ export class AuthComponent implements OnInit {
         // Signed in
         let user = userCredential.user;
         console.log('user', user);
+        sessionStorage.setItem('mail', mail );
         this.route.navigate([`/dashboard/${mail}`]);
       })
       .catch((error) => {

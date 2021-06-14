@@ -26,10 +26,7 @@ import firebase from 'firebase/app';
 export class AddInBasketComponent implements OnInit {
   produitForm!: FormGroup;
   prod!: Produit;
-  uid!: string;
-  client!: Client[];
   keyClient!: string;
-  mail!: string;
 
   constructor(
     private pS: ProduitService,
@@ -40,18 +37,30 @@ export class AddInBasketComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initForm();
     const id = this.route.snapshot.paramMap.get('name');
+    if (id)
+      this.pS.getOneProduit(id).subscribe((produit) => {
+        this.prod = produit;
+        this.produitForm.patchValue(produit);
+      });
+
+    this.initForm();
   }
+
   initForm() {
-    this.produitForm = this.fB.group({
-      name: new FormControl(
-        '',
-        Validators.required // pour définir dans le controle un champ requis
-      ),
-      quantite: '',
-      prix_HT: new FormControl('', Validators.required),
-      keyClient: new FormControl(this.keyClient, Validators.required),
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.keyClient = user.uid;
+      }
+      this.produitForm = this.fB.group({
+        name: new FormControl(
+          '',
+          Validators.required // pour définir dans le controle un champ requis
+        ),
+        quantite: '',
+        prix_HT: new FormControl('', Validators.required),
+        keyClient: new FormControl(this.keyClient, Validators.required),
+      });
     });
   }
 
@@ -65,9 +74,6 @@ export class AddInBasketComponent implements OnInit {
   get prix_u() {
     return this.produitForm.get('prix_HT');
   }
-  /*  get keyClient() {
-    return this.produitForm.get('keyClient');
-  } */
 
   onSubmit() {
     console.log('dinoFormValue', this.produitForm.value);
@@ -75,46 +81,5 @@ export class AddInBasketComponent implements OnInit {
     this.pS.addProduit(produit).subscribe(() => {
       this.router.navigate(['/catalogue']);
     });
-  }
-
-  fonction() {
-    /*  firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-
-        this.uid = user.uid;
-        console.log('user co: ', this.uid);
-        this.pS.getClient('uid', this.uid).subscribe((a) => {
-          console.log('uid ok', a);
-          this.client = a;
-
-          console.log('thisclient firebaseAuth', this.client);
-
-
-
-          this.pS.getClient('uid', this.uid).subscribe((client) => {
-            this.client = client;
-
-            console.log('client getClient: ', this.client);
-            this.mail = 'p.gaulois@mail.uk';
-
-            this.pS.getClientId(this.mail).subscribe((id) => {
-              console.log('mail: ', this.mail, 'id', id);
-              this.keyClient = id;
-              //    this.produitForm.patchValue(this.keyClient);
-              console.log('keyClient', this.keyClient);
-            });
-          });
-        });
-        console.log('firebaseAuth', this.client);
-
-        // ...
-      } else {
-        // User is signed out
-        // ...
-        this.uid = '';
-        console.log('no user connected', "'", this.uid, "'");
-      }
-    });
-  } */
   }
 }

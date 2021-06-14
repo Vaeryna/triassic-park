@@ -8,6 +8,7 @@ import firebase from 'firebase/app';
 // These imports load individual services into the firebase namespace.
 import 'firebase/auth';
 import { AuthService } from './auth.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
   total!: Panier;
   client!: Client[];
   uid!: string;
+  mail = sessionStorage.getItem('mail');
 
   totalPrice: number = 0;
   price!: number;
@@ -45,17 +47,13 @@ export class AppComponent implements OnInit {
         });
       });
     });
+
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         this.uid = user.uid;
         console.log('user co: ', this.uid);
-        this.pS.getClient('uid', this.uid).subscribe((a) => {
-  //        console.log('uid ok', a);
-          this.client = a;
-
-        });
 
         // ...
       } else {
@@ -65,6 +63,8 @@ export class AppComponent implements OnInit {
         console.log('no user connected', "'", this.uid, "'");
       }
     });
+
+    console.log('mail app: ', this.mail);
   }
 
   logOut() {

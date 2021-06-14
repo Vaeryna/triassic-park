@@ -2,13 +2,27 @@
   <a routerLink><h1>Triassic Shop</h1> </a>
 
   <div *ngIf="uid">
-    <button type="button" (click)="logOut()" class="btn btn-secondary">Se deconnecter</button>
+    <button type="button" (click)="logOut()" class="btn btn-secondary">
+      Se deconnecter
+    </button>
+    <button
+      type="button"
+      routerLink="/dashboard/{{this.mail}}"
+      class="btn btn-secondary"
+    >
+      Mon Compte
+    </button>
   </div>
-  
+
   <div *ngIf="uid == ''">
-    <a routerLink="/auth"> Se connecter </a>
+    <button type="button" routerLink="/auth" class="btn btn-secondary">
+      Connexion
+    </button>
     <!--  <div id="firebaseui-auth-container"></div> -->
-    <a routerLink="/newLog"> S'inscrire </a>
+    <button type="button" routerLink="/newLog" class="btn btn-secondary">
+      S'inscrire
+    </button>
+
   </div>
 </header>
 

@@ -78,6 +78,17 @@ export class ProduitService {
       );
   }
 
+  getClientMail(uid: string): Observable<Client> {
+    return this.http
+      .get<Client>(`${this.clientUrl}/.json?orderBy="uid"&equalTo="${uid}"`)
+      .pipe(
+        map((a) => {
+          console.log("get Fonction", a)
+          return a;
+        })
+      );
+  }
+
   //######################## Gestion  PRODUITS ############################
   getProduit(): Observable<Produit[]> {
     return this.http.get<Produit[]>(`${this.produitUrl}/.json`).pipe(
@@ -179,22 +190,3 @@ export class ProduitService {
 }
 
 // https://triassic-park-default-rtdb.firebaseio.com/Panier/.json?orderBy=%22name%22&equalTo=%22Jeans%20bleu%20clair%22
-
-/* getProductRayon(rayon: string): Observable<Produit[]> {
-  console.log('rayon: ', rayon);
-  return this.http
-    .get<Produit[]>(`${this.produitUrl}/.json`)
-    .pipe(
-      map((produit) =>
-        Object.values(produit).filter((produit) => produit.rayon == rayon)
-      )
-    );
-}
-
-
-this.books = this.db.list('/books', {
-            query: {
-                orderByChild: 'title',
-                equalTo: 'My book #1',
-            }
- */
