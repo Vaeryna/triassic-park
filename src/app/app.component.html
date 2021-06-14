@@ -7,7 +7,7 @@
     </button>
     <button
       type="button"
-      routerLink="/dashboard/{{this.mail}}"
+      routerLink="/dashboard/{{ this.mail }}"
       class="btn btn-secondary"
     >
       Mon Compte
@@ -22,7 +22,6 @@
     <button type="button" routerLink="/newLog" class="btn btn-secondary">
       S'inscrire
     </button>
-
   </div>
 </header>
 
@@ -45,14 +44,7 @@
   <aside>
     <a routerLink="/panier"> <h2>Panier</h2> </a>
 
-    <div
-      *ngFor="let OnePanier of panier"
-      onmouseover="window.location.reload()"
-    >
-      <p>{{ OnePanier.quantite }} {{ OnePanier.name }}</p>
-    </div>
+    <app-panier  onmouseover="window.location.reload()"> </app-panier>
 
-    <p>Total :</p>
-    <p>{{ totalPrice }}€</p>
   </aside>
 </body>

@@ -21,6 +21,24 @@ export class PanierComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.mail)
+      /*  this.pS.getClientId(this.mail).subscribe((id) => {
+          this.clientID = id; */
+      this.pS.getPanierClient(this.mail).subscribe((panier) => {
+        console.log('paneir', panier), (this.panier = Object.values(panier));
+        console.log('undefinefd', this.panier);
+        this.panier.forEach((element) => {
+          console.log('element 0', element);
+          this.pS.getProduitPrice(element.name).subscribe(() => {
+            (this.price = element.prix_HT * element.quantite),
+              (this.totalPrice = this.totalPrice + this.price);
+
+          });
+        });
+      });
+  }
+}
+
+/*     if (this.mail)
       this.pS.getPanierClient(this.mail).subscribe((a) => {
         this.panier = a;
         this.panier.forEach((element) => {
@@ -31,9 +49,7 @@ export class PanierComponent implements OnInit {
           this.pS.addPanierPrice(this.totalPrice).subscribe();
         });
       });
-
-    //  this.pS.getTotalPricePanier().subscribe((a) => (this.totalPrice = a));
-  }
-}
+ */
+//  this.pS.getTotalPricePanier().subscribe((a) => (this.totalPrice = a));
 
 //e: questions$.do(questions => {questions.forEach(q => question here)})
