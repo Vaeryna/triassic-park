@@ -27,9 +27,7 @@ export class CompteClientComponent implements OnInit {
 
   constructor(
     private fB: FormBuilder,
-    private pS: ProduitService,
     private route: Router,
-    private router: ActivatedRoute,
     private auS: AuthService
   ) {}
 

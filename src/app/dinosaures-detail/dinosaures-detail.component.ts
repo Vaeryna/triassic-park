@@ -76,36 +76,3 @@ export class DinosauresDetailComponent implements OnInit {
     console.log('onDelete', '"', name, '"');
   }
 }
-
-/*
-const main = async () => {
-
-    try {
-
-        const city = await getCurrentCity();
-        const weatherInfo = await getWeatherInfo(city);
-
-        console.log(`${city}: ${weatherInfo.temperature}`);
-
-    }
-    catch (error) {
-        console.error(error);
-    }
-
-};
-
-main()
-    .then(() => console.log('Finished'))
-    .catch(() => console.error('Failed!'));
-
-
-
-<p *ngIf="(observable$ | async) > 5">{{ observable$ | async }}</p>
-
-ngOnInit() {
-	setInterval(() => {
-		this.observable++
-	}, 1000);
-}
-
-    */

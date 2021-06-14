@@ -17,7 +17,6 @@ import { Client } from '../data/panier';
 import { AuthService } from '../auth.service';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 import firebase from 'firebase/app';
-import { formatCurrency } from '@angular/common';
 
 @Component({
   selector: 'app-add-in-basket',
@@ -29,7 +28,6 @@ export class AddInBasketComponent implements OnInit {
   prod!: Produit;
   uid!: string;
   client!: Client[];
-  clientele!: Client;
   keyClient!: string;
   mail!: string;
 
@@ -44,13 +42,7 @@ export class AddInBasketComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     const id = this.route.snapshot.paramMap.get('name');
-    if (id)
-      this.pS.getOneProduit(id).subscribe((produit) => {
-        this.prod = produit;
-        this.produitForm.patchValue(produit);
-      });
   }
-
   initForm() {
     this.produitForm = this.fB.group({
       name: new FormControl(
@@ -59,6 +51,7 @@ export class AddInBasketComponent implements OnInit {
       ),
       quantite: '',
       prix_HT: new FormControl('', Validators.required),
+      keyClient: new FormControl(this.keyClient, Validators.required),
     });
   }
 
@@ -72,6 +65,9 @@ export class AddInBasketComponent implements OnInit {
   get prix_u() {
     return this.produitForm.get('prix_HT');
   }
+  /*  get keyClient() {
+    return this.produitForm.get('keyClient');
+  } */
 
   onSubmit() {
     console.log('dinoFormValue', this.produitForm.value);
