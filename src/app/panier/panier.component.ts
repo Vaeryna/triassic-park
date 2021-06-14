@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Panier, Total } from '../data/panier';
 import { ProduitService } from '../produit.service';
 import { Produit } from '../data/produit';
-import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
-import { elementAt } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-panier',
@@ -15,23 +15,25 @@ export class PanierComponent implements OnInit {
   totalPrice: number = 0;
   produit!: Produit[];
   price!: number;
+  mail = sessionStorage.getItem('mail');
+  title: string = ""
 
-  constructor(private pS: ProduitService) {}
+  constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.pS.getPanier().subscribe((a) => {
-      this.panier = a;
-      this.panier.forEach((element) => {
-        this.pS.getProduitPrice(element.name).subscribe(() => {
-          (this.price = element.prix_HT * element.quantite),
-            (this.totalPrice = this.totalPrice + this.price);
-        });
-        this.pS.addPanierPrice(this.totalPrice).subscribe();
-      });
-    });
 
-    //  this.pS.getTotalPricePanier().subscribe((a) => (this.totalPrice = a));
+    
+
+    if (this.mail)
+      this.pS.getPanierClient(this.mail).subscribe((panier) => {
+        this.panier = Object.values(panier);
+
+        this.panier.forEach((element) => {
+          this.pS.getProduitPrice(element.name).subscribe(() => {
+            (this.price = element.prix_HT * element.quantite),
+              (this.totalPrice = this.totalPrice + this.price);
+          });
+        });
+      });
   }
 }
-
-//e: questions$.do(questions => {questions.forEach(q => question here)})

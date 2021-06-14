@@ -24,6 +24,7 @@ import { GuardService } from './guard.service';
 import { AuthService } from './auth.service';
 import { IntercepteurInterceptor } from './intercepteur.interceptor';
 import { LienBddAuthComponent } from './lien-bdd-auth/lien-bdd-auth.component';
+import { AdminCRUDComponent } from './admin-crud/admin-crud.component';
 
 firebase.initializeApp(env.firebaseConfig);
 
@@ -41,6 +42,7 @@ firebase.initializeApp(env.firebaseConfig);
     AuthComponent,
     DashboardComponent,
     LienBddAuthComponent,
+    AdminCRUDComponent,
   ],
   imports: [
     BrowserModule,

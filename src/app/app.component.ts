@@ -8,6 +8,7 @@ import firebase from 'firebase/app';
 // These imports load individual services into the firebase namespace.
 import 'firebase/auth';
 import { AuthService } from './auth.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
   total!: Panier;
   client!: Client[];
   uid!: string;
+  mail = sessionStorage.getItem('mail');
 
   totalPrice: number = 0;
   price!: number;
@@ -31,10 +33,6 @@ export class AppComponent implements OnInit {
       this.rayon = a;
     });
 
-    /*    this.pS.getClient().subscribe((a) => {
-      this.client = a;
-    }); */
-
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
     });
@@ -42,27 +40,31 @@ export class AppComponent implements OnInit {
     this.pS.getPanier().subscribe((a) => {
       this.panier = a;
 
-      this.panier.forEach((element) => {
-        this.pS.getProduitPrice(element.name).subscribe(() => {
-          (this.price = element.prix_HT * element.quantite),
-            (this.totalPrice = this.totalPrice + this.price);
+      /*    this.panier.forEach((element) => {
+          this.pS.getProduitPrice(element.name).subscribe(() => {
+            (this.price = element.prix_HT * element.quantite),
+              (this.totalPrice = this.totalPrice + this.price);
+          });
         });
       });
-    });
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        this.uid = user.uid;
-        console.log('user co: ', this.uid);
+*/
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          this.uid = user.uid;
+          console.log('user co: ', this.uid);
 
-        // ...
-      } else {
-        // User is signed out
-        // ...
-        this.uid = '';
-        console.log('no user connected', "'", this.uid, "'");
-      }
+          // ...
+        } else {
+          // User is signed out
+          // ...
+          this.uid = '';
+          console.log('no user connected', "'", this.uid, "'");
+        }
+      });
+
+      console.log('mail app: ', this.mail);
     });
   }
 

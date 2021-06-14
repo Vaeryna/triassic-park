@@ -1,18 +1,16 @@
 <div style="align-self: center; margin: 2em">
-<!--   <button routerLink="/add-in-basket/produit/{{produit.id}}">Ajouter l'article au panier</button>
+  <!--   <button routerLink="/add-in-basket/produit/{{produit.id}}">Ajouter l'article au panier</button>
  -->
   <button
-  data-bs-toggle="modal"
-  data-bs-target="#modalDelete"
-  class="btn btn-danger"
-  (click)="onAdd(produit.name, quantite)"
-  routerLink="/add-in-basket/produit/{{produit.id}}"
->
-  Ajouter {{produit.name}} au panier
-</button>
+    data-bs-toggle="modal"
+    data-bs-target="#modalDelete"
+    class="btn btn-danger"
+    (click)="onAdd(produit.name, quantite)"
+    routerLink="/add-in-basket/produit/{{ produit.id }}"
+  >
+    Ajouter {{ produit.name }} au panier
+  </button>
 </div>
-
-
 
 <div *ngIf="produit.id">
   <div>

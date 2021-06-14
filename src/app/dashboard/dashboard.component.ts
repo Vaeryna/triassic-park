@@ -11,33 +11,30 @@ import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
   client!: Client[];
-  mail!: string;
+  mail = sessionStorage.getItem('mail');
   panier!: Panier[];
   clientID!: string;
-  article!: Panier[]
+  article!: Panier[];
+  price!: number;
+  totalPrice: number = 0;
 
   constructor(private pS: ProduitService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const mail = this.route.snapshot.paramMap.get('mail');
-
-    if (mail) {
-      this.pS.getClient(mail).subscribe((client) => {
+    if (this.mail)
+      this.pS.getClient('mail', this.mail).subscribe((client) => {
         this.client = client;
-
-       console.log('this client ', this.client);
-
-        this.pS.getClientId(mail).subscribe((id) => {
-          this.clientID = id;
-
-          console.log('clientID', this.clientID);
-
-          this.pS.getPanierClient(this.clientID).subscribe((panier) => {
+        if (this.mail)
+          this.pS.getPanierClient(this.mail).subscribe((panier) => {
             console.log('paneir', panier),
               (this.panier = Object.values(panier));
+            this.panier.forEach((element) => {
+              this.pS.getProduitPrice(element.name).subscribe(() => {
+                (this.price = element.prix_HT * element.quantite),
+                  (this.totalPrice = this.totalPrice + this.price);
+              });
+            });
           });
-        });
       });
-    }
   }
 }

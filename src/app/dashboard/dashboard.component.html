@@ -9,9 +9,12 @@
   <div>
     Contenu du panier:
     <div *ngFor="let article of panier">
-      <li >
-        {{ article.name }} {{article.prix_HT}}€
-      </li>
+      <li>{{ article.quantite }} {{ article.name }} {{ article.prix_HT }}€</li>
     </div>
+    <p>Total : {{ totalPrice }}€</p>
+  </div>
+  <div>
+    <button class="btn btn-info" routerLink="">Commander</button>
+    <button class="btn btn-info" routerLink="">Vider le panier</button>
   </div>
 </div>

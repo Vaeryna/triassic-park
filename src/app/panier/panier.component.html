@@ -1,4 +1,4 @@
-<h1>Votre panier</h1>
+<h1> Votre Panier</h1>
 <table *ngFor="let OnePanier of panier" class="table table-striped table-dark">
   <tr>
     <td>
@@ -7,13 +7,11 @@
     <td>
       {{ OnePanier.name }}
     </td>
-    <td>
-      {{ OnePanier.prix_HT }} €
-    </td>
+    <td>{{ OnePanier.prix_HT }} €</td>
   </tr>
 </table>
 <div>
   <p style="margin-top: 2em">Total du panier :{{ totalPrice }} €</p>
 
-  <a routerLink> Retour à l'accueil </a>
+  <!-- <button class="btn btn-info" routerLink>Retour à l'accueil</button> -->
 </div>

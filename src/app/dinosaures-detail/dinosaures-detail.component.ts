@@ -56,7 +56,6 @@ export class DinosauresDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-
     if (id)
       this.pS.getOneProduit(id).subscribe((prod) => {
         this.produit = prod;
@@ -75,11 +74,5 @@ export class DinosauresDetailComponent implements OnInit {
     this.idAdd = name;
     this.quantiteAdd = quantite;
     console.log('onDelete', '"', name, '"');
-
-
   }
-
-
-
-  
 }

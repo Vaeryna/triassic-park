@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { GuardService } from '../guard.service';
+
 import { ProduitService } from '../produit.service';
 
 import firebase from 'firebase/app';
@@ -45,17 +45,13 @@ export class AuthComponent implements OnInit {
         // Signed in
         let user = userCredential.user;
         console.log('user', user);
+        sessionStorage.setItem('mail', mail );
         this.route.navigate([`/dashboard/${mail}`]);
       })
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
-        this.route.navigate([`/newLog`])
+        this.route.navigate([`/newLog`]);
       });
-
-    /*  this.pS.getClient(mail).subscribe(() => {
-      console.log('mail_getClient', mail, 'psw_getClient ', password);
-      this.route.navigate([`/dashboard/${mail}`]);
-    }); */
   }
 }

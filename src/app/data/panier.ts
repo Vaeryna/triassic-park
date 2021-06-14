@@ -16,4 +16,5 @@ export interface Client {
   nom: string;
   prenom: string;
   ville: string;
+  uid: string;
 }

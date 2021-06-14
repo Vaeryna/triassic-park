@@ -9,9 +9,14 @@ import {
   FormGroup,
   ValidatorFn,
   AbstractControl,
+  NgForm,
 } from '@angular/forms';
 
 import { Produit } from '../data/produit';
+import { Client } from '../data/panier';
+import { AuthService } from '../auth.service';
+import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
+import firebase from 'firebase/app';
 
 @Component({
   selector: 'app-add-in-basket',
@@ -21,32 +26,41 @@ import { Produit } from '../data/produit';
 export class AddInBasketComponent implements OnInit {
   produitForm!: FormGroup;
   prod!: Produit;
+  keyClient!: string;
 
   constructor(
     private pS: ProduitService,
     private fB: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private auS: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.initForm();
     const id = this.route.snapshot.paramMap.get('name');
     if (id)
       this.pS.getOneProduit(id).subscribe((produit) => {
         this.prod = produit;
         this.produitForm.patchValue(produit);
       });
+
+    this.initForm();
   }
 
   initForm() {
-    this.produitForm = this.fB.group({
-      name: new FormControl(
-        '',
-        Validators.required // pour définir dans le controle un champ requis
-      ),
-      quantite: '',
-      prix_HT: new FormControl('', Validators.required),
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.keyClient = user.uid;
+      }
+      this.produitForm = this.fB.group({
+        name: new FormControl(
+          '',
+          Validators.required // pour définir dans le controle un champ requis
+        ),
+        quantite: '',
+        prix_HT: new FormControl('', Validators.required),
+        keyClient: new FormControl(this.keyClient, Validators.required),
+      });
     });
   }
 
