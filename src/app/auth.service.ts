@@ -79,19 +79,11 @@ export class AuthService {
     return firebase.auth();
   }
 
-  //################# SANS FIREBASE  ##################
 
-  
 
-  //méthode verification client existe dans base
-  authClient(mail: string, password: string): Observable<any> {
-    console.log('mail', mail, 'password', password);
 
-    return this.http
-      .get<Client[]>(`${this.clientUrl}/.json?orderBy="mail"&equalTo="${mail}"`)
-      .pipe(
-        map((client) => console.log('authclient value', Object.values(client)))
-      );
-  }
 }
+
+
+
 

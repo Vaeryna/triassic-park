@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   client!: Client[];
   uid!: string;
   mail = sessionStorage.getItem('mail');
+  currentUser!: string;
 
   totalPrice: number = 0;
   price!: number;
@@ -49,11 +50,18 @@ export class AppComponent implements OnInit {
       });
 */
       firebase.auth().onAuthStateChanged((user) => {
+        const currentMail = firebase.auth().currentUser; // pour récup l'objet
+
         if (user) {
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
           this.uid = user.uid;
           console.log('user co: ', this.uid);
+          if (currentMail) {
+            sessionStorage.setItem('mail', currentMail?.email!);
+            this.mail = currentMail?.email;
+            console.log('mail currentmail', currentMail?.email!);
+          }
 
           // ...
         } else {
