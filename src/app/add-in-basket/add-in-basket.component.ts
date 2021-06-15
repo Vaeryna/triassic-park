@@ -50,7 +50,7 @@ export class AddInBasketComponent implements OnInit {
   initForm() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.keyClient = user.uid;
+        this.keyClient = user.email!;
       }
       this.produitForm = this.fB.group({
         name: new FormControl(
