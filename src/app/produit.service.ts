@@ -25,6 +25,7 @@ export class ProduitService {
     'https://triassic-park-default-rtdb.firebaseio.com/Produit';
   private panierUrl =
     'https://triassic-park-default-rtdb.firebaseio.com/Panier';
+
   private rayonUrl = 'https://triassic-park-default-rtdb.firebaseio.com/Rayon';
   private clientUrl =
     'https://triassic-park-default-rtdb.firebaseio.com/Client';
@@ -158,11 +159,37 @@ export class ProduitService {
       );
   }
 
+  filterPanier(articleID: string, name: string): Observable<any> {
+    return this.http
+      .get<Panier>(
+        `${this.panierUrl}/.json?&orderBy="id"&equalTo="${articleID}"`
+      )
+      .pipe(
+        map((a) => Object.values(a).find((client) => client.keyClient == name))
+      );
+  }
+
   //######################## ADD ############################
 
   addProduit(produitName: Produit): Observable<any> {
     console.log('produit addDino: ', produitName.name);
     return this.http.post<Panier>(`${this.panierUrl}/.json`, produitName);
+  }
+
+  addProduitQte(mail: string, produit: Panier): Observable<any> {
+    return this.http
+      .get<Panier[]>(
+        `${this.panierUrl}/.json?orderBy="keyClient"&equalTo="${mail}"`
+      )
+      .pipe(
+        switchMap((a) => {
+          const clef = Object.keys(a);
+          console.log('key', clef);
+          console.log('panieeer', produit);
+
+          return this.http.put<any>(`${this.panierUrl}/${clef}/.json`, produit);
+        })
+      );
   }
 
   addClient(client: Client): Observable<any> {
@@ -175,15 +202,6 @@ export class ProduitService {
       map((a) => {
         console.log('getTotalPricePanier: ', a);
         return a;
-      })
-    );
-  }
-
-  addPanierPrice(price: number): Observable<any> {
-    console.log('add panier price: ', price);
-    return this.http.post<number>(`${this.globalUrl}/.json`, price).pipe(
-      switchMap(() => {
-        return this.http.put<any>(`${this.globalUrl}/Total/.json`, price);
       })
     );
   }
