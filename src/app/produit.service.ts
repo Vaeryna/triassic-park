@@ -184,9 +184,6 @@ export class ProduitService {
       .pipe(
         switchMap((a) => {
           const clef = Object.keys(a);
-          console.log('key', clef);
-          console.log('panieeer', produit);
-
           return this.http.put<any>(`${this.panierUrl}/${clef}/.json`, produit);
         })
       );

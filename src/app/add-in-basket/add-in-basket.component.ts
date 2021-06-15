@@ -63,29 +63,18 @@ export class AddInBasketComponent implements OnInit {
         if (panier) {
           this.panier = panier;
           this.exQuantite = panier.quantite;
-          console.log('exxxx', this.exQuantite);
         }
-
-        console.log('panier piano', this.panier);
       });
 
       this.produitForm = this.fB.group({
         id: new FormControl('', Validators.required),
-        name: new FormControl(
-          '',
-          Validators.required // pour définir dans le controle un champ requis
-        ),
+        name: new FormControl('', Validators.required),
         quantite: new FormControl('', Validators.required),
         prix_HT: new FormControl('', Validators.required),
         keyClient: new FormControl(this.keyClient, Validators.required),
       });
     });
   }
-
-  // get quantite() {
-
-  //  return this.produitForm.get('quantite');
-  // }
 
   get produit() {
     return this.produitForm.get('produit');
@@ -99,31 +88,19 @@ export class AddInBasketComponent implements OnInit {
     const produit = this.produitForm.value;
 
     this.newQuantite = produit.quantite;
-    console.log(
-      'newQ',
-      produit.quantite,
-      'oldQ',
-      this.exQuantite,
-      'sum',
-      this.newQuantite + this.exQuantite
-    );
 
     if (this.exQuantite == undefined) {
       this.pS.addProduit(produit).subscribe(() => {
-        //    this.router.navigate(['/catalogue']);
-        console.log('addProduct ok', produit);
+        this.router.navigate(['/catalogue']);
       });
     } else {
-      console.log('boucle else');
-
       const quantite = { quantite: this.newQuantite + this.exQuantite };
 
       this.produitForm.patchValue(quantite);
       const produit2 = this.produitForm.value;
       this.pS.addProduitQte(this.keyClient, produit2).subscribe(() => {
-        console.log('produit else', produit2);
+        this.router.navigate(['/catalogue']);
       });
     }
   }
-  //  window.location.reload();
 }
