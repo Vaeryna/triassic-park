@@ -83,7 +83,7 @@ export class ProduitService {
       .get<Client>(`${this.clientUrl}/.json?orderBy="uid"&equalTo="${uid}"`)
       .pipe(
         map((a) => {
-          console.log("get Fonction", a)
+          console.log('get Fonction', a);
           return a;
         })
       );

@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   price!: number;
   totalPrice: number = 0;
 
-  constructor(private pS: ProduitService, private route: ActivatedRoute) {}
+  constructor(private pS: ProduitService) {}
 
   ngOnInit(): void {
     if (this.mail)
