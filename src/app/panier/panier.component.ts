@@ -22,7 +22,7 @@ export class PanierComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
+
 
     if (this.mail)
       this.pS.getPanierClient(this.mail).subscribe((panier) => {
