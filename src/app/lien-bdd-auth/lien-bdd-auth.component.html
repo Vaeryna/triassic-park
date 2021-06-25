@@ -2,20 +2,20 @@
 
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="nom"> Nom :</label>
+    <label for="lastname"> Nom :</label>
     <input
       type="text"
-      formControlName="nom"
+      formControlName="lastname"
       name="nom"
       ngModel
       required
       class="input-group-text"
     />
 
-    <label for="prenom"> Prénom :</label>
+    <label for="firstname"> Prénom :</label>
     <input
       type="text"
-      formControlName="prenom"
+      formControlName="firstname"
       name="prenom"
       ngModel
       required
@@ -24,18 +24,18 @@
   </div>
 
   <div>
-    <label for="adresse"> Numero et rue de l'adresse :</label>
+    <label for="address"> Numero et rue de l'adresse :</label>
     <input
       type="text"
-      formControlName="adresse"
+      formControlName="address"
       name="nom"
       ngModel
       required
       class="input-group-text"
     />
-    <label for="ville"> Ville :</label>
+    <label for="city"> Ville :</label>
     <input
-      formControlName="ville"
+      formControlName="city"
       name="ville"
       ngModel
       required

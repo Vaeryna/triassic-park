@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
               this.pS.getProduitPrice(element.name).subscribe(() => {
                 (this.price = element.prix_HT * element.quantite),
                   (this.totalPrice = this.totalPrice + this.price);
+               
               });
             });
           });

@@ -32,12 +32,6 @@ export class AuthComponent implements OnInit {
     const mail = form.value.mail;
     const password = form.value.password;
 
-    /*  this.auS
-      .authClient(form.value.mail, form.value.password)
-      .toPromise()
-      .then((res) => this.route.navigate([`/dashboard/${mail}`]))
-      .catch((err) => console.log('err', err)); */
-
     firebase
       .auth()
       .signInWithEmailAndPassword(mail, password)
@@ -45,8 +39,12 @@ export class AuthComponent implements OnInit {
         // Signed in
         let user = userCredential.user;
         console.log('user', user);
-        sessionStorage.setItem('mail', mail );
-        this.route.navigate([`/dashboard/${mail}`]);
+        sessionStorage.setItem('mail', mail);
+
+        if (mail == 'admin@mail.fr') this.route.navigate([`/lienBDD`]);
+        else {
+          this.route.navigate([`/dashboard/${mail}`]);
+        }
       })
       .catch((error) => {
         var errorCode = error.code;

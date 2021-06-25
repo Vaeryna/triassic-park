@@ -4,15 +4,16 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AddInBasketComponent } from './add-in-basket/add-in-basket.component';
 import { AuthComponent } from './auth/auth.component';
 import { CompteClientComponent } from './compte-client/compte-client.component';
+import { ConnexionBackComponent } from './connexion-back/connexion-back.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DinosauresDetailComponent } from './dinosaures-detail/dinosaures-detail.component';
 import { DinosauresComponent } from './dinosaures/dinosaures.component';
-import { GuardService } from './guard.service';
+import { InfosClientComponent } from './fonctions-admin/infos-client/infos-client.component';
+import { NewProduitComponent } from './fonctions-admin/new-produit/new-produit.component';
+
 import { LienBddAuthComponent } from './lien-bdd-auth/lien-bdd-auth.component';
 import { PanierComponent } from './panier/panier.component';
 import { TypeDinoComponent } from './type-dino/type-dino.component';
-
-
 
 const routes: Routes = [
   {
@@ -46,8 +47,20 @@ const routes: Routes = [
   },
   {
     path: 'lien-bdd-auth/:mail',
-    component: LienBddAuthComponent
-  }
+    component: LienBddAuthComponent,
+  },
+  {
+    path: 'lienBDD',
+    component: ConnexionBackComponent,
+  },
+  {
+    path: 'newProduit',
+    component: NewProduitComponent,
+  },
+  {
+    path: 'infosClient/:id',
+    component: InfosClientComponent,
+  },
 ];
 
 @NgModule({

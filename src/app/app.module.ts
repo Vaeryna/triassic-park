@@ -10,8 +10,8 @@ import { TypeDinoComponent } from './type-dino/type-dino.component';
 import { PanierComponent } from './panier/panier.component';
 
 import firebase from 'firebase';
-import * as firebaseui from 'firebaseui'
-import 'firebaseui/dist/firebaseui.css'
+import * as firebaseui from 'firebaseui';
+import 'firebaseui/dist/firebaseui.css';
 
 import { environment as env } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -25,9 +25,13 @@ import { AuthService } from './auth.service';
 import { IntercepteurInterceptor } from './intercepteur.interceptor';
 import { LienBddAuthComponent } from './lien-bdd-auth/lien-bdd-auth.component';
 import { AdminCRUDComponent } from './admin-crud/admin-crud.component';
+import { ConnexionBackComponent } from './connexion-back/connexion-back.component';
+import { NewProduitComponent } from './fonctions-admin/new-produit/new-produit.component';
+import { InfosClientComponent } from './fonctions-admin/infos-client/infos-client.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 firebase.initializeApp(env.firebaseConfig);
-
 
 @NgModule({
   declarations: [
@@ -43,6 +47,9 @@ firebase.initializeApp(env.firebaseConfig);
     DashboardComponent,
     LienBddAuthComponent,
     AdminCRUDComponent,
+    ConnexionBackComponent,
+    NewProduitComponent,
+    InfosClientComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +57,7 @@ firebase.initializeApp(env.firebaseConfig);
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule,
   ],
   providers: [
     AuthService,
