@@ -58,6 +58,14 @@ const routes: Routes = [
     component: NewProduitComponent,
   },
   {
+    path: 'newRayon',
+    component: NewProduitComponent,
+  },
+  {
+    path: 'newSousrayon',
+    component: NewProduitComponent,
+  },
+  {
     path: 'infosClient/:id',
     component: InfosClientComponent,
   },

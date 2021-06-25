@@ -12,7 +12,10 @@ import { ProduitBDDService } from '../produit-bdd.service';
   styleUrls: ['./connexion-back.component.scss'],
 })
 export class ConnexionBackComponent implements OnInit {
-  public isCollapsed = false;
+  public isCollapsedClient = true;
+  public isCollapsedProduct = true;
+  public isCollapsedRayon = true;
+  public isCollapsedSousRayon = true;
 
   constructor(private router: Router, private pB: ProduitBDDService) {}
   clients!: any;
@@ -23,6 +26,17 @@ export class ConnexionBackComponent implements OnInit {
     this.pB.getAllClientBDD().subscribe((client) => {
       this.clients = client;
       console.log('clients: ', this.clients);
+    });
+  }
+
+  onDeleteClient(id: number) {
+    this.pB.deleteClientBDD(id).subscribe();
+  }
+
+  onInfosClient(id: number) {
+    this.pB.getClientBDD(id).subscribe((a) => {
+      this.client = a;
+      console.log('client infos: ', this.client, 'client id ', id);
     });
   }
 

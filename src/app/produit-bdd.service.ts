@@ -13,12 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ProduitBDDService {
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
-  private globalUrl = '';
-  private produitUrl = '';
-  private panierUrl = '';
-  private rayonUrl = '';
-
   private clientUrl = '//localhost:8080/api/client';
+  private productUrl = '//localhost:8080/api/product';
 
   //################  GESTION CLIENT ##############
   getAllClientBDD(): Observable<any> {
@@ -48,5 +44,11 @@ export class ProduitBDDService {
   deleteClientBDD(id: number): Observable<any> {
     console.log('delete: ', id);
     return this.http.delete(`${this.clientUrl}/${id}`);
+  }
+
+  //############# GESTION PRODUIT ##########
+  addProductBDD(product: Produit): Observable<any> {
+    console.log('produit add', product);
+    return this.http.post(`${this.productUrl}`, product);
   }
 }
