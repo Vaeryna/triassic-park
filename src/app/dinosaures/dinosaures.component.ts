@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Produit } from '../data/produit';
-import { ProduitService } from '../produit.service';
+import { ProduitService } from '../../app/services/produit.service';
 
 @Component({
   selector: 'app-dinosaures',

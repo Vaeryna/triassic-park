@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProduitService } from '../../produit.service';
-import { AuthService } from '../../auth.service';
+import { ProduitService } from '../../../../app/services/produit.service';
+import { AuthService } from '../../../../app/services/auth.service';
 
 import {
   FormBuilder,
@@ -14,8 +14,8 @@ import {
   FormGroupDirective,
 } from '@angular/forms';
 
-import { Produit } from '../../data/produit';
-import { ProduitBDDService } from '../../produit-bdd.service';
+import { Produit } from '../../../data/produit';
+import { ProduitBDDService } from '../../../../app/services/produit-bdd.service';
 
 @Component({
   selector: 'app-new-produit',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Type } from '@angular/core';
-import { ProduitService } from '../produit.service';
+import { ProduitService } from '../../app/services/produit.service';
 
 import { Panier, Total } from '../data/panier';
 import { Rayon, Produit } from '../data/produit';
@@ -15,7 +15,7 @@ export class AccueilComponent implements OnInit {
   constructor(private pS: ProduitService) {}
 
   ngOnInit(): void {
-    
+
     this.pS.getProduit().subscribe((a) => (this.produit = a));
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProduitService } from 'src/app/produit.service';
+import { ProduitService } from '../../../services/produit.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Client } from '../../data/panier';
-import { ProduitBDDService } from 'src/app/produit-bdd.service';
+import { Client } from '../../../data/panier';
+import { ProduitBDDService } from '../../../services/produit-bdd.service';
 
 @Component({
   selector: 'app-infos-client',

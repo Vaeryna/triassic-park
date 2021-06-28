@@ -1,16 +1,16 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProduitService } from '../produit.service';
-import { Client } from '../data/panier';
+import { ProduitService } from '../../services/produit.service';
+import { Client } from '../../data/panier';
 import { Router } from '@angular/router';
-import { ProduitBDDService } from '../produit-bdd.service';
-import { Produit } from '../data/produit';
+import { ProduitBDDService } from '../../services/produit-bdd.service';
+import { Produit } from '../../data/produit';
 
 @Component({
-  selector: 'app-connexion-back',
-  templateUrl: './connexion-back.component.html',
-  styleUrls: ['./connexion-back.component.scss'],
+  selector: 'app-admin-page',
+  templateUrl: './admin-page.html',
+  styleUrls: ['./admin-page.scss'],
 })
 export class ConnexionBackComponent implements OnInit {
   public isCollapsedClient = true;

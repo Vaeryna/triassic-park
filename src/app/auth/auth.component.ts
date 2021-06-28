@@ -2,9 +2,9 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../app/services/auth.service';
 
-import { ProduitService } from '../produit.service';
+import { ProduitService } from '../../app/services/produit.service';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -41,7 +41,7 @@ export class AuthComponent implements OnInit {
         console.log('user', user);
         sessionStorage.setItem('mail', mail);
 
-        if (mail == 'admin@mail.fr') this.route.navigate([`/lienBDD`]);
+        if (mail == 'admin@mail.fr') this.route.navigate([`/admin`]);
         else {
           this.route.navigate([`/dashboard/${mail}`]);
         }

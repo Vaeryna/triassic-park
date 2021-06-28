@@ -64,15 +64,9 @@
 
     <tbody *ngFor="let client of clients">
       <tr>
-        <td>
-          {{ client.lastname }}
-        </td>
-        <td>
-          {{ client.firstname }}
-        </td>
-        <td>
-          {{ client.id }}
-        </td>
+        <td>{{ client.lastname }}</td>
+        <td>{{ client.firstname }}</td>
+        <td>{{ client.id }}</td>
         <td>
           <button
             type="button"
@@ -98,6 +92,9 @@
 
 <div id="produit" [ngbCollapse]="isCollapsedProduct">
   <h2>Produits</h2>
+  <button type="button" class="btn btn-secondary" routerLink="/newProduit">
+    Ajouter un produit
+  </button>
   <table class="table table-striped table-dark">
     <thead>
       <th>ID</th>
@@ -110,26 +107,14 @@
 
     <tbody *ngFor="let produit of products">
       <tr>
+        <td>{{ produit.id }}</td>
+        <td>{{ produit.name }}</td>
+        <td>{{ produit.price_HT }}</td>
+        <td>{{ produit.rayon }}</td>
+        <td>{{ produit.sous_rayon }}</td>
+        <td>{{ produit.tax }}</td>
         <td>
-          {{ produit.id }}
-        </td>
-        <td>
-          {{ produit.name }}
-        </td>
-        <td>
-          {{ produit.price_HT }}
-        </td>
-        <td>
-          {{ produit.rayon }}
-        </td>
-        <td>
-          {{ produit.sous_rayon }}
-        </td>
-        <td>
-          {{ produit.tax }}
-        </td>
-        <td>
-        <!--   <button
+          <!--   <button
             type="button"
             class="btn btn-secondary"
             (click)="onInfosProduct(produit.id)"
@@ -161,15 +146,9 @@
 
     <tbody *ngFor="let client of clients">
       <tr>
-        <td>
-          {{ client.lastname }}
-        </td>
-        <td>
-          {{ client.firstname }}
-        </td>
-        <td>
-          {{ client.id }}
-        </td>
+        <td>{{ client.lastname }}</td>
+        <td>{{ client.firstname }}</td>
+        <td>{{ client.id }}</td>
         <td>
           <button
             type="button"
@@ -203,15 +182,9 @@
 
     <tbody *ngFor="let client of clients">
       <tr>
-        <td>
-          {{ client.lastname }}
-        </td>
-        <td>
-          {{ client.firstname }}
-        </td>
-        <td>
-          {{ client.id }}
-        </td>
+        <td>{{ client.lastname }}</td>
+        <td>{{ client.firstname }}</td>
+        <td>{{ client.id }}</td>
         <td>
           <button
             type="button"

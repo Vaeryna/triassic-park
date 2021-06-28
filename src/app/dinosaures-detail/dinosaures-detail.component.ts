@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { ProduitService } from '../produit.service';
+import { ProduitService } from '../../app/services/produit.service';
 import { Produit } from '../data/produit';
 
 declare let $: any;

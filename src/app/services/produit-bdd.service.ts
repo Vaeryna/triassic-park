@@ -1,6 +1,6 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { Client, Panier, Total } from './data/panier';
-import { Rayon, Produit } from './data/produit';
+import { Client, Panier, Total } from '../data/panier';
+import { Rayon, Produit } from '../data/produit';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';

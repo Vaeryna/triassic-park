@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProduitService } from '../produit.service';
-import { AuthService } from '../auth.service';
+import { ProduitService } from '../../app/services/produit.service';
+import { AuthService } from '../../app/services/auth.service';
 import firebase from 'firebase/app';
 
 import {
@@ -16,7 +16,7 @@ import {
 } from '@angular/forms';
 
 import { Client } from '../data/panier';
-import { ProduitBDDService } from '../produit-bdd.service';
+import { ProduitBDDService } from '../../app/services/produit-bdd.service';
 
 @Component({
   selector: 'app-lien-bdd-auth',

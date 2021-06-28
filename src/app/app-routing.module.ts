@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AddInBasketComponent } from './add-in-basket/add-in-basket.component';
 import { AuthComponent } from './auth/auth.component';
-import { CompteClientComponent } from './compte-client/compte-client.component';
-import { ConnexionBackComponent } from './connexion-back/connexion-back.component';
+import { CompteClientComponent } from './connexion/connexion';
+import { ConnexionBackComponent } from './fonctions-admin/admin-page/admin-page.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DinosauresDetailComponent } from './dinosaures-detail/dinosaures-detail.component';
 import { DinosauresComponent } from './dinosaures/dinosaures.component';
-import { InfosClientComponent } from './fonctions-admin/infos-client/infos-client.component';
-import { NewProduitComponent } from './fonctions-admin/new-produit/new-produit.component';
+import { InfosClientComponent } from './fonctions-admin/clients/infos-client/infos-client.component';
+import { NewProduitComponent } from './fonctions-admin/products/new-produit/new-produit.component';
 
 import { LienBddAuthComponent } from './lien-bdd-auth/lien-bdd-auth.component';
 import { PanierComponent } from './panier/panier.component';
@@ -50,7 +50,7 @@ const routes: Routes = [
     component: LienBddAuthComponent,
   },
   {
-    path: 'lienBDD',
+    path: 'admin',
     component: ConnexionBackComponent,
   },
   {

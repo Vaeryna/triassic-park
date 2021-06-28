@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Client, Panier } from '../data/panier';
-import { ProduitService } from '../produit.service';
+import { ProduitService } from '../../app/services/produit.service';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
               this.pS.getProduitPrice(element.name).subscribe(() => {
                 (this.price = element.prix_HT * element.quantite),
                   (this.totalPrice = this.totalPrice + this.price);
-               
+
               });
             });
           });

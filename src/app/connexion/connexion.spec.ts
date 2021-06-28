@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminCRUDComponent } from './admin-crud.component';
+import { CompteClientComponent } from './connexion';
 
-describe('AdminCRUDComponent', () => {
-  let component: AdminCRUDComponent;
-  let fixture: ComponentFixture<AdminCRUDComponent>;
+describe('CompteClientComponent', () => {
+  let component: CompteClientComponent;
+  let fixture: ComponentFixture<CompteClientComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminCRUDComponent ]
+      declarations: [ CompteClientComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminCRUDComponent);
+    fixture = TestBed.createComponent(CompteClientComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
