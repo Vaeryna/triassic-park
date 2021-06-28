@@ -3,33 +3,40 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()" #formProduit="ngForm">
   <label for="name">Nom du produit</label>
   <input
-    class="form-group p-2"
+    class="input-group-text"
     type="string"
     formControlName="name"
     name="name"
   />
 
-  <label for="rayon">Rayon</label>
-  <input
-    class="form-group p-2"
-    type="string"
-    formControlName="rayon"
-    name="rayon"
-  />
-  <label for="sous-rayon">Sous-Rayon</label>
-  <input
-    class="form-group p-2"
-    type="string"
-    formControlName="sous-rayon"
-    name="sous-rayon"
-  />
+  <div>
+    <label class="mr-sm-2" for="rayon">Rayon</label>
+    <select class="custom-select mr-sm-2" id="rayon" formControlName="rayon">
+      <option *ngFor="let rayon of rayons" [value]="rayon.name">
+        {{ rayon.name }}
+      </option>
+    </select>
+  </div>
 
-  <label for="prix_HT">Prix Hors Taxe</label>
+  <div>
+    <label class="mr-sm-2" for="sousRayon"> Sous-Rayon</label>
+    <select
+      class="custom-select mr-sm-2"
+      id="sousRayon"
+      formControlName="sousRayon"
+    >
+      <option *ngFor="let sousRayon of sousRayons" [value]="sousRayon.name">
+        {{ sousRayon.name }}
+      </option>
+    </select>
+  </div>
+
+  <label for="price_HT">Prix Hors Taxe</label>
   <input
-    class="form-group p-2"
+    class="input-group-text"
     type="number"
-    formControlName="prix_HT"
-    name="prix_HT"
+    formControlName="price_HT"
+    name="price_HT"
   />
 
   <div class="form-group col-md-12 m-2">

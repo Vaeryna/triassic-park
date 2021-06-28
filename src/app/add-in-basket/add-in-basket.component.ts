@@ -58,7 +58,7 @@ export class AddInBasketComponent implements OnInit {
           Validators.required // pour définir dans le controle un champ requis
         ),
         quantite: '',
-        prix_HT: new FormControl('', Validators.required),
+        price_HT: new FormControl('', Validators.required),
         keyClient: new FormControl(this.keyClient, Validators.required),
       });
     });
@@ -72,7 +72,7 @@ export class AddInBasketComponent implements OnInit {
     return this.produitForm.get('produit');
   }
   get prix_u() {
-    return this.produitForm.get('prix_HT');
+    return this.produitForm.get('price_HT');
   }
 
   onSubmit() {
@@ -80,6 +80,7 @@ export class AddInBasketComponent implements OnInit {
     const produit = this.produitForm.value;
     this.pS.addProduit(produit).subscribe(() => {
       this.router.navigate(['/catalogue']);
+      console.log("onsumbit proudit", produit)
     });
   }
 }

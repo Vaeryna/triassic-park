@@ -1,12 +1,12 @@
 {
   "-MbLmz7U65FbAVC_B0Rk" : {
     "name" : "Pantalon toile bleu",
-    "prix_HT" : 60,
+    "price_HT" : 60,
     "quantite" : 1
   },
   "-MbLnfGW33EW6QSHT0Wi" : {
     "name" : "Pendentif argent",
-    "prix_HT" : 150,
+    "price_HT" : 150,
     "quantite" : 5
   }
 }

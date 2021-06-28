@@ -15,6 +15,9 @@ export class ProduitBDDService {
 
   private clientUrl = '//localhost:8080/api/client';
   private productUrl = '//localhost:8080/api/product';
+  private rayonUrl = '//localhost:8080/api/rayon';
+  private sousRayonUrl = '//localhost:8080/api/sous_rayon';
+
 
   //################  GESTION CLIENT ##############
   getAllClientBDD(): Observable<any> {
@@ -74,5 +77,22 @@ export class ProduitBDDService {
   deleteProductBDD(id: number): Observable<any> {
     console.log('delete: ', id);
     return this.http.delete(`${this.productUrl}/${id}`);
+  }
+
+
+  //######### GESTION RAYONS#######
+  getRayonBDD(): Observable<any>{
+    return this.http.get(`${this.rayonUrl}`).pipe(
+      map(rayon => Object.values(rayon),
+      map (a => {return a}))
+    )
+  }
+
+  //######### GESTION SOUS-RAYONS#######
+  getSousRayonBDD(): Observable<any>{
+    return this.http.get(`${this.sousRayonUrl}`).pipe(
+      map(sousRayon => Object.values(sousRayon),
+      map (a => {return a}))
+    )
   }
 }

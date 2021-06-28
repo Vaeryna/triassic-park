@@ -3,84 +3,84 @@
     "Produit001": {
       "id": "11001",
       "name": "Bague en diamant",
-      "prix_HT": "200",
+      "price_HT": "200",
       "taxe": "20",
       "rayon": "BIJ_BG"
     },
     "Produit002": {
       "id": "11002",
       "name": "Alliance budget",
-      "prix_HT": "60",
+      "price_HT": "60",
       "taxe": "20",
       "rayon": "BIJ_BG"
     },
     "Produit003": {
       "id": "12001",
       "name": "Pendentif argent",
-      "prix_HT": "150",
+      "price_HT": "150",
       "taxe": "20",
       "rayon": "BIG_PN"
     },
     "Produit004": {
       "id": "12002",
       "name": "Coccinelles cuivre",
-      "prix_HT": "50",
+      "price_HT": "50",
       "taxe": "20",
       "rayon": "BIG_PN"
     },
     "Produit005": {
       "id": "21001",
       "name": "Jeans bleu clair",
-      "prix_HT": "80",
+      "price_HT": "80",
       "taxe": "20",
       "rayon": "VET_PT"
     },
     "Produit006": {
       "id": "21002",
       "name": "Pantalon toile bleu",
-      "prix_HT": "60",
+      "price_HT": "60",
       "taxe": "20",
       "rayon": "VET_PT"
     },
     "Produit007": {
       "id": "22001",
       "name": "Chemise en lin",
-      "prix_HT": "120",
+      "price_HT": "120",
       "taxe": "20",
       "rayon": "VET_HT"
     },
     "Produit008": {
       "id": "22001",
       "name": "Pull blanc",
-      "prix_HT": "100",
+      "price_HT": "100",
       "taxe": "20",
       "rayon": "VET_HT"
     },
     "Produit009": {
       "id": "31001",
       "name": "Dior Liberté",
-      "prix_HT": "60",
+      "price_HT": "60",
       "taxe": "20",
       "rayon": "PRF_HM"
     },
     "Produit010": {
       "id": "31002",
       "name": "Jack Daniels",
-      "prix_HT": "60",
+      "price_HT": "60",
       "taxe": "20",
       "rayon": "PRF_HM"
     },
     "Produit011": {
       "id": "32001",
       "name": "Chonnel n°5",
-      "prix_HT": "",
+      "price_HT": "",
       "taxe": "",
       "rayon": ""
     },
     "Produit012": {
       "id": "32002",
       "name": "La longue robe rouge",
-      "prix_HT": "",
+      "price_HT": "",
       "taxe": "",
       "rayon": ""
     }

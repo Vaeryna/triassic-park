@@ -14,7 +14,7 @@ import {
   FormGroupDirective,
 } from '@angular/forms';
 
-import { Produit } from '../../../data/produit';
+import { Produit, Rayon, SousRayon } from '../../../data/produit';
 import { ProduitBDDService } from '../../../../app/services/produit-bdd.service';
 
 @Component({
@@ -23,9 +23,13 @@ import { ProduitBDDService } from '../../../../app/services/produit-bdd.service'
   styleUrls: ['./new-produit.component.scss'],
 })
 export class NewProduitComponent implements OnInit {
-  id!: Number;
+  id!: String;
   productForm!: FormGroup;
   product!: Produit;
+  rayons!: Rayon[];
+  sousRayons!: SousRayon[];
+  rayon!: Rayon;
+  sousRayon!: SousRayon;
 
   constructor(
     private router: ActivatedRoute,
@@ -38,23 +42,45 @@ export class NewProduitComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.pB.getRayonBDD().subscribe((a) => {
+      this.rayons = a;
+    });
+
+    this.pB.getSousRayonBDD().subscribe((a) => {
+      this.sousRayons = a;
+    });
+
+    this.id = this.rayon.id + this.sousRayon.id;
   }
 
   initForm() {
     this.productForm = new FormGroup({
-      id: new FormControl('', Validators.required),
+      id: new FormControl(this.id, Validators.required),
       name: new FormControl('', Validators.required),
-      prix_HT: new FormControl('', Validators.required),
-      taxe: new FormControl('', Validators.required),
+      price_HT: new FormControl('', Validators.required),
+      tax: new FormControl('', Validators.required),
+      rayon: new FormControl('', Validators.required),
+      sousRayon: new FormControl('', Validators.required),
     });
   }
 
   onSubmit() {
     const product = this.productForm.value;
-    console.log('value', this.productForm.value);
+    console.log('product id submit', product.id, ' ! ');
 
+    console.log('value', this.productForm.value);
+    console.log(
+      'this product id',
+      product.id,
+      'rayon id + sous rayon id',
+      this.rayon.id,
+      ' + ',
+      this.sousRayon.id
+    );
     console.log('form name: ', product.name, 'form id: ', product.id);
 
-    this.pB.addProductBDD(product).subscribe(() => this.route.navigate(['/lienBDD']));
+    /*  this.pB
+      .addProductBDD(product)
+      .subscribe(() => this.route.navigate(['/lienBDD'])); */
   }
 }

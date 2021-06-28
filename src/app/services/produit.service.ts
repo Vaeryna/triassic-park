@@ -146,7 +146,7 @@ export class ProduitService {
     return this.http.get<Panier>(`${this.panierUrl}/.json`).pipe(
       map((a) => {
         Object.values(a);
-        console.log('getTotalPricePanier ', a.prix_HT);
+        console.log('getTotalPricePanier ', a.price_HT);
         return a;
       })
     );

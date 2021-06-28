@@ -5,13 +5,17 @@
     Ajouter un produit
   </button>
   <button type="button" class="btn btn-info" routerLink="/newRayon">
-    AJouter un rayon
+    Ajouter un rayon
   </button>
   <button type="button" class="btn btn-info" routerLink="/newSousrayon">
-    AJouter un sous-rayon
+    Ajouter un sous-rayon
+  </button>
+  <button type="button" class="btn btn-info" routerLink="/">
+    Créer une promotion
   </button>
 </div>
 
+<!----------------- Clients --------------->
 <div class="buttons">
   <button
     class="btn btn-primary"
@@ -23,6 +27,7 @@
     Clients
   </button>
 
+  <!-----------------PRODUITS------------->
   <button
     class="btn btn-primary"
     type="button"
@@ -33,6 +38,7 @@
     Produits
   </button>
 
+  <!------------------RAYON---------------->
   <button
     class="btn btn-primary"
     type="button"
@@ -43,6 +49,8 @@
     Rayons
   </button>
 
+  <!------------------SOUS RAYONS-------------->
+
   <button
     class="btn btn-primary"
     type="button"
@@ -52,8 +60,20 @@
   >
     Sous-rayons
   </button>
+
+  <!--------------------PROMOS------------->
+  <button
+    class="btn btn-primary"
+    type="button"
+    (click)="isCollapsedPromo = !isCollapsedPromo"
+    [attr.aria-expanded]="!isCollapsedPromo"
+    aria-controls="promos"
+  >
+    Promotions
+  </button>
 </div>
 
+<!----------------- Clients Collapse--------------->
 <div id="client" [ngbCollapse]="isCollapsedClient">
   <h2>Clients</h2>
   <table class="table table-striped table-dark">
@@ -90,6 +110,7 @@
   </table>
 </div>
 
+<!-----------------PRODUITS Collapse------------->
 <div id="produit" [ngbCollapse]="isCollapsedProduct">
   <h2>Produits</h2>
   <button type="button" class="btn btn-secondary" routerLink="/newProduit">
@@ -114,15 +135,6 @@
         <td>{{ produit.sous_rayon }}</td>
         <td>{{ produit.tax }}</td>
         <td>
-          <!--   <button
-            type="button"
-            class="btn btn-secondary"
-            (click)="onInfosProduct(produit.id)"
-            routerLink="/infosProduct/{{ produit.id }}"
-          >
-            Infos du produit
-          </button> -->
-
           <button
             type="button"
             class="btn btn-secondary"
@@ -136,6 +148,7 @@
   </table>
 </div>
 
+<!-----------------Rayons Collapse------------->
 <div id="rayons" [ngbCollapse]="isCollapsedRayon">
   <h2>Rayons</h2>
   <table class="table table-striped table-dark">
@@ -172,8 +185,46 @@
   </table>
 </div>
 
+<!-----------------Sous-rayon Collapse------------->
 <div id="sous-rayons" [ngbCollapse]="isCollapsedSousRayon">
   <h2>Sous-rayons</h2>
+  <table class="table table-striped table-dark">
+    <thead>
+      <th>Nom</th>
+      <th>Prénom</th>
+    </thead>
+
+    <tbody *ngFor="let client of clients">
+      <tr>
+        <td>{{ client.lastname }}</td>
+        <td>{{ client.firstname }}</td>
+        <td>{{ client.id }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onInfosProduct(client.id)"
+            routerLink="/infosClient/{{ client.id }}"
+          >
+            Infos du client
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onDeleteProduct(client.id)"
+          >
+            Effacer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-----------------Promos Collapse------------->
+<div id="promos" [ngbCollapse]="isCollapsedPromo">
+  <h2>Promotions</h2>
   <table class="table table-striped table-dark">
     <thead>
       <th>Nom</th>

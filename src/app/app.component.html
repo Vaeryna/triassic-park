@@ -7,7 +7,7 @@
     </button>
     <div *ngIf="mail == 'admin@mail.fr'">
       <button type="button" routerLink="/admin" class="btn btn-secondary">
-        Mon Compte Admin
+        Mon Compte | Admin
       </button>
     </div>
     <div *ngIf="mail !== 'admin@mail.fr'">
@@ -16,7 +16,7 @@
         routerLink="/dashboard/{{ this.mail }}"
         class="btn btn-secondary"
       >
-        Mon Compte
+        Mon Compte | {{ this.mail }}
       </button>
     </div>
   </div>

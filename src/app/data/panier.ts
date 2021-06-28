@@ -2,7 +2,7 @@ export interface Panier {
   id: string;
   name: string;
   quantite: number;
-  prix_HT: number;
+  price_HT: number;
   keyClient: string;
 }
 

@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
               (this.panier = Object.values(panier));
             this.panier.forEach((element) => {
               this.pS.getProduitPrice(element.name).subscribe(() => {
-                (this.price = element.prix_HT * element.quantite),
+                (this.price = element.price_HT * element.quantite),
                   (this.totalPrice = this.totalPrice + this.price);
 
               });

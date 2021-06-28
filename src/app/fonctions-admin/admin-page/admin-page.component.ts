@@ -17,6 +17,7 @@ export class ConnexionBackComponent implements OnInit {
   public isCollapsedProduct = true;
   public isCollapsedRayon = true;
   public isCollapsedSousRayon = true;
+  public isCollapsedPromo = true;
 
   constructor(private router: Router, private pB: ProduitBDDService) {}
   clients!: any;

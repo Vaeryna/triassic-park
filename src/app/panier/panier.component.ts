@@ -22,15 +22,14 @@ export class PanierComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
     if (this.mail)
       this.pS.getPanierClient(this.mail).subscribe((panier) => {
         this.panier = Object.values(panier);
+        console.log("if mail panier : ", this.panier)
 
         this.panier.forEach((element) => {
           this.pS.getProduitPrice(element.name).subscribe(() => {
-            (this.price = element.prix_HT * element.quantite),
+            (this.price = element.price_HT * element.quantite),
               (this.totalPrice = this.totalPrice + this.price);
           });
         });

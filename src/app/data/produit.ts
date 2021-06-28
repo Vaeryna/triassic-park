@@ -12,4 +12,7 @@ export interface Rayon {
   name: string;
 }
 
-
+export interface SousRayon {
+  id: string;
+  name: string;
+}
