@@ -8,6 +8,7 @@ import firebase from 'firebase/app';
 // These imports load individual services into the firebase namespace.
 import 'firebase/auth';
 import { AuthService } from './../app/services/auth.service';
+import { ProduitBDDService } from './services/produit-bdd.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,11 @@ import { AuthService } from './../app/services/auth.service';
 export class AppComponent implements OnInit {
   title = 'commerce';
 
-  constructor(private pS: ProduitService, private auS: AuthService) {}
+  constructor(
+    private pS: ProduitService,
+    private auS: AuthService,
+    private pB: ProduitBDDService
+  ) {}
   rayon!: Rayon[];
   panier!: Panier[];
   total!: Panier;
@@ -30,7 +35,7 @@ export class AppComponent implements OnInit {
   price!: number;
 
   ngOnInit(): void {
-    this.pS.getRayon().subscribe((a) => {
+    this.pB.getRayonBDD().subscribe((a) => {
       this.rayon = a;
     });
 

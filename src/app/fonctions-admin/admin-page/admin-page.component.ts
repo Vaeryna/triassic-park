@@ -5,7 +5,7 @@ import { ProduitService } from '../../services/produit.service';
 import { Client } from '../../data/panier';
 import { Router } from '@angular/router';
 import { ProduitBDDService } from '../../services/produit-bdd.service';
-import { Produit } from '../../data/produit';
+import { Produit, Rayon } from '../../data/produit';
 
 @Component({
   selector: 'app-admin-page',
@@ -25,6 +25,8 @@ export class ConnexionBackComponent implements OnInit {
   id!: Number;
   product!: Produit;
   products!: any;
+  rayon!: Rayon;
+  rayons!: any;
 
   ngOnInit(): void {
     this.pB.getAllClientBDD().subscribe((client) => {
@@ -34,6 +36,9 @@ export class ConnexionBackComponent implements OnInit {
     this.pB.getAllProductBDD().subscribe((product) => {
       console.log('produits: ', (this.products = product));
       this.products = product;
+    });
+    this.pB.getRayonBDD().subscribe((rayon) => {
+      this.rayons = rayon;
     });
   }
 
@@ -57,5 +62,16 @@ export class ConnexionBackComponent implements OnInit {
       this.product = a;
       console.log('client infos: ', this.product, 'client id ', id);
     });
+  }
+
+  onDeleteRayon(id: number) {
+    //this.pB.deleteRayonBDD(id).subscribe();
+  }
+
+  onInfosRayon(id: number) {
+    /* this.pB.getRayonBDD(id).subscribe((a) => {
+      this.product = a;
+      console.log('client infos: ', this.product, 'client id ', id);
+    }); */
   }
 }

@@ -49,18 +49,6 @@
     Rayons
   </button>
 
-  <!------------------SOUS RAYONS-------------->
-
-  <button
-    class="btn btn-primary"
-    type="button"
-    (click)="isCollapsedSousRayon = !isCollapsedSousRayon"
-    [attr.aria-expanded]="!isCollapsedSousRayon"
-    aria-controls="sous-rayon"
-  >
-    Sous-rayons
-  </button>
-
   <!--------------------PROMOS------------->
   <button
     class="btn btn-primary"
@@ -153,68 +141,74 @@
   <h2>Rayons</h2>
   <table class="table table-striped table-dark">
     <thead>
-      <th>Nom</th>
-      <th>Prénom</th>
+      <th>ID</th>
+      <th>Nom du rayon</th>
     </thead>
 
-    <tbody *ngFor="let client of clients">
+    <tbody *ngFor="let rayon of rayons">
       <tr>
-        <td>{{ client.lastname }}</td>
-        <td>{{ client.firstname }}</td>
-        <td>{{ client.id }}</td>
+        <td>{{ rayon.id }}</td>
+        <td>{{ rayon.name }}</td>
         <td>
           <button
-            type="button"
             class="btn btn-secondary"
-            (click)="onInfosClient(client.id)"
-            routerLink="/infosClient/{{ client.id }}"
+            type="button"
+            (click)="isCollapsedSousRayon = !isCollapsedSousRayon"
+            [attr.aria-expanded]="!isCollapsedSousRayon"
+            aria-controls="sous-rayon"
           >
-            Infos du client
+            Sous-rayons
           </button>
+          <!-- créer un collapse pour les sous-rayons
+          <div id="rayons" [ngbCollapse]="isCollapsedSousRayon">
+
+          </div>
+        -->
+          <!-----------------Sous-rayon Collapse------------->
+          <div id="sous-rayons" [ngbCollapse]="isCollapsedSousRayon">
+            <h5>Sous-rayons</h5>
+            <table class="table table-striped table-dark">
+              <thead>
+                <th>Nom</th>
+                <th>Prénom</th>
+              </thead>
+
+              <tbody *ngFor="let client of clients">
+                <tr>
+                  <td>{{ client.lastname }}</td>
+                  <td>{{ client.firstname }}</td>
+                  <td>{{ client.id }}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      (click)="onInfosProduct(client.id)"
+                      routerLink="/infosClient/{{ client.id }}"
+                    >
+                      Infos du client
+                    </button>
+
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      (click)="onDeleteProduct(client.id)"
+                    >
+                      Effacer
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
 
           <button
             type="button"
-            class="btn btn-secondary"
-            (click)="onDeleteClient(client.id)"
+            class="btn btn-dark"
+            (click)="onDeleteRayon(rayon.id)"
           >
-            Effacer
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-----------------Sous-rayon Collapse------------->
-<div id="sous-rayons" [ngbCollapse]="isCollapsedSousRayon">
-  <h2>Sous-rayons</h2>
-  <table class="table table-striped table-dark">
-    <thead>
-      <th>Nom</th>
-      <th>Prénom</th>
-    </thead>
-
-    <tbody *ngFor="let client of clients">
-      <tr>
-        <td>{{ client.lastname }}</td>
-        <td>{{ client.firstname }}</td>
-        <td>{{ client.id }}</td>
-        <td>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            (click)="onInfosProduct(client.id)"
-            routerLink="/infosClient/{{ client.id }}"
-          >
-            Infos du client
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-secondary"
-            (click)="onDeleteProduct(client.id)"
-          >
-            Effacer
+            Effacer le rayon
           </button>
         </td>
       </tr>
