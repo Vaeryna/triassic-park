@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompteClientComponent } from './compte-client.component';
+import { ConnexionBackComponent } from './admin-page.component';
 
-describe('CompteClientComponent', () => {
-  let component: CompteClientComponent;
-  let fixture: ComponentFixture<CompteClientComponent>;
+describe('ConnexionBackComponent', () => {
+  let component: ConnexionBackComponent;
+  let fixture: ComponentFixture<ConnexionBackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CompteClientComponent ]
+      declarations: [ ConnexionBackComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CompteClientComponent);
+    fixture = TestBed.createComponent(ConnexionBackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

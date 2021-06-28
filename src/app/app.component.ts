@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Panier, Total, Client } from './data/panier';
 import { Rayon, Produit } from './data/produit';
-import { ProduitService } from './produit.service';
+import { ProduitService } from './../app/services/produit.service';
 // This import loads the firebase namespace along with all its type information.
 import firebase from 'firebase/app';
 
 // These imports load individual services into the firebase namespace.
 import 'firebase/auth';
-import { AuthService } from './auth.service';
+import { AuthService } from './../app/services/auth.service';
 
 @Component({
   selector: 'app-root',

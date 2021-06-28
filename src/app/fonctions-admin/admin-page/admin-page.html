@@ -1,0 +1,209 @@
+<h1>Page Admin</h1>
+
+<div class="buttons-addForm">
+  <button type="button" class="btn btn-info" routerLink="/newProduit">
+    Ajouter un produit
+  </button>
+  <button type="button" class="btn btn-info" routerLink="/newRayon">
+    AJouter un rayon
+  </button>
+  <button type="button" class="btn btn-info" routerLink="/newSousrayon">
+    AJouter un sous-rayon
+  </button>
+</div>
+
+<div class="buttons">
+  <button
+    class="btn btn-primary"
+    type="button"
+    (click)="isCollapsedClient = !isCollapsedClient"
+    [attr.aria-expanded]="!isCollapsedClient"
+    aria-controls="client"
+  >
+    Clients
+  </button>
+
+  <button
+    class="btn btn-primary"
+    type="button"
+    (click)="isCollapsedProduct = !isCollapsedProduct"
+    [attr.aria-expanded]="!isCollapsedProduct"
+    aria-controls="produit"
+  >
+    Produits
+  </button>
+
+  <button
+    class="btn btn-primary"
+    type="button"
+    (click)="isCollapsedRayon = !isCollapsedRayon"
+    [attr.aria-expanded]="!isCollapsedRayon"
+    aria-controls="rayon"
+  >
+    Rayons
+  </button>
+
+  <button
+    class="btn btn-primary"
+    type="button"
+    (click)="isCollapsedSousRayon = !isCollapsedSousRayon"
+    [attr.aria-expanded]="!isCollapsedSousRayon"
+    aria-controls="sous-rayon"
+  >
+    Sous-rayons
+  </button>
+</div>
+
+<div id="client" [ngbCollapse]="isCollapsedClient">
+  <h2>Clients</h2>
+  <table class="table table-striped table-dark">
+    <thead>
+      <th>Nom</th>
+      <th>Prénom</th>
+    </thead>
+
+    <tbody *ngFor="let client of clients">
+      <tr>
+        <td>{{ client.lastname }}</td>
+        <td>{{ client.firstname }}</td>
+        <td>{{ client.id }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onInfosClient(client.id)"
+            routerLink="/infosClient/{{ client.id }}"
+          >
+            Infos du client
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onDeleteClient(client.id)"
+          >
+            Effacer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="produit" [ngbCollapse]="isCollapsedProduct">
+  <h2>Produits</h2>
+  <button type="button" class="btn btn-secondary" routerLink="/newProduit">
+    Ajouter un produit
+  </button>
+  <table class="table table-striped table-dark">
+    <thead>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prix HT</th>
+      <th>Rayon</th>
+      <th>Sous-rayon</th>
+      <th>Taxe</th>
+    </thead>
+
+    <tbody *ngFor="let produit of products">
+      <tr>
+        <td>{{ produit.id }}</td>
+        <td>{{ produit.name }}</td>
+        <td>{{ produit.price_HT }}</td>
+        <td>{{ produit.rayon }}</td>
+        <td>{{ produit.sous_rayon }}</td>
+        <td>{{ produit.tax }}</td>
+        <td>
+          <!--   <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onInfosProduct(produit.id)"
+            routerLink="/infosProduct/{{ produit.id }}"
+          >
+            Infos du produit
+          </button> -->
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onDeleteProduct(produit.id)"
+          >
+            Effacer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="rayons" [ngbCollapse]="isCollapsedRayon">
+  <h2>Rayons</h2>
+  <table class="table table-striped table-dark">
+    <thead>
+      <th>Nom</th>
+      <th>Prénom</th>
+    </thead>
+
+    <tbody *ngFor="let client of clients">
+      <tr>
+        <td>{{ client.lastname }}</td>
+        <td>{{ client.firstname }}</td>
+        <td>{{ client.id }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onInfosClient(client.id)"
+            routerLink="/infosClient/{{ client.id }}"
+          >
+            Infos du client
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onDeleteClient(client.id)"
+          >
+            Effacer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="sous-rayons" [ngbCollapse]="isCollapsedSousRayon">
+  <h2>Sous-rayons</h2>
+  <table class="table table-striped table-dark">
+    <thead>
+      <th>Nom</th>
+      <th>Prénom</th>
+    </thead>
+
+    <tbody *ngFor="let client of clients">
+      <tr>
+        <td>{{ client.lastname }}</td>
+        <td>{{ client.firstname }}</td>
+        <td>{{ client.id }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onInfosProduct(client.id)"
+            routerLink="/infosClient/{{ client.id }}"
+          >
+            Infos du client
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="onDeleteProduct(client.id)"
+          >
+            Effacer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

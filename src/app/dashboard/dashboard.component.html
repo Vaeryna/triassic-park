@@ -1,8 +1,8 @@
-<h1 *ngFor="let client of client">Dashboard de {{ client.prenom }} !</h1>
+<h1 *ngFor="let client of client">Dashboard de {{ client.firstname }} !</h1>
 
 <div *ngFor="let client of client">
-  <p>{{ client.prenom }} {{ client.nom }}</p>
-  <p>{{ client.adresse }} {{ client.ville }}</p>
+  <p>{{ client.firstname }} {{ client.lastname }}</p>
+  <p>{{ client.address }} {{ client.city }}</p>
 
   <p>{{ client.mail }}</p>
 
@@ -14,7 +14,7 @@
     <p>Total : {{ totalPrice }}€</p>
   </div>
   <div>
-    <button class="btn btn-info" routerLink="">Commander</button>
+    <button class="btn btn-info" routerLink="command/api">Commander</button>
     <button class="btn btn-info" routerLink="">Vider le panier</button>
   </div>
 

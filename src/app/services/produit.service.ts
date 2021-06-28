@@ -1,18 +1,18 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { Client, Panier, Total } from './data/panier';
-import { Rayon, Produit } from './data/produit';
+import { Client, Panier, Total } from '../data/panier';
+import { Rayon, Produit } from '../data/produit';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 import { Observable, Subject, throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
-const httpOptions = {
+/* const httpOptions = {
   headers: new HttpHeaders({
     Accept: 'application/json',
     'Content-Type': 'application/json',
   }),
-};
+}; */
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +28,8 @@ export class ProduitService {
   private rayonUrl = 'https://triassic-park-default-rtdb.firebaseio.com/Rayon';
   private clientUrl =
     'https://triassic-park-default-rtdb.firebaseio.com/Client';
+
+  //######### FIREBASE ######################
 
   //######################## Gestion RAYON ############################
   getRayon(): Observable<Rayon[]> {

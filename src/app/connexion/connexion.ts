@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProduitService } from '../produit.service';
+import { ProduitService } from '../services/produit.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 import {
   FormBuilder,
@@ -17,13 +17,14 @@ import {
 import { Client } from '../data/panier';
 
 @Component({
-  selector: 'app-compte-client',
-  templateUrl: './compte-client.component.html',
-  styleUrls: ['./compte-client.component.scss'],
+  selector: 'app-connexion',
+  templateUrl: './connexion.html',
+  styleUrls: ['./connexion.scss'],
 })
 export class CompteClientComponent implements OnInit {
   userForm!: FormGroup;
   client!: Client;
+  password!: String;
 
   constructor(
     private fB: FormBuilder,
@@ -48,15 +49,14 @@ export class CompteClientComponent implements OnInit {
 
     console.log('form mail: ', form.mail, 'password: ', form.password);
     const mail = form.mail;
+    sessionStorage.setItem('password', form.password);
 
     // creation client firebase
     this.auS
       .create(form.mail, form.password)
-      .then((res) => this.route.navigate([`/lien-bdd-auth/${mail}`]))
+      .then((res) => {
+        this.route.navigate([`/lien-bdd-auth/${mail}`]);
+      })
       .catch((err) => console.log('err', err));
   }
-
-  /*   this.pS.addClient(client).subscribe(() => {
-      this.route.navigate(['']);
-    }); */
 }

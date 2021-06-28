@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProduitService } from '../produit.service';
+import { ProduitService } from '../../app/services/produit.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import {
@@ -14,7 +14,7 @@ import {
 
 import { Produit } from '../data/produit';
 import { Client } from '../data/panier';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../app/services/auth.service';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
 import firebase from 'firebase/app';
 

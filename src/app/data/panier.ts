@@ -12,9 +12,11 @@ export interface Total {
 
 export interface Client {
   mail: string;
-  adresse: string;
-  nom: string;
-  prenom: string;
-  ville: string;
+  address: string;
+  lastname: string;
+  firstname: string;
+  city: string;
   uid: string;
+  cp: number;
+  password: string;
 }

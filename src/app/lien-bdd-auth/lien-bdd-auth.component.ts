@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProduitService } from '../produit.service';
-import { AuthService } from '../auth.service';
+import { ProduitService } from '../../app/services/produit.service';
+import { AuthService } from '../../app/services/auth.service';
 import firebase from 'firebase/app';
 
 import {
@@ -16,6 +16,7 @@ import {
 } from '@angular/forms';
 
 import { Client } from '../data/panier';
+import { ProduitBDDService } from '../../app/services/produit-bdd.service';
 
 @Component({
   selector: 'app-lien-bdd-auth',
@@ -27,21 +28,19 @@ export class LienBddAuthComponent implements OnInit {
   userForm!: FormGroup;
   client!: Client;
   uid!: string;
+  password = sessionStorage.getItem('password');
 
   constructor(
     private router: ActivatedRoute,
     private fB: FormBuilder,
     private pS: ProduitService,
     private auS: AuthService,
-    private route: Router
+    private route: Router,
+    private pB: ProduitBDDService
   ) {}
 
   ngOnInit(): void {
     this.initForm();
-    /*   const mail = this.router.snapshot.paramMap.get('mail');
-    if (mail) {
-      this.mail = mail; */
-    // }
   }
 
   initForm() {
@@ -55,13 +54,14 @@ export class LienBddAuthComponent implements OnInit {
       if (mail) {
         this.mail = mail;
 
-        this.userForm = this.fB.group({
-          nom: new FormControl('', Validators.required),
-          prenom: new FormControl('', Validators.required),
+        this.userForm = new FormGroup({
+          lastname: new FormControl('', Validators.required),
+          firstname: new FormControl('', Validators.required),
           mail: new FormControl(this.mail, Validators.required),
-          adresse: new FormControl('', Validators.required),
-          ville: new FormControl('', Validators.required),
+          address: new FormControl('', Validators.required),
+          city: new FormControl('', Validators.required),
           uid: new FormControl(this.uid, Validators.required),
+          mdp: new FormControl(this.password, Validators.required),
         });
       }
     });
@@ -71,11 +71,8 @@ export class LienBddAuthComponent implements OnInit {
     const client = this.userForm.value;
     console.log('value', this.userForm.value);
 
-    console.log('form mail: ', client.mail);
+    console.log('form mail: ', client.mail, 'form mpd: ', client.pasdword);
 
-    // creation client dans bdd
-    this.pS.addClient(client).subscribe(() => {
-      this.route.navigate(['']);
-    });
+    this.pB.addClientBDD(client).subscribe(() => this.route.navigate(['']));
   }
 }

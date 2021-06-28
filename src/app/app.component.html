@@ -1,24 +1,31 @@
 <header>
   <a routerLink><h1>Triassic Shop</h1> </a>
 
-  <div *ngIf="uid">
+  <div *ngIf="uid" style="display: flex; flex-direction: row">
     <button type="button" (click)="logOut()" class="btn btn-secondary">
       Se deconnecter
     </button>
-    <button
-      type="button"
-      routerLink="/dashboard/{{ this.mail }}"
-      class="btn btn-secondary"
-    >
-      Mon Compte
-    </button>
+    <div *ngIf="mail == 'admin@mail.fr'">
+      <button type="button" routerLink="/admin" class="btn btn-secondary">
+        Mon Compte Admin
+      </button>
+    </div>
+    <div *ngIf="mail !== 'admin@mail.fr'">
+      <button
+        type="button"
+        routerLink="/dashboard/{{ this.mail }}"
+        class="btn btn-secondary"
+      >
+        Mon Compte
+      </button>
+    </div>
   </div>
 
   <div *ngIf="uid == ''">
     <button type="button" routerLink="/auth" class="btn btn-secondary">
       Connexion
     </button>
-    <!--  <div id="firebaseui-auth-container"></div> -->
+
     <button type="button" routerLink="/newLog" class="btn btn-secondary">
       S'inscrire
     </button>
@@ -44,7 +51,6 @@
   <aside>
     <a routerLink="/panier"> <h2>Panier</h2> </a>
 
-    <app-panier  onmouseover="window.location.reload()" > </app-panier>
-
+    <app-panier onmouseover="window.location.reload()"> </app-panier>
   </aside>
 </body>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Panier, Total } from '../data/panier';
-import { ProduitService } from '../produit.service';
+import { ProduitService } from '../../app/services/produit.service';
 import { Produit } from '../data/produit';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -22,7 +22,7 @@ export class PanierComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
+
 
     if (this.mail)
       this.pS.getPanierClient(this.mail).subscribe((panier) => {

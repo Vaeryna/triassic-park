@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Client, Panier, Total } from './data/panier';
-import { Rayon, Produit } from './data/produit';
+import { Client, Panier, Total } from '../data/panier';
+import { Rayon, Produit } from '../data/produit';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // This import loads the firebase namespace along with all its type information.

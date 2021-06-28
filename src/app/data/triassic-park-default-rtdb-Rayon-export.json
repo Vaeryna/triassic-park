@@ -1,0 +1,18 @@
+{
+  "01" : {
+    "id" : "01",
+    "name" : "bijoux"
+  },
+  "02" : {
+    "id" : "02",
+    "name" : "vêtement"
+  },
+  "03" : {
+    "id" : "03",
+    "name" : "parfum"
+  },
+  "04" : {
+    "id" : "04",
+    "name" : "rayon bonus"
+  }
+}

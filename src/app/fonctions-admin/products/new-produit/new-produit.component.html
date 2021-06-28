@@ -1,0 +1,40 @@
+<p>new-produit works!</p>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" #formProduit="ngForm">
+  <label for="name">Nom du produit</label>
+  <input
+    class="form-group p-2"
+    type="string"
+    formControlName="name"
+    name="name"
+  />
+
+  <label for="rayon">Rayon</label>
+  <input
+    class="form-group p-2"
+    type="string"
+    formControlName="rayon"
+    name="rayon"
+  />
+  <label for="sous-rayon">Sous-Rayon</label>
+  <input
+    class="form-group p-2"
+    type="string"
+    formControlName="sous-rayon"
+    name="sous-rayon"
+  />
+
+  <label for="prix_HT">Prix Hors Taxe</label>
+  <input
+    class="form-group p-2"
+    type="number"
+    formControlName="prix_HT"
+    name="prix_HT"
+  />
+
+  <div class="form-group col-md-12 m-2">
+    <button type="submit" class="btn btn-primary m-2">Ajouter</button>
+
+    <button routerLink="/lienBDD" class="btn btn-light">Return</button>
+  </div>
+</form>
