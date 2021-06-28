@@ -71,7 +71,7 @@ export class NewProduitComponent implements OnInit {
     console.log('value', this.productForm.value);
     console.log(
       'this product id',
-      product.id,
+      this.product.id,
       'rayon id + sous rayon id',
       this.rayon.id,
       ' + ',

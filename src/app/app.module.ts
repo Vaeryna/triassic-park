@@ -29,6 +29,8 @@ import { NewProduitComponent } from './fonctions-admin/products/new-produit/new-
 import { InfosClientComponent } from './fonctions-admin/clients/infos-client/infos-client.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NewRayonComponent } from './fonctions-admin/rayons/new-rayon/new-rayon.component';
+import { NewSousRayonComponent } from './fonctions-admin/rayons/new-sous-rayon/new-sous-rayon.component';
 
 firebase.initializeApp(env.firebaseConfig);
 
@@ -48,6 +50,8 @@ firebase.initializeApp(env.firebaseConfig);
     ConnexionBackComponent,
     NewProduitComponent,
     InfosClientComponent,
+    NewRayonComponent,
+    NewSousRayonComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,8 @@ import { NewProduitComponent } from './fonctions-admin/products/new-produit/new-
 import { LienBddAuthComponent } from './lien-bdd-auth/lien-bdd-auth.component';
 import { PanierComponent } from './panier/panier.component';
 import { TypeDinoComponent } from './type-dino/type-dino.component';
+import { NewRayonComponent } from './fonctions-admin/rayons/new-rayon/new-rayon.component';
+import { NewSousRayonComponent } from './fonctions-admin/rayons/new-sous-rayon/new-sous-rayon.component';
 
 const routes: Routes = [
   {
@@ -59,11 +61,11 @@ const routes: Routes = [
   },
   {
     path: 'newRayon',
-    component: NewProduitComponent,
+    component: NewRayonComponent,
   },
   {
     path: 'newSousrayon',
-    component: NewProduitComponent,
+    component: NewSousRayonComponent,
   },
   {
     path: 'infosClient/:id',

@@ -1,6 +1,6 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import { Client, Panier, Total } from '../data/panier';
-import { Rayon, Produit } from '../data/produit';
+import { Rayon, Produit, SousRayon } from '../data/produit';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, filter, find, map, switchMap } from 'rxjs/operators';
@@ -17,7 +17,6 @@ export class ProduitBDDService {
   private productUrl = '//localhost:8080/api/product';
   private rayonUrl = '//localhost:8080/api/rayon';
   private sousRayonUrl = '//localhost:8080/api/sous_rayon';
-
 
   //################  GESTION CLIENT ##############
   getAllClientBDD(): Observable<any> {
@@ -79,20 +78,36 @@ export class ProduitBDDService {
     return this.http.delete(`${this.productUrl}/${id}`);
   }
 
-
   //######### GESTION RAYONS#######
-  getRayonBDD(): Observable<any>{
+  getRayonBDD(): Observable<any> {
     return this.http.get(`${this.rayonUrl}`).pipe(
-      map(rayon => Object.values(rayon),
-      map (a => {return a}))
-    )
+      map(
+        (rayon) => Object.values(rayon),
+        map((a) => {
+          return a;
+        })
+      )
+    );
+  }
+
+  addRayonBDD(rayon: Rayon): Observable<any> {
+    console.log('produit add', rayon);
+    return this.http.post(`${this.rayonUrl}`, rayon);
   }
 
   //######### GESTION SOUS-RAYONS#######
-  getSousRayonBDD(): Observable<any>{
+  getSousRayonBDD(): Observable<any> {
     return this.http.get(`${this.sousRayonUrl}`).pipe(
-      map(sousRayon => Object.values(sousRayon),
-      map (a => {return a}))
-    )
+      map(
+        (sousRayon) => Object.values(sousRayon),
+        map((a) => {
+          return a;
+        })
+      )
+    );
+  }
+  addSouSRayonBDD(sousRayon: SousRayon): Observable<any> {
+    console.log('produit add', sousRayon);
+    return this.http.post(`${this.sousRayonUrl}`, sousRayon);
   }
 }

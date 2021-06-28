@@ -1,0 +1,26 @@
+<p>new-sous-rayon works!</p>
+
+<form [formGroup]="sousRayonForm" (ngSubmit)="onSubmit()" #formProduit="ngForm">
+  <label for="name">Nom du sous rayon</label>
+  <input
+    class="input-group-text"
+    type="string"
+    formControlName="name"
+    name="name"
+  />
+
+  <div>
+    <label class="mr-sm-2" for="rayon">Rayon</label>
+    <select class="custom-select mr-sm-2" id="rayon" formControlName="rayon_id">
+      <option *ngFor="let rayon of rayons" [value]="rayon.id">
+        {{ rayon.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group col-md-12 m-2">
+    <button type="submit" class="btn btn-primary m-2">Ajouter</button>
+
+    <button routerLink="/admin" class="btn btn-light">Return</button>
+  </div>
+</form>
