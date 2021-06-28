@@ -55,6 +55,6 @@ export class NewProduitComponent implements OnInit {
 
     console.log('form name: ', product.name, 'form id: ', product.id);
 
-    this.pB.addProductBDD(product).subscribe(() => this.route.navigate(['']));
+    this.pB.addProductBDD(product).subscribe(() => this.route.navigate(['/lienBDD']));
   }
 }

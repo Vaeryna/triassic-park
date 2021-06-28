@@ -100,35 +100,48 @@
   <h2>Produits</h2>
   <table class="table table-striped table-dark">
     <thead>
+      <th>ID</th>
       <th>Nom</th>
-      <th>Prénom</th>
+      <th>Prix HT</th>
+      <th>Rayon</th>
+      <th>Sous-rayon</th>
+      <th>Taxe</th>
     </thead>
 
-    <tbody *ngFor="let client of clients">
+    <tbody *ngFor="let produit of products">
       <tr>
         <td>
-          {{ client.lastname }}
+          {{ produit.id }}
         </td>
         <td>
-          {{ client.firstname }}
+          {{ produit.name }}
         </td>
         <td>
-          {{ client.id }}
+          {{ produit.price_HT }}
         </td>
         <td>
-          <button
+          {{ produit.rayon }}
+        </td>
+        <td>
+          {{ produit.sous_rayon }}
+        </td>
+        <td>
+          {{ produit.tax }}
+        </td>
+        <td>
+        <!--   <button
             type="button"
             class="btn btn-secondary"
-            (click)="onInfos(client.id)"
-            routerLink="/infosClient/{{ client.id }}"
+            (click)="onInfosProduct(produit.id)"
+            routerLink="/infosProduct/{{ produit.id }}"
           >
-            Infos du client
-          </button>
+            Infos du produit
+          </button> -->
 
           <button
             type="button"
             class="btn btn-secondary"
-            (click)="onDelete(client.id)"
+            (click)="onDeleteProduct(produit.id)"
           >
             Effacer
           </button>
@@ -161,7 +174,7 @@
           <button
             type="button"
             class="btn btn-secondary"
-            (click)="onInfos(client.id)"
+            (click)="onInfosClient(client.id)"
             routerLink="/infosClient/{{ client.id }}"
           >
             Infos du client
@@ -170,7 +183,7 @@
           <button
             type="button"
             class="btn btn-secondary"
-            (click)="onDelete(client.id)"
+            (click)="onDeleteClient(client.id)"
           >
             Effacer
           </button>
@@ -203,7 +216,7 @@
           <button
             type="button"
             class="btn btn-secondary"
-            (click)="onInfos(client.id)"
+            (click)="onInfosProduct(client.id)"
             routerLink="/infosClient/{{ client.id }}"
           >
             Infos du client
@@ -212,7 +225,7 @@
           <button
             type="button"
             class="btn btn-secondary"
-            (click)="onDelete(client.id)"
+            (click)="onDeleteProduct(client.id)"
           >
             Effacer
           </button>

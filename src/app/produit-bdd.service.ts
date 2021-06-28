@@ -51,4 +51,28 @@ export class ProduitBDDService {
     console.log('produit add', product);
     return this.http.post(`${this.productUrl}`, product);
   }
+
+  getAllProductBDD(): Observable<any> {
+    return this.http.get(`${this.productUrl}`).pipe(
+      map(
+        (product) => Object.values(product),
+        map((a) => {
+          return a;
+        })
+      )
+    );
+  }
+
+  getProductBDD(id: Number): Observable<any> {
+    return this.http.get(`${this.productUrl}/${id}`).pipe(
+      map((product) => {
+        return product;
+      })
+    );
+  }
+
+  deleteProductBDD(id: number): Observable<any> {
+    console.log('delete: ', id);
+    return this.http.delete(`${this.productUrl}/${id}`);
+  }
 }

@@ -5,6 +5,7 @@ import { ProduitService } from '../produit.service';
 import { Client } from '../data/panier';
 import { Router } from '@angular/router';
 import { ProduitBDDService } from '../produit-bdd.service';
+import { Produit } from '../data/produit';
 
 @Component({
   selector: 'app-connexion-back',
@@ -21,11 +22,17 @@ export class ConnexionBackComponent implements OnInit {
   clients!: any;
   client!: Client;
   id!: Number;
+  product!: Produit;
+  products!: any;
 
   ngOnInit(): void {
     this.pB.getAllClientBDD().subscribe((client) => {
       this.clients = client;
       console.log('clients: ', this.clients);
+    });
+    this.pB.getAllProductBDD().subscribe((product) => {
+      console.log('produits: ', (this.products = product));
+      this.products = product;
     });
   }
 
@@ -40,14 +47,14 @@ export class ConnexionBackComponent implements OnInit {
     });
   }
 
-  onDelete(id: number) {
-    this.pB.deleteClientBDD(id).subscribe();
+  onDeleteProduct(id: number) {
+    this.pB.deleteProductBDD(id).subscribe();
   }
 
-  onInfos(id: number) {
-    this.pB.getClientBDD(id).subscribe((a) => {
-      this.client = a;
-      console.log('client infos: ', this.client, 'client id ', id);
+  onInfosProduct(id: number) {
+    this.pB.getProductBDD(id).subscribe((a) => {
+      this.product = a;
+      console.log('client infos: ', this.product, 'client id ', id);
     });
   }
 }
